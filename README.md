@@ -42,20 +42,23 @@ Tab Bars (modes):
 ## Prerequisites
 
 ### Data Sources
-* Data file which contains user accounts and information
-* Data file which contains information for a house 
+* Data file which contains user accounts
+* Data file which contains information for a house, a person, etc..
+ * This can be done with the help of Google Firebase
 
 ### External Components
-* SQL data structure
+* JSON data structure from Google Firebase
+ * log in with authentication
+ * real time database
 
 ### Similar Applications
+These applications don't specifically serve the goal I have in mind, but could be used for keeping track of drink expenses and cleaning schedules.
 * There are many TO DO applications, like Wunderlist, Evernote, etc...
 * WieBetaaltWat is often used to divide students expenses
+* OurHome is something similar for families. I think it's way too complicated and not very user friendly.
 
 ### Hardest Challenges
-* I don't know if it's hard to create an application where multiple users can login and share information between accounts. To begin with, I think it's already a challenge to get users to log in and to be able to see their own profile page and user information.
-* The code behind making a cleaning schedule or setting up a beer system is for later.
-* In the end, this app should be easier to use then drawing a cleaning schedule with pen and paper and pin it up on the refrigerator.
+Setting up a cleaning schedule should be easy. The hard part will be when users want to enter personal preferences. Just a weekly schedule should be doable, but in the end, this app should be easier to use then drawing a cleaning schedule with pen and paper and pin it up on the refrigerator.
 
 
 
