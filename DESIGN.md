@@ -17,5 +17,10 @@
 * Users table (authentication) -> linked to realtime data via user id
 * realtime data table
 
-![data](/doc/data.png)
-
+|  User          | House              |
+|----------------|--------------------|
+| id             | id                 |
+| name           | name               |
+| email          | residents: [Users] |
+| house          | cleaning schedule  |
+| (isHouseOwner) | drinks             |
