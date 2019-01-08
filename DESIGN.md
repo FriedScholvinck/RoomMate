@@ -21,6 +21,6 @@
 |----------------|--------------------|
 | id             | id                 |
 | name           | name               |
-| email          | residents: [Users] |
+| email          | residents: [user id's] |
 | house          | cleaning schedule  |
 | (isHouseOwner) | drinks             |
