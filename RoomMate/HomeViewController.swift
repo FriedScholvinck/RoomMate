@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var yourHouseButton: UIButton!
     @IBOutlet weak var toDoButton: UIButton!
+    @IBOutlet weak var toDoLabel: UILabel!
     @IBOutlet weak var createNewHouseButton: UIButton!
     
     

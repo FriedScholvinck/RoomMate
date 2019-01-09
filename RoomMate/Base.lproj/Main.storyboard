@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bpj-bf-bCA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q9Y-4G-lvz">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,14 +19,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2t-xm-2fw">
-                                <rect key="frame" x="16" y="484" width="288" height="30"/>
+                                <rect key="frame" x="16" y="479" width="288" height="30"/>
                                 <state key="normal" title="Create New House"/>
                                 <connections>
                                     <segue destination="cdU-Xk-SL5" kind="show" id="Q5F-7O-ePo"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="zDw-HT-kVY">
-                                <rect key="frame" x="16" y="126" width="288" height="84"/>
+                                <rect key="frame" x="16" y="126" width="288" height="125"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lwE-jZ-fLL">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
@@ -38,7 +38,16 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLx-x1-LKE">
                                         <rect key="frame" x="0.0" y="54" width="288" height="30"/>
                                         <state key="normal" title="TO DO"/>
+                                        <connections>
+                                            <segue destination="sEc-VZ-H7T" kind="show" id="rc9-gj-uyJ"/>
+                                        </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to do" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCi-4P-gd6">
+                                        <rect key="frame" x="0.0" y="108" width="288" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -47,7 +56,7 @@
                             <constraint firstItem="f2t-xm-2fw" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Gmo-rJ-I2o"/>
                             <constraint firstItem="f2t-xm-2fw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Gv1-JC-ii8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zDw-HT-kVY" secondAttribute="trailing" id="esV-5E-fte"/>
-                            <constraint firstItem="f2t-xm-2fw" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottomMargin" constant="-5" id="kyX-jF-wWU"/>
+                            <constraint firstItem="f2t-xm-2fw" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottomMargin" constant="-10" id="kyX-jF-wWU"/>
                             <constraint firstItem="zDw-HT-kVY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="15" id="t5J-r5-RPN"/>
                             <constraint firstItem="zDw-HT-kVY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="uqq-2R-dh9"/>
                         </constraints>
@@ -57,6 +66,7 @@
                     <connections>
                         <outlet property="createNewHouseButton" destination="f2t-xm-2fw" id="baV-lB-OF7"/>
                         <outlet property="toDoButton" destination="WLx-x1-LKE" id="L7x-Pg-maY"/>
+                        <outlet property="toDoLabel" destination="WCi-4P-gd6" id="OsE-ee-joL"/>
                         <outlet property="yourHouseButton" destination="lwE-jZ-fLL" id="hZH-hz-BJU"/>
                     </connections>
                 </viewController>
@@ -209,16 +219,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFP-pf-TVf">
-                                <rect key="frame" x="16" y="484" width="288" height="30"/>
+                                <rect key="frame" x="16" y="479" width="288" height="30"/>
                                 <state key="normal" title="Create Schedule"/>
                                 <connections>
                                     <segue destination="dyB-tO-JD7" kind="show" id="6VM-SS-KDv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csc-mX-q5J">
-                                <rect key="frame" x="128" y="157" width="64" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Schedule"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csc-mX-q5J">
+                                <rect key="frame" x="16" y="121" width="288" height="30"/>
+                                <state key="normal" title="House Schedule"/>
                                 <connections>
                                     <segue destination="sEc-VZ-H7T" kind="show" id="yO5-dN-sXy"/>
                                 </connections>
@@ -227,7 +236,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="aFP-pf-TVf" firstAttribute="leading" secondItem="3LE-tG-v6e" secondAttribute="leadingMargin" id="DKd-43-SA2"/>
-                            <constraint firstItem="aFP-pf-TVf" firstAttribute="bottom" secondItem="3LE-tG-v6e" secondAttribute="bottomMargin" constant="-5" id="MQv-e9-dJQ"/>
+                            <constraint firstItem="aFP-pf-TVf" firstAttribute="bottom" secondItem="3LE-tG-v6e" secondAttribute="bottomMargin" constant="-10" id="MQv-e9-dJQ"/>
+                            <constraint firstItem="csc-mX-q5J" firstAttribute="leading" secondItem="3LE-tG-v6e" secondAttribute="leadingMargin" id="MuW-66-QBQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="csc-mX-q5J" secondAttribute="trailing" id="Nan-dT-ef6"/>
+                            <constraint firstItem="csc-mX-q5J" firstAttribute="top" secondItem="3LE-tG-v6e" secondAttribute="topMargin" constant="10" id="hX8-dD-VBm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aFP-pf-TVf" secondAttribute="trailing" id="n0G-I3-eJe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ecA-A2-Vcl"/>
@@ -303,7 +315,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b60-7b-1Nm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3262.5" y="21.12676056338028"/>
+            <point key="canvasLocation" x="3324" y="22"/>
         </scene>
         <!--Schedule-->
         <scene sceneID="14X-Fi-F3l">
@@ -520,4 +532,7 @@
         <image name="icons8-home" width="25" height="25"/>
         <image name="icons8-home-filled" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="yO5-dN-sXy"/>
+    </inferredMetricsTieBreakers>
 </document>

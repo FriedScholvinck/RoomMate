@@ -17,7 +17,7 @@ class DrinkViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        drinkOneButton.applyDesign()
         
     }
     
