@@ -9,23 +9,29 @@
 /* Begin PBXBuildFile section */
 		2AE67737E79D411EF4D7455B /* Pods_RoomMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19031F3566EE6B421C605553 /* Pods_RoomMate.framework */; };
 		356189EE21E3441F001B7CE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356189ED21E3441F001B7CE5 /* AppDelegate.swift */; };
-		356189F021E3441F001B7CE5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356189EF21E3441F001B7CE5 /* ViewController.swift */; };
+		356189F021E3441F001B7CE5 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356189EF21E3441F001B7CE5 /* LogInViewController.swift */; };
 		356189F321E3441F001B7CE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 356189F121E3441F001B7CE5 /* Main.storyboard */; };
 		356189F521E34421001B7CE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 356189F421E34421001B7CE5 /* Assets.xcassets */; };
 		356189F821E34421001B7CE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 356189F621E34421001B7CE5 /* LaunchScreen.storyboard */; };
 		35618A0021E38106001B7CE5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 356189FF21E38106001B7CE5 /* GoogleService-Info.plist */; };
+		35618A0221E3C7FA001B7CE5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35618A0121E3C7FA001B7CE5 /* HomeViewController.swift */; };
+		35618A0421E3C80D001B7CE5 /* CleanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35618A0321E3C80D001B7CE5 /* CleanViewController.swift */; };
+		35618A0621E3C819001B7CE5 /* DrinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35618A0521E3C819001B7CE5 /* DrinkViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		19031F3566EE6B421C605553 /* Pods_RoomMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RoomMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		356189EA21E3441F001B7CE5 /* RoomMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		356189ED21E3441F001B7CE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		356189EF21E3441F001B7CE5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		356189EF21E3441F001B7CE5 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		356189F221E3441F001B7CE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		356189F421E34421001B7CE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		356189F721E34421001B7CE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		356189F921E34421001B7CE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		356189FF21E38106001B7CE5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		35618A0121E3C7FA001B7CE5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		35618A0321E3C80D001B7CE5 /* CleanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanViewController.swift; sourceTree = "<group>"; };
+		35618A0521E3C819001B7CE5 /* DrinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkViewController.swift; sourceTree = "<group>"; };
 		88E3AC6150082FAE7EDB7756 /* Pods-RoomMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RoomMate.release.xcconfig"; path = "Pods/Target Support Files/Pods-RoomMate/Pods-RoomMate.release.xcconfig"; sourceTree = "<group>"; };
 		F136AC664D7383A33EE8F25C /* Pods-RoomMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RoomMate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RoomMate/Pods-RoomMate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,8 +70,11 @@
 			isa = PBXGroup;
 			children = (
 				356189ED21E3441F001B7CE5 /* AppDelegate.swift */,
-				356189EF21E3441F001B7CE5 /* ViewController.swift */,
+				356189EF21E3441F001B7CE5 /* LogInViewController.swift */,
 				356189F121E3441F001B7CE5 /* Main.storyboard */,
+				35618A0121E3C7FA001B7CE5 /* HomeViewController.swift */,
+				35618A0321E3C80D001B7CE5 /* CleanViewController.swift */,
+				35618A0521E3C819001B7CE5 /* DrinkViewController.swift */,
 				356189F421E34421001B7CE5 /* Assets.xcassets */,
 				356189F621E34421001B7CE5 /* LaunchScreen.storyboard */,
 				356189F921E34421001B7CE5 /* Info.plist */,
@@ -195,6 +204,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-RoomMate/Pods-RoomMate-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -203,6 +213,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,8 +250,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				356189F021E3441F001B7CE5 /* ViewController.swift in Sources */,
+				356189F021E3441F001B7CE5 /* LogInViewController.swift in Sources */,
 				356189EE21E3441F001B7CE5 /* AppDelegate.swift in Sources */,
+				35618A0421E3C80D001B7CE5 /* CleanViewController.swift in Sources */,
+				35618A0221E3C7FA001B7CE5 /* HomeViewController.swift in Sources */,
+				35618A0621E3C819001B7CE5 /* DrinkViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

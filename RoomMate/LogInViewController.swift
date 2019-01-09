@@ -9,19 +9,15 @@
 import UIKit
 import FirebaseUI
 
-class ViewController: UIViewController {
+class LogInViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.applyDesign()
-        subtitleLabel.applyDesign()
-        loginLabel.applyDesign()
         loginButton.applyDesign()
     }
 
@@ -45,7 +41,7 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: FUIAuthDelegate {
+extension LogInViewController: FUIAuthDelegate {
     
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         if error != nil {
