@@ -1,25 +1,19 @@
 //
-//  CleanViewController.swift
+//  ScheduleViewController.swift
 //  RoomMate
 //
-//  Created by Fried on 07/01/2019.
+//  Created by Fried on 09/01/2019.
 //  Copyright © 2019 Fried. All rights reserved.
 //
 
 import UIKit
 
-class CleanViewController: UIViewController {
+class ScheduleViewController: UIViewController {
 
-    @IBOutlet weak var yourScheduleButton: UIButton!
-    @IBOutlet weak var createScheduleButton: UIButton!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        yourScheduleButton.applyDesign()
-        createScheduleButton.applyDesign()
-        
-        
+
+        // Do any additional setup after loading the view.
     }
     
 

@@ -10,6 +10,7 @@ import UIKit
 import FirebaseUI
 
 class LogInViewController: UIViewController {
+//    var currentUID: String
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -49,7 +50,7 @@ extension LogInViewController: FUIAuthDelegate {
         }
         
         // get user uid
-        //authDataResult?.user.uidr
+//        currentUID = authDataResult?.user.uidr
         
         performSegue(withIdentifier: "goHome", sender: self)
     }

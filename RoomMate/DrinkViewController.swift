@@ -10,10 +10,15 @@ import UIKit
 
 class DrinkViewController: UIViewController {
 
+    @IBOutlet weak var beersInStoreLabel: UILabel!
+    @IBOutlet weak var beersLabel: UILabel!
+    @IBOutlet weak var drinkOneButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
     
 

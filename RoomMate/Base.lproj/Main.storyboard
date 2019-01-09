@@ -18,9 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2t-xm-2fw">
-                                <rect key="frame" x="16" y="478" width="288" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2t-xm-2fw">
+                                <rect key="frame" x="16" y="484" width="288" height="30"/>
                                 <state key="normal" title="Create New House"/>
                                 <connections>
                                     <segue destination="cdU-Xk-SL5" kind="show" id="Q5F-7O-ePo"/>
@@ -45,13 +44,21 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="f2t-xm-2fw" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Gmo-rJ-I2o"/>
+                            <constraint firstItem="f2t-xm-2fw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Gv1-JC-ii8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zDw-HT-kVY" secondAttribute="trailing" id="esV-5E-fte"/>
+                            <constraint firstItem="f2t-xm-2fw" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottomMargin" constant="-5" id="kyX-jF-wWU"/>
                             <constraint firstItem="zDw-HT-kVY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="15" id="t5J-r5-RPN"/>
                             <constraint firstItem="zDw-HT-kVY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="uqq-2R-dh9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Your Home" id="zY4-g8-KVP"/>
+                    <connections>
+                        <outlet property="createNewHouseButton" destination="f2t-xm-2fw" id="baV-lB-OF7"/>
+                        <outlet property="toDoButton" destination="WLx-x1-LKE" id="L7x-Pg-maY"/>
+                        <outlet property="yourHouseButton" destination="lwE-jZ-fLL" id="hZH-hz-BJU"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="2430" y="-667.6056338028169"/>
@@ -59,7 +66,7 @@
         <!--New House-->
         <scene sceneID="biP-od-bey">
             <objects>
-                <viewController title="New House" id="cdU-Xk-SL5" sceneMemberID="viewController">
+                <viewController title="New House" id="cdU-Xk-SL5" customClass="NewHouseViewController" customModule="RoomMate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e8D-G5-sPa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,6 +127,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iDV-rR-syk"/>
                     </view>
+                    <connections>
+                        <outlet property="TextField1" destination="CXJ-Ug-US2" id="WFF-nZ-rM2"/>
+                        <outlet property="addRoomMatesLabel" destination="AHV-np-Osg" id="Z0I-dl-HAA"/>
+                        <outlet property="plusTextfieldButton" destination="7TA-5J-lhQ" id="2xu-2f-yYJ"/>
+                        <outlet property="sendButton" destination="ybS-eX-CgY" id="hAm-yS-8Pm"/>
+                        <outlet property="textField2" destination="bfj-HH-FeC" id="oeC-2G-1gU"/>
+                        <outlet property="textField3" destination="jwW-sA-rfT" id="VzC-Hi-9Aj"/>
+                        <outlet property="textField4" destination="Z7L-Lh-IeY" id="uaq-VZ-vI5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bzp-nQ-VGY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -128,7 +144,7 @@
         <!--Your House-->
         <scene sceneID="cpM-NY-gNq">
             <objects>
-                <viewController title="Your House" id="kR7-d3-B7X" sceneMemberID="viewController">
+                <viewController title="Your House" id="kR7-d3-B7X" customClass="YourHouseViewController" customModule="RoomMate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eRb-Nj-0CR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -175,6 +191,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nuy-tE-biz"/>
                     </view>
+                    <connections>
+                        <outlet property="houseNameLabel" destination="vp3-z7-eTC" id="ho5-AB-WHx"/>
+                        <outlet property="residentsLabel" destination="ng5-fk-jO7" id="c1y-zt-umt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ieJ-IE-hOj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -187,14 +207,118 @@
                     <view key="view" contentMode="scaleToFill" id="3LE-tG-v6e">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFP-pf-TVf">
+                                <rect key="frame" x="16" y="484" width="288" height="30"/>
+                                <state key="normal" title="Create Schedule"/>
+                                <connections>
+                                    <segue destination="dyB-tO-JD7" kind="show" id="6VM-SS-KDv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csc-mX-q5J">
+                                <rect key="frame" x="128" y="157" width="64" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Schedule"/>
+                                <connections>
+                                    <segue destination="sEc-VZ-H7T" kind="show" id="yO5-dN-sXy"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aFP-pf-TVf" firstAttribute="leading" secondItem="3LE-tG-v6e" secondAttribute="leadingMargin" id="DKd-43-SA2"/>
+                            <constraint firstItem="aFP-pf-TVf" firstAttribute="bottom" secondItem="3LE-tG-v6e" secondAttribute="bottomMargin" constant="-5" id="MQv-e9-dJQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aFP-pf-TVf" secondAttribute="trailing" id="n0G-I3-eJe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ecA-A2-Vcl"/>
                     </view>
                     <navigationItem key="navigationItem" title="Clean" id="C10-6J-hI9"/>
+                    <connections>
+                        <outlet property="createScheduleButton" destination="aFP-pf-TVf" id="bSm-Kn-2fN"/>
+                        <outlet property="yourScheduleButton" destination="csc-mX-q5J" id="DfN-5R-vyZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhO-RH-M1F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2430" y="22.183098591549296"/>
+        </scene>
+        <!--New Schedule-->
+        <scene sceneID="6kL-qC-kjJ">
+            <objects>
+                <viewController title="New Schedule" id="dyB-tO-JD7" customClass="NewScheduleViewController" customModule="RoomMate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bxu-F6-CDm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nF3-sE-IM4">
+                                <rect key="frame" x="16" y="165" width="288" height="136"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter task" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y0n-Az-0qc">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter task" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P3e-AR-g4Q">
+                                        <rect key="frame" x="0.0" y="38" width="288" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter task" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a0P-U9-rm9">
+                                        <rect key="frame" x="0.0" y="76" width="288" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s5O-wz-VBX">
+                                        <rect key="frame" x="0.0" y="114" width="288" height="22"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add House Tasks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tn3-eJ-iRX">
+                                <rect key="frame" x="16" y="126" width="150" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nF3-sE-IM4" firstAttribute="top" secondItem="Tn3-eJ-iRX" secondAttribute="bottom" constant="15" id="CqT-CF-nIF"/>
+                            <constraint firstItem="Tn3-eJ-iRX" firstAttribute="top" secondItem="Bxu-F6-CDm" secondAttribute="topMargin" constant="15" id="QIk-WV-s1G"/>
+                            <constraint firstItem="nF3-sE-IM4" firstAttribute="leading" secondItem="Bxu-F6-CDm" secondAttribute="leadingMargin" id="g4O-il-iCr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nF3-sE-IM4" secondAttribute="trailing" id="lnO-6l-08l"/>
+                            <constraint firstItem="Tn3-eJ-iRX" firstAttribute="leading" secondItem="Bxu-F6-CDm" secondAttribute="leadingMargin" id="roK-ex-sTH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zPe-pc-w7i"/>
+                    </view>
+                    <connections>
+                        <outlet property="addHouseTasksLabel" destination="Tn3-eJ-iRX" id="Qs2-cN-SoF"/>
+                        <outlet property="plusTaskButton" destination="s5O-wz-VBX" id="yPg-sI-Au8"/>
+                        <outlet property="task1" destination="Y0n-Az-0qc" id="0v3-zD-nwJ"/>
+                        <outlet property="task2" destination="P3e-AR-g4Q" id="7m9-5I-58z"/>
+                        <outlet property="taskTextfield3" destination="a0P-U9-rm9" id="3RE-hg-91V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b60-7b-1Nm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3262.5" y="21.12676056338028"/>
+        </scene>
+        <!--Schedule-->
+        <scene sceneID="14X-Fi-F3l">
+            <objects>
+                <viewController title="Schedule" id="sEc-VZ-H7T" customClass="ScheduleViewController" customModule="RoomMate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CZ5-ee-TZ5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="y8w-RD-pAH"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nFZ-ST-Ufe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4088" y="22"/>
         </scene>
         <!--Drinks-->
         <scene sceneID="KLo-g1-8is">
@@ -243,6 +367,11 @@
                         <viewLayoutGuide key="safeArea" id="GBN-YT-PgU"/>
                     </view>
                     <navigationItem key="navigationItem" title="Drinks" id="Bc4-MM-0BK"/>
+                    <connections>
+                        <outlet property="beersInStoreLabel" destination="1o4-AL-2Dg" id="ERv-m7-XET"/>
+                        <outlet property="beersLabel" destination="f1W-Ji-GQE" id="fii-yE-ta8"/>
+                        <outlet property="drinkOneButton" destination="jXZ-44-lP9" id="fiU-NA-hHF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uu3-sE-lTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
