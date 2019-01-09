@@ -7,7 +7,8 @@
 
 # day 2
 * design document
+* 
 
 # day 3
-
+* prototype
 
