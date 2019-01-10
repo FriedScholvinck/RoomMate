@@ -30,6 +30,7 @@ class AppManager {
         appContainer.present(viewController, animated: true, completion: nil)
     }
     
+    /// logout user
     func logout() {
         try! Auth.auth().signOut()
         appContainer.presentedViewController?.dismiss(animated: true, completion: nil)

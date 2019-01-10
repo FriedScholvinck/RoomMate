@@ -595,8 +595,7 @@
                     <navigationItem key="navigationItem" title="Profile" id="DEG-eR-lXZ">
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="Osi-tY-bMG">
                             <connections>
-                                <action selector="logoutButtonTapped:" destination="w4D-FB-II1" id="tSb-0S-G97"/>
-                                <segue destination="Tty-VI-GdL" kind="unwind" unwindAction="unwindToLogInSegue:" id="ej1-4M-CcO"/>
+                                <action selector="logoutButtonTapped:" destination="w4D-FB-II1" id="U6z-rC-kxb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -609,7 +608,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awQ-Of-C7l" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Tty-VI-GdL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2820" y="2284.8591549295775"/>
         </scene>

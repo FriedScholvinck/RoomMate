@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController {
         createHouseButton.applyDesign()
     }
     
-    @IBAction func logoutButtonTapped(_ sender: Any) {
+    @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
         AppManager.shared.logout()
     }
     
