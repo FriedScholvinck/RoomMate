@@ -302,6 +302,9 @@
                     <connections>
                         <outlet property="addHouseTasksLabel" destination="Tn3-eJ-iRX" id="Qs2-cN-SoF"/>
                         <outlet property="plusTaskButton" destination="s5O-wz-VBX" id="yPg-sI-Au8"/>
+                        <outlet property="taskTextfield1" destination="Y0n-Az-0qc" id="uTd-Az-wtw"/>
+                        <outlet property="taskTextfield2" destination="P3e-AR-g4Q" id="3QK-5t-JdH"/>
+                        <outlet property="taskTextfield3" destination="a0P-U9-rm9" id="RDB-e6-6fB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b60-7b-1Nm" userLabel="First Responder" sceneMemberID="firstResponder"/>
