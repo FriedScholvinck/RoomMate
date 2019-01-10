@@ -11,18 +11,12 @@ import Firebase
 
 class HomeViewController: UIViewController {
 
-    @IBOutlet weak var yourHouseButton: UIButton!
     @IBOutlet weak var toDoButton: UIButton!
-    @IBOutlet weak var joinHouseButton: UIButton!
-    @IBOutlet weak var createNewHouseButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        yourHouseButton.applyDesign()
         toDoButton.applyDesign()
-        joinHouseButton.applyDesign()
-        createNewHouseButton.applyDesign()
         
 //        loadData()
     }

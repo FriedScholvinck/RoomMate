@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q9Y-4G-lvz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TxC-TQ-woi">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -17,25 +17,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2t-xm-2fw">
-                                <rect key="frame" x="16" y="479" width="288" height="30"/>
-                                <state key="normal" title="Create New House"/>
-                                <connections>
-                                    <segue destination="cdU-Xk-SL5" kind="show" id="WOn-fi-DWC"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="zDw-HT-kVY">
-                                <rect key="frame" x="16" y="126" width="288" height="84"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zDw-HT-kVY">
+                                <rect key="frame" x="16" y="126" width="288" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lwE-jZ-fLL">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
-                                        <state key="normal" title="Your House"/>
-                                        <connections>
-                                            <segue destination="kR7-d3-B7X" kind="show" id="TdV-WN-H7T"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLx-x1-LKE">
-                                        <rect key="frame" x="0.0" y="54" width="288" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
                                         <state key="normal" title="TO DO"/>
                                         <connections>
                                             <segue destination="sEc-VZ-H7T" kind="show" id="rc9-gj-uyJ"/>
@@ -43,23 +29,10 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qbz-gV-5Mb">
-                                <rect key="frame" x="16" y="444" width="288" height="30"/>
-                                <state key="normal" title="Join House"/>
-                                <connections>
-                                    <segue destination="ZgN-h6-eHt" kind="show" id="GHh-YJ-f3b"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="f2t-xm-2fw" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Gmo-rJ-I2o"/>
-                            <constraint firstItem="f2t-xm-2fw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Gv1-JC-ii8"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Qbz-gV-5Mb" secondAttribute="trailing" id="M1V-gC-mRy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zDw-HT-kVY" secondAttribute="trailing" id="esV-5E-fte"/>
-                            <constraint firstItem="Qbz-gV-5Mb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="jy0-qN-DQn"/>
-                            <constraint firstItem="f2t-xm-2fw" firstAttribute="top" secondItem="Qbz-gV-5Mb" secondAttribute="bottom" constant="5" id="kWu-q1-OUy"/>
-                            <constraint firstItem="f2t-xm-2fw" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottomMargin" constant="-10" id="kyX-jF-wWU"/>
                             <constraint firstItem="zDw-HT-kVY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="15" id="t5J-r5-RPN"/>
                             <constraint firstItem="zDw-HT-kVY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="uqq-2R-dh9"/>
                         </constraints>
@@ -67,10 +40,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="zY4-g8-KVP"/>
                     <connections>
-                        <outlet property="createNewHouseButton" destination="f2t-xm-2fw" id="baV-lB-OF7"/>
-                        <outlet property="joinHouseButton" destination="Qbz-gV-5Mb" id="qFj-Pg-gOO"/>
                         <outlet property="toDoButton" destination="WLx-x1-LKE" id="L7x-Pg-maY"/>
-                        <outlet property="yourHouseButton" destination="lwE-jZ-fLL" id="hZH-hz-BJU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -137,7 +107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bzp-nQ-VGY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3814" y="-1002"/>
+            <point key="canvasLocation" x="3803" y="3695"/>
         </scene>
         <!--Pick House-->
         <scene sceneID="oF1-Mh-KMk">
@@ -180,69 +150,56 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T65-VG-eLL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3814" y="-1704"/>
+            <point key="canvasLocation" x="3803" y="2993"/>
         </scene>
-        <!--Your House-->
-        <scene sceneID="cpM-NY-gNq">
+        <!--House Name-->
+        <scene sceneID="Usg-bH-R1y">
             <objects>
-                <viewController title="Your House" id="kR7-d3-B7X" customClass="YourHouseViewController" customModule="RoomMate" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="eRb-Nj-0CR">
+                <tableViewController id="dPw-0q-j16" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lVn-o1-eoR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="House Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vp3-z7-eTC">
-                                <rect key="frame" x="16" y="79" width="288" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KMP-hy-dPM">
-                                <rect key="frame" x="16" y="133" width="288" height="376"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Residents" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ng5-fk-jO7">
-                                        <rect key="frame" x="106.5" y="0.0" width="75.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p1H-17-MDu">
-                                        <rect key="frame" x="0.0" y="28.5" width="288" height="347.5"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="s38-v2-p0B">
-                                                <rect key="frame" x="0.0" y="28" width="288" height="44"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s38-v2-p0B" id="eVo-16-znn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </tableViewCellContentView>
-                                            </tableViewCell>
-                                        </prototypes>
-                                    </tableView>
-                                </subviews>
-                            </stackView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="vp3-z7-eTC" secondAttribute="trailing" id="2MC-Jg-gB9"/>
-                            <constraint firstItem="KMP-hy-dPM" firstAttribute="top" secondItem="vp3-z7-eTC" secondAttribute="bottom" constant="30" id="3Ef-Dj-HYV"/>
-                            <constraint firstItem="KMP-hy-dPM" firstAttribute="trailing" secondItem="eRb-Nj-0CR" secondAttribute="trailingMargin" id="7mN-FZ-y7p"/>
-                            <constraint firstItem="KMP-hy-dPM" firstAttribute="leading" secondItem="eRb-Nj-0CR" secondAttribute="leadingMargin" id="Cxa-1d-dQu"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="KMP-hy-dPM" secondAttribute="bottom" constant="10" id="TyK-A5-SlR"/>
-                            <constraint firstItem="vp3-z7-eTC" firstAttribute="top" secondItem="eRb-Nj-0CR" secondAttribute="topMargin" constant="15" id="vn2-dt-AB7"/>
-                            <constraint firstItem="vp3-z7-eTC" firstAttribute="leading" secondItem="eRb-Nj-0CR" secondAttribute="leadingMargin" id="wvO-Sn-ei2"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Nuy-tE-biz"/>
-                    </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="5nx-FF-IQ8"/>
-                    <connections>
-                        <outlet property="houseNameLabel" destination="vp3-z7-eTC" id="ho5-AB-WHx"/>
-                        <outlet property="residentsLabel" destination="ng5-fk-jO7" id="c1y-zt-umt"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ieJ-IE-hOj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="iY2-yC-mIz" detailTextLabel="JT6-4M-lrF" imageView="vuu-F7-dUG" style="IBUITableViewCellStyleValue1" id="12f-7c-fqe">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="12f-7c-fqe" id="eWq-gQ-Nat">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iY2-yC-mIz">
+                                            <rect key="frame" x="75" y="12" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JT6-4M-lrF">
+                                            <rect key="frame" x="260" y="12" width="44" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="ic_account_circle.png" id="vuu-F7-dUG">
+                                            <rect key="frame" x="16" y="0.0" width="44" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="dPw-0q-j16" id="akh-l0-41d"/>
+                            <outlet property="delegate" destination="dPw-0q-j16" id="Rw0-4Z-J1M"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="House Name" largeTitleDisplayMode="never" id="gcO-Nb-UeC"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lHv-ji-W2Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3814" y="-2402"/>
+            <point key="canvasLocation" x="3803" y="2285"/>
         </scene>
         <!--Clean-->
         <scene sceneID="nJG-ym-DfB">
@@ -254,7 +211,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFP-pf-TVf">
                                 <rect key="frame" x="16" y="479" width="288" height="30"/>
-                                <state key="normal" title="Create Schedule"/>
+                                <state key="normal" title="Create New Schedule"/>
                                 <connections>
                                     <segue destination="dyB-tO-JD7" kind="show" id="6VM-SS-KDv"/>
                                 </connections>
@@ -421,10 +378,25 @@
             </objects>
             <point key="canvasLocation" x="2820" y="1339"/>
         </scene>
+        <!--App Container View Controller-->
+        <scene sceneID="nAl-Ep-ZGU">
+            <objects>
+                <viewController storyboardIdentifier="Main" id="TxC-TQ-woi" customClass="AppContainerViewController" customModule="RoomMate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nQ8-kD-imS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="55a-T1-d9O"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="INm-V5-gbX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1566" y="132"/>
+        </scene>
         <!--Log In View Controller-->
         <scene sceneID="3ML-W3-Oum">
             <objects>
-                <viewController id="bpj-bf-bCA" customClass="LogInViewController" customModule="RoomMate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogInViewController" id="bpj-bf-bCA" customClass="LogInViewController" customModule="RoomMate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iil-SU-HzS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -479,7 +451,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Ls6-LS-Tnz">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Q9Y-4G-lvz" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Q9Y-4G-lvz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h0l-UX-REN">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -559,13 +531,13 @@
         <!--Profile-->
         <scene sceneID="ZWm-oN-uM4">
             <objects>
-                <viewController id="w4D-FB-II1" sceneMemberID="viewController">
+                <viewController id="w4D-FB-II1" customClass="ProfileViewController" customModule="RoomMate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EY4-a4-W9T">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="XQP-am-bUc">
-                                <rect key="frame" x="16" y="79" width="288" height="91.5"/>
+                                <rect key="frame" x="16" y="79" width="288" height="101"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cx-2R-8JL">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="20.5"/>
@@ -579,30 +551,62 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="House" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhf-X8-hz9">
-                                        <rect key="frame" x="0.0" y="71" width="288" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPo-ga-HN9">
+                                        <rect key="frame" x="0.0" y="71" width="288" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="House"/>
+                                        <connections>
+                                            <segue destination="dPw-0q-j16" kind="show" id="C5R-7Q-f6T"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Mmt-N5-Zhf">
+                                <rect key="frame" x="16" y="434" width="288" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqd-OQ-4la">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
+                                        <state key="normal" title="Join House"/>
+                                        <connections>
+                                            <segue destination="ZgN-h6-eHt" kind="show" id="AnI-B8-bzY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3z-gI-S0X">
+                                        <rect key="frame" x="0.0" y="40" width="288" height="30"/>
+                                        <state key="normal" title="Create New House"/>
+                                        <connections>
+                                            <segue destination="cdU-Xk-SL5" kind="show" id="Jpf-h1-exf"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="XQP-am-bUc" secondAttribute="trailing" id="65T-vd-qXb"/>
+                            <constraint firstItem="Mmt-N5-Zhf" firstAttribute="leading" secondItem="EY4-a4-W9T" secondAttribute="leadingMargin" id="XEE-MF-XsB"/>
+                            <constraint firstItem="Mmt-N5-Zhf" firstAttribute="trailing" secondItem="EY4-a4-W9T" secondAttribute="trailingMargin" id="fgf-MK-kjL"/>
                             <constraint firstItem="XQP-am-bUc" firstAttribute="leading" secondItem="EY4-a4-W9T" secondAttribute="leadingMargin" id="n82-Dt-LPJ"/>
                             <constraint firstItem="XQP-am-bUc" firstAttribute="top" secondItem="EY4-a4-W9T" secondAttribute="topMargin" constant="15" id="ySq-De-O8h"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Mmt-N5-Zhf" secondAttribute="bottom" constant="15" id="ypb-B3-9bk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dd8-Pd-rhB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="DEG-eR-lXZ">
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="Osi-tY-bMG">
                             <connections>
+                                <action selector="logoutButtonTapped:" destination="w4D-FB-II1" id="tSb-0S-G97"/>
                                 <segue destination="Tty-VI-GdL" kind="unwind" unwindAction="unwindToLogInSegue:" id="ej1-4M-CcO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="createHouseButton" destination="t3z-gI-S0X" id="HvG-lz-yba"/>
+                        <outlet property="emailLabel" destination="j3u-gp-9Li" id="bGy-mT-Oo2"/>
+                        <outlet property="houseButton" destination="tPo-ga-HN9" id="rGl-48-pZT"/>
+                        <outlet property="joinHouseButton" destination="fqd-OQ-4la" id="vEe-SH-qFU"/>
+                        <outlet property="nameLabel" destination="4cx-2R-8JL" id="BPR-9L-hMY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awQ-Of-C7l" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Tty-VI-GdL" userLabel="Exit" sceneMemberID="exit"/>
@@ -630,6 +634,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_account_circle.png" width="60" height="60"/>
         <image name="icons8-beer-25" width="18.75" height="18.75"/>
         <image name="icons8-beer-filled-25" width="18.75" height="18.75"/>
         <image name="icons8-broom-25" width="18.75" height="18.75"/>

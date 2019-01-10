@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2AE67737E79D411EF4D7455B /* Pods_RoomMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19031F3566EE6B421C605553 /* Pods_RoomMate.framework */; };
+		351B71E121E7937D0080A497 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B71E021E7937D0080A497 /* ProfileViewController.swift */; };
+		351B71E321E796AB0080A497 /* AppContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B71E221E796AB0080A497 /* AppContainerViewController.swift */; };
+		351B71E521E797070080A497 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B71E421E797070080A497 /* AppManager.swift */; };
 		356189EE21E3441F001B7CE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356189ED21E3441F001B7CE5 /* AppDelegate.swift */; };
 		356189F021E3441F001B7CE5 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356189EF21E3441F001B7CE5 /* LogInViewController.swift */; };
 		356189F321E3441F001B7CE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 356189F121E3441F001B7CE5 /* Main.storyboard */; };
@@ -28,6 +31,9 @@
 
 /* Begin PBXFileReference section */
 		19031F3566EE6B421C605553 /* Pods_RoomMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RoomMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		351B71E021E7937D0080A497 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		351B71E221E796AB0080A497 /* AppContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainerViewController.swift; sourceTree = "<group>"; };
+		351B71E421E797070080A497 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		356189EA21E3441F001B7CE5 /* RoomMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		356189ED21E3441F001B7CE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		356189EF21E3441F001B7CE5 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -84,14 +90,15 @@
 			isa = PBXGroup;
 			children = (
 				356189F121E3441F001B7CE5 /* Main.storyboard */,
-				357FE6B221E77735000175F2 /* New Group */,
+				351B71E221E796AB0080A497 /* AppContainerViewController.swift */,
+				351B71E421E797070080A497 /* AppManager.swift */,
 				356189EF21E3441F001B7CE5 /* LogInViewController.swift */,
 				35618A0121E3C7FA001B7CE5 /* HomeViewController.swift */,
 				35618A0321E3C80D001B7CE5 /* CleanViewController.swift */,
 				35618A0521E3C819001B7CE5 /* DrinkViewController.swift */,
 				357FE6B121E776E5000175F2 /* Drinks */,
 				357FE6B021E776DB000175F2 /* Clean */,
-				357FE6AF21E776B6000175F2 /* Home */,
+				357FE6AF21E776B6000175F2 /* Profile */,
 				35618A0721E62BE0001B7CE5 /* DataController.swift */,
 				35618A0921E62CB9001B7CE5 /* Structures.swift */,
 				356189F421E34421001B7CE5 /* Assets.xcassets */,
@@ -103,14 +110,15 @@
 			path = RoomMate;
 			sourceTree = "<group>";
 		};
-		357FE6AF21E776B6000175F2 /* Home */ = {
+		357FE6AF21E776B6000175F2 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				35618A0B21E63DC3001B7CE5 /* YourHouseViewController.swift */,
 				35618A0D21E63DDF001B7CE5 /* NewHouseViewController.swift */,
 				35618A1521E7715A001B7CE5 /* PickHouseViewController.swift */,
+				351B71E021E7937D0080A497 /* ProfileViewController.swift */,
 			);
-			path = Home;
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		357FE6B021E776DB000175F2 /* Clean */ = {
@@ -127,13 +135,6 @@
 			children = (
 			);
 			path = Drinks;
-			sourceTree = "<group>";
-		};
-		357FE6B221E77735000175F2 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		44121FD8E55BE30EB6B45407 /* Frameworks */ = {
@@ -309,10 +310,13 @@
 				35618A0421E3C80D001B7CE5 /* CleanViewController.swift in Sources */,
 				35618A0A21E62CB9001B7CE5 /* Structures.swift in Sources */,
 				35618A1021E63E64001B7CE5 /* ScheduleViewController.swift in Sources */,
+				351B71E521E797070080A497 /* AppManager.swift in Sources */,
 				35618A1621E7715A001B7CE5 /* PickHouseViewController.swift in Sources */,
 				35618A0221E3C7FA001B7CE5 /* HomeViewController.swift in Sources */,
 				35618A0E21E63DDF001B7CE5 /* NewHouseViewController.swift in Sources */,
 				35618A1221E63E72001B7CE5 /* NewScheduleViewController.swift in Sources */,
+				351B71E321E796AB0080A497 /* AppContainerViewController.swift in Sources */,
+				351B71E121E7937D0080A497 /* ProfileViewController.swift in Sources */,
 				35618A0621E3C819001B7CE5 /* DrinkViewController.swift in Sources */,
 				35618A0C21E63DC3001B7CE5 /* YourHouseViewController.swift in Sources */,
 			);
