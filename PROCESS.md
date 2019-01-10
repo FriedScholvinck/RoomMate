@@ -17,6 +17,7 @@
 * finished prototype
 * users can create a house with a password - other users can then select that house in a picker and join when password is correct
 * added 'profile' tab
+* remember user has logged in on device + possibility to log out
 
 ## day 5
 
