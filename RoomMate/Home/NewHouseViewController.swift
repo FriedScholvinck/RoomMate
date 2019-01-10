@@ -20,8 +20,8 @@ class NewHouseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sendButton.applyDesign()
-        // Do any additional setup after loading the view.
+
+        
     }
     
 

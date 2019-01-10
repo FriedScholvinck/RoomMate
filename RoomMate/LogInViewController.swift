@@ -40,6 +40,10 @@ class LogInViewController: UIViewController {
         present(authViewController, animated: true, completion: nil)
     }
     
+    @IBAction func unwindToLogIn(segue: UIStoryboardSegue) {
+        viewDidLoad()
+    }
+    
 }
 
 extension LogInViewController: FUIAuthDelegate {

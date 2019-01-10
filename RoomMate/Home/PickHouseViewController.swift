@@ -1,25 +1,24 @@
+
 //
-//  NewScheduleViewController.swift
+//  PickHouseViewController.swift
 //  RoomMate
 //
-//  Created by Fried on 09/01/2019.
+//  Created by Fried on 10/01/2019.
 //  Copyright © 2019 Fried. All rights reserved.
 //
 
 import UIKit
 
-class NewScheduleViewController: UIViewController {
+class PickHouseViewController: UIViewController {
 
-    @IBOutlet weak var addHouseTasksLabel: UILabel!
-    @IBOutlet weak var taskTextfield1: UITextField!
-    @IBOutlet weak var taskTextfield2: UITextField!
-    @IBOutlet weak var taskTextfield3: UITextField!
-    @IBOutlet weak var plusTaskButton: UIButton!
+    @IBOutlet weak var housePicker: UIPickerView!
+    @IBOutlet weak var passwordTextfield: UITextField!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
     }
     
 

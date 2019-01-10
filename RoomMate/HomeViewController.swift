@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var yourHouseButton: UIButton!
     @IBOutlet weak var toDoButton: UIButton!
     @IBOutlet weak var toDoLabel: UILabel!
+    @IBOutlet weak var joinHouseButton: UIButton!
     @IBOutlet weak var createNewHouseButton: UIButton!
     
     
@@ -21,20 +22,25 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         yourHouseButton.applyDesign()
         toDoButton.applyDesign()
+        joinHouseButton.applyDesign()
         createNewHouseButton.applyDesign()
         
-        loadData()
+//        loadData()
+    }
+    
+    func writePostString() {
+        
     }
     
     func loadData() {
-        let url = URL(string: "https://ide50-fried-scholvinck.cs50.io:8080/list")!
+        let url = URL(string: "https://ide50-fried-scholvinck.legacy.cs50.io:8080/users")!
         var request = URLRequest(url: url)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         let postString = "id=1&name=Fried&house=HG"
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-        
+            
         }
         task.resume()
     }
