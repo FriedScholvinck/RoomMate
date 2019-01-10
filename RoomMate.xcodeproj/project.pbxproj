@@ -94,6 +94,11 @@
 				357FE6AF21E776B6000175F2 /* Home */,
 				35618A0721E62BE0001B7CE5 /* DataController.swift */,
 				35618A0921E62CB9001B7CE5 /* Structures.swift */,
+				356189F421E34421001B7CE5 /* Assets.xcassets */,
+				356189ED21E3441F001B7CE5 /* AppDelegate.swift */,
+				356189F621E34421001B7CE5 /* LaunchScreen.storyboard */,
+				356189F921E34421001B7CE5 /* Info.plist */,
+				356189FF21E38106001B7CE5 /* GoogleService-Info.plist */,
 			);
 			path = RoomMate;
 			sourceTree = "<group>";
@@ -127,11 +132,6 @@
 		357FE6B221E77735000175F2 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
-				356189ED21E3441F001B7CE5 /* AppDelegate.swift */,
-				356189F421E34421001B7CE5 /* Assets.xcassets */,
-				356189F621E34421001B7CE5 /* LaunchScreen.storyboard */,
-				356189F921E34421001B7CE5 /* Info.plist */,
-				356189FF21E38106001B7CE5 /* GoogleService-Info.plist */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
