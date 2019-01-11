@@ -12,6 +12,9 @@ import Firebase
 class HomeViewController: UIViewController {
     var users: [User] = []
     var houses: [House] = []
+    var uid: Int = 1
+    
+//    var usersDict: [Int: User] = [:]
     
     @IBOutlet weak var toDoButton: UIButton!
     
@@ -20,6 +23,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         toDoButton.applyDesign()
         getUserInfo()
+        getHouseInfo()
+
     }
     
     func getUserInfo() {
@@ -28,13 +33,32 @@ class HomeViewController: UIViewController {
                 self.users = users
             }
             DispatchQueue.main.async {
-                print(users!)
-                print("test")
+                self.makeUserDictionary()
+                self.createCurrentUser()
             }
-            print("TEST")
         }
     }
     
+    func getHouseInfo() {
+        DataController.shared.getHouses() { (houses) in
+            if let houses = houses {
+                self.houses = houses
+            }
+        }
+    }
+    
+    func makeUserDictionary() {
+        for user in users {
+            CurrentUser.users[user.id] = user
+        }
+    }
+    
+    func createCurrentUser() {
+        if let user = CurrentUser.users[1] {
+            CurrentUser.user = user
+        }
+        print(CurrentUser.user)
+    }
     
     func loadData() {
         let url = URL(string: "https://ide50-fried-scholvinck.legacy.cs50.io:8080/users")!

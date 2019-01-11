@@ -8,6 +8,11 @@
 
 import Foundation
 
+struct CurrentUser {
+    static var user = User(id: 0, name: "", house: "")
+    static var users: [Int: User] = [:]
+}
+
 struct User: Decodable {
     var id: Int
     var name: String

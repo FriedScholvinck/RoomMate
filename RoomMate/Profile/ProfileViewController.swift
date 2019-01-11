@@ -19,8 +19,15 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateUI()
+    }
+    
+    func updateUI() {
         joinHouseButton.applyDesign()
         createHouseButton.applyDesign()
+        nameLabel.text = CurrentUser.user.name
+        
+        houseButton.setTitle(CurrentUser.user.house, for: .normal)
     }
     
     @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
