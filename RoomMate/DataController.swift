@@ -12,15 +12,37 @@ import UIKit
 class DataController {
     static let shared = DataController()
     
-    func getUser(completion: @escaping (User?) -> Void) {
-        let url = URL(string: "https://ide50-fried-scholvinck.cs50.io:8080/list")!
+    func getUsers(completion: @escaping ([User]?) -> Void) {
+        let url = URL(string: "https://ide50-fried-scholvinck.cs50.io:8080/users")!
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             do {
                 if let data = data {
                     
-                    let user = try JSONDecoder().decode(User.self, from: data)
-                    completion(user)
+                    let users = try JSONDecoder().decode([User].self, from: data)
+                    print("testing")
+                    completion(users)
+                    
+                } else {
+                    completion(nil)
+                }
+            } catch {
+                print("ERROR!")
+                print(error)
+            }
+        }
+        task.resume()
+    }
+    
+    func getHouses(completion: @escaping ([House]?) -> Void) {
+        let url = URL(string: "https://ide50-fried-scholvinck.cs50.io:8080/houses")!
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            do {
+                if let data = data {
+                    
+                    let houses = try JSONDecoder().decode([House].self, from: data)
+                    completion(houses)
                 } else {
                     completion(nil)
                 }

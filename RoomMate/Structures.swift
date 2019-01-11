@@ -9,18 +9,19 @@
 import Foundation
 
 struct User: Decodable {
-    var id: String
+    var id: Int
     var name: String
-    var email: String
-    var house: House
+//    var email: String
+    var house: String
 }
 
 struct House: Decodable {
     var id: Int
     var name: String
-    var residents: [User]
-    var cleaningSchedule: CleaningSchedule
-    var drinks: Drinks
+    var password: String
+    var residents: [Int]
+//    var cleaningSchedule: CleaningSchedule
+    var drinks: Int
 }
 
 struct CleaningSchedule: Decodable {

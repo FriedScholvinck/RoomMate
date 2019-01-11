@@ -45,7 +45,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2762" y="-1002"/>
+            <point key="canvasLocation" x="2820" y="-1001"/>
         </scene>
         <!--New House-->
         <scene sceneID="biP-od-bey">
@@ -379,7 +379,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uu3-sE-lTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2820" y="1339"/>
+            <point key="canvasLocation" x="2820" y="1337"/>
         </scene>
         <!--App Container View Controller-->
         <scene sceneID="nAl-Ep-ZGU">
@@ -405,7 +405,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lsl-Zc-zQa">
-                                <rect key="frame" x="16" y="30" width="288" height="86"/>
+                                <rect key="frame" x="16" y="45" width="288" height="86"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room Mate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IoA-KZ-seQ">
                                         <rect key="frame" x="0.0" y="0.0" width="256.5" height="63.5"/>
@@ -428,6 +428,12 @@
                                     <action selector="logInButtonTapped:" destination="bpj-bf-bCA" eventType="touchUpInside" id="8Kk-71-oCt"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="houses" translatesAutoresizingMaskIntoConstraints="NO" id="OY2-i2-i6n">
+                                <rect key="frame" x="-10" y="360.5" width="340" height="215.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="OY2-i2-i6n" secondAttribute="height" multiplier="341:216" id="Vmf-WA-lw4"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -435,8 +441,13 @@
                             <constraint firstItem="lsl-Zc-zQa" firstAttribute="leading" secondItem="iil-SU-HzS" secondAttribute="leadingMargin" id="BfX-5A-Rdd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fEI-ih-pIh" secondAttribute="trailing" id="Iz7-uI-e0I"/>
                             <constraint firstItem="fEI-ih-pIh" firstAttribute="centerY" secondItem="iil-SU-HzS" secondAttribute="centerY" id="TId-nd-jUJ"/>
+                            <constraint firstAttribute="trailing" secondItem="OY2-i2-i6n" secondAttribute="trailing" constant="-10" id="arG-O8-ekc"/>
                             <constraint firstItem="fEI-ih-pIh" firstAttribute="leading" secondItem="iil-SU-HzS" secondAttribute="leadingMargin" id="g4S-cd-W2r"/>
-                            <constraint firstItem="lsl-Zc-zQa" firstAttribute="top" secondItem="iil-SU-HzS" secondAttribute="topMargin" constant="10" id="ktQ-Eo-Ifi"/>
+                            <constraint firstItem="OY2-i2-i6n" firstAttribute="leading" secondItem="iil-SU-HzS" secondAttribute="leading" constant="-10" id="iv0-6s-zZE"/>
+                            <constraint firstItem="lsl-Zc-zQa" firstAttribute="top" secondItem="iil-SU-HzS" secondAttribute="topMargin" constant="25" id="ktQ-Eo-Ifi">
+                                <variation key="heightClass=compact" constant="15"/>
+                            </constraint>
+                            <constraint firstAttribute="bottom" secondItem="OY2-i2-i6n" secondAttribute="bottom" constant="-8" id="yND-mO-Ev0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zxK-Ch-8qc"/>
                     </view>
@@ -491,7 +502,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NA4-tV-7oL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1764" y="-1002"/>
+            <point key="canvasLocation" x="1718" y="-1001"/>
         </scene>
         <!--Clean-->
         <scene sceneID="l2B-a4-ZU9">
@@ -529,7 +540,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Yk-xO-sjK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1719" y="1339"/>
+            <point key="canvasLocation" x="1718" y="1338"/>
         </scene>
         <!--Profile-->
         <scene sceneID="ZWm-oN-uM4">
@@ -635,6 +646,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="houses" width="709" height="433"/>
         <image name="ic_account_circle.png" width="60" height="60"/>
         <image name="icons8-beer-25" width="18.75" height="18.75"/>
         <image name="icons8-beer-filled-25" width="18.75" height="18.75"/>
