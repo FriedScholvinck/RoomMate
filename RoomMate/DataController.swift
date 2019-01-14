@@ -12,16 +12,15 @@ import UIKit
 class DataController {
     static let shared = DataController()
     
+    /// get all users from local server
     func getUsers(completion: @escaping ([User]?) -> Void) {
         let url = URL(string: "https://ide50-fried-scholvinck.legacy.cs50.io:8080/users")!
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             do {
                 if let data = data {
-                    
                     let users = try JSONDecoder().decode([User].self, from: data)
                     completion(users)
-                    
                 } else {
                     completion(nil)
                 }
@@ -32,6 +31,7 @@ class DataController {
         task.resume()
     }
     
+    /// get all houses from local server
     func getHouses(completion: @escaping ([House]?) -> Void) {
         let url = URL(string: "https://ide50-fried-scholvinck.legacy.cs50.io:8080/houses")!
         
@@ -51,6 +51,7 @@ class DataController {
         task.resume()
     }
     
+    /// upload new user to local server
     func createNewUser(id: String, name: String, email: String) {
         let url = URL(string: "https://ide50-fried-scholvinck.legacy.cs50.io:8080/users")!
         var request = URLRequest(url: url)
@@ -63,6 +64,22 @@ class DataController {
         }
         task.resume()
     }
+    
+    /// upload new house to local server
+    func createNewHouse(name: String, password: String, residents: [String]) {
+        let url = URL(string: "https://ide50-fried-scholvinck.legacy.cs50.io:8080/houses")!
+        var request = URLRequest(url: url)
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        let postString = "name=\(name)&password=\(password)&residents=\(residents)"
+        request.httpBody = postString.data(using: .utf8)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+        }
+        task.resume()
+    }
+    
+    
     
 }
 
