@@ -24,6 +24,7 @@ class NewHouseViewController: UIViewController, UITextFieldDelegate {
         houseNameTextfield.delegate = self
         passwordTextfield.delegate = self
         passwordAgainTextfield.delegate = self
+        print(CurrentUser.houses.keys)
     }
     
     ///
@@ -54,6 +55,7 @@ class NewHouseViewController: UIViewController, UITextFieldDelegate {
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         var house = House()
         house.name = houseNameTextfield.text!
+        print(CurrentUser.houses.keys)
         if CurrentUser.houses.keys.contains(house.name) {
             createAlert(title: "\(house.name) Already Exists", message: "Please Try Again")
         }

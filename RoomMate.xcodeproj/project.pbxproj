@@ -27,6 +27,7 @@
 		35618A1021E63E64001B7CE5 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35618A0F21E63E64001B7CE5 /* ScheduleViewController.swift */; };
 		35618A1221E63E72001B7CE5 /* NewScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35618A1121E63E72001B7CE5 /* NewScheduleViewController.swift */; };
 		35618A1621E7715A001B7CE5 /* PickHouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35618A1521E7715A001B7CE5 /* PickHouseViewController.swift */; };
+		3595F03D21ECDE43000D74D5 /* OverviewDrinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595F03C21ECDE43000D74D5 /* OverviewDrinksViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		35618A0F21E63E64001B7CE5 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		35618A1121E63E72001B7CE5 /* NewScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScheduleViewController.swift; sourceTree = "<group>"; };
 		35618A1521E7715A001B7CE5 /* PickHouseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickHouseViewController.swift; sourceTree = "<group>"; };
+		3595F03C21ECDE43000D74D5 /* OverviewDrinksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewDrinksViewController.swift; sourceTree = "<group>"; };
 		88E3AC6150082FAE7EDB7756 /* Pods-RoomMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RoomMate.release.xcconfig"; path = "Pods/Target Support Files/Pods-RoomMate/Pods-RoomMate.release.xcconfig"; sourceTree = "<group>"; };
 		F136AC664D7383A33EE8F25C /* Pods-RoomMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RoomMate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RoomMate/Pods-RoomMate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,6 +135,7 @@
 		357FE6B121E776E5000175F2 /* Drinks */ = {
 			isa = PBXGroup;
 			children = (
+				3595F03C21ECDE43000D74D5 /* OverviewDrinksViewController.swift */,
 			);
 			path = Drinks;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				35618A0421E3C80D001B7CE5 /* CleanViewController.swift in Sources */,
 				35618A0A21E62CB9001B7CE5 /* Structures.swift in Sources */,
 				35618A1021E63E64001B7CE5 /* ScheduleViewController.swift in Sources */,
+				3595F03D21ECDE43000D74D5 /* OverviewDrinksViewController.swift in Sources */,
 				351B71E521E797070080A497 /* AppManager.swift in Sources */,
 				35618A1621E7715A001B7CE5 /* PickHouseViewController.swift in Sources */,
 				35618A0221E3C7FA001B7CE5 /* HomeViewController.swift in Sources */,

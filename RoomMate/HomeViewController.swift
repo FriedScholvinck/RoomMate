@@ -26,12 +26,17 @@ class HomeViewController: UIViewController {
         getHouseInfo()
     }
     
+    @IBAction func refreshButtonTapped(_ sender: UIBarButtonItem) {
+        getUserInfo()
+        getHouseInfo()
+    }
+    
     @IBAction func toDoButtonTapped(_ sender: UIButton) {
 
         
     }
     
-    
+    /// call getUsers() to download from local server
     func getUserInfo() {
         DataController.shared.getUsers() { (users) in
             if let users = users {
@@ -39,54 +44,34 @@ class HomeViewController: UIViewController {
             }
             DispatchQueue.main.async {
                 self.makeUserDictionary()
-                self.createCurrentUser()
             }
         }
     }
     
+    /// call getHouses() to download from local server
     func getHouseInfo() {
         DataController.shared.getHouses() { (houses) in
             if let houses = houses {
                 self.houses = houses
             }
+            DispatchQueue.main.async {
+                self.makeHouseDictionary()
+            }
         }
     }
     
+    /// put all users in global dictionary
     func makeUserDictionary() {
         for user in users {
             CurrentUser.users[user.id] = user
         }
     }
     
-    func createCurrentUser() {
-        if let user = CurrentUser.users["1"] {
-            CurrentUser.user = user
+    /// put all houses in global dictionary
+    func makeHouseDictionary() {
+        for house in houses {
+            CurrentUser.houses[house.name] = house
         }
-        print(CurrentUser.user)
     }
-    
-    func loadData() {
-        let url = URL(string: "https://ide50-fried-scholvinck.legacy.cs50.io:8080/users")!
-        var request = URLRequest(url: url)
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        let postString = ""
-        request.httpBody = postString.data(using: .utf8)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            
-        }
-        task.resume()
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+        
 }
