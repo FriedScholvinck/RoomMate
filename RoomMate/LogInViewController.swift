@@ -8,9 +8,9 @@
 
 import UIKit
 import FirebaseUI
+import FirebaseDatabase
 
 class LogInViewController: UIViewController {
-//    var currentUID: String
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -38,6 +38,8 @@ class LogInViewController: UIViewController {
         
         // show controller
         present(authViewController, animated: true, completion: nil)
+        
+        
     }
     
     @IBAction func unwindToLogIn(segue: UIStoryboardSegue) {
@@ -53,8 +55,15 @@ extension LogInViewController: FUIAuthDelegate {
             return
         }
         
-        // get user uid
-//        currentUID = authDataResult?.user.uidr
+        // get user info
+        CurrentUser.user.id = (authDataResult?.user.uid)!
+        CurrentUser.user.name = (authDataResult?.user.displayName)!
+        CurrentUser.user.email = (authDataResult?.user.email)!
+        
+        // if new user
+        if (authDataResult?.additionalUserInfo?.isNewUser)! {
+            DataController.shared.createNewUser(id: CurrentUser.user.id, name: CurrentUser.user.name, email: CurrentUser.user.email)
+        }
         
         performSegue(withIdentifier: "goHome", sender: self)
     }

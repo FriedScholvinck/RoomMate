@@ -25,6 +25,10 @@ class AppManager {
             viewController = storyboard.instantiateViewController(withIdentifier: "LogInViewController")
         } else {
             viewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+            CurrentUser.user.id = (Auth.auth().currentUser?.uid)!
+            CurrentUser.user.name = (Auth.auth().currentUser?.displayName)!
+            CurrentUser.user.email = (Auth.auth().currentUser?.email)!
+
         }
         
         appContainer.present(viewController, animated: true, completion: nil)

@@ -51,5 +51,18 @@ class DataController {
         task.resume()
     }
     
+    func createNewUser(id: String, name: String, email: String) {
+        let url = URL(string: "https://ide50-fried-scholvinck.legacy.cs50.io:8080/users")!
+        var request = URLRequest(url: url)
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        let postString = "id=\(id)&name=\(name)&email=\(email)"
+        request.httpBody = postString.data(using: .utf8)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+        }
+        task.resume()
+    }
+    
 }
 

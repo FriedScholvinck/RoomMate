@@ -7,18 +7,33 @@
 //
 
 import Foundation
+import Firebase
 
 struct CurrentUser {
-    static var user = User(id: 0, name: "", house: "")
-    static var users: [Int: User] = [:]
+    static var user = User(id: "", name: "", email: "", house: "")
+    static var users: [String: User] = [:]
+    static var houses: [String: House] = [:]
 }
 
 struct User: Decodable {
-    var id: Int
+    var id: String
     var name: String
-//    var email: String
+    var email: String
     var house: String
 }
+
+//class FIRUser: NSObject {
+//    var id: String?
+//    var name: String?
+//    var email: String?
+//    var house: String?
+//}
+
+//class FIRHouse: NSObject {
+//    var name: String?
+//    var password: String?
+//    var residents: [String: Bool] = [:]
+//}
 
 struct House: Decodable {
     var id: Int

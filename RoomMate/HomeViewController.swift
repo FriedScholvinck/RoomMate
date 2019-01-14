@@ -12,9 +12,7 @@ import Firebase
 class HomeViewController: UIViewController {
     var users: [User] = []
     var houses: [House] = []
-    var uid: Int = 1
-    
-//    var usersDict: [Int: User] = [:]
+    var uid: String = ""
     
     @IBOutlet weak var toDoButton: UIButton!
     
@@ -24,8 +22,13 @@ class HomeViewController: UIViewController {
         toDoButton.applyDesign()
         getUserInfo()
         getHouseInfo()
-
     }
+    
+    @IBAction func toDoButtonTapped(_ sender: UIButton) {
+
+        
+    }
+    
     
     func getUserInfo() {
         DataController.shared.getUsers() { (users) in
@@ -54,7 +57,7 @@ class HomeViewController: UIViewController {
     }
     
     func createCurrentUser() {
-        if let user = CurrentUser.users[1] {
+        if let user = CurrentUser.users["1"] {
             CurrentUser.user = user
         }
         print(CurrentUser.user)

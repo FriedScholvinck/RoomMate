@@ -7,32 +7,64 @@
 //
 
 import UIKit
+import Firebase
 
-class NewHouseViewController: UIViewController {
-
-    @IBOutlet weak var addRoomMatesLabel: UILabel!
-    @IBOutlet weak var textField1: UITextField!
-    @IBOutlet weak var textField2: UITextField!
-    @IBOutlet weak var textField3: UITextField!
-    @IBOutlet weak var textField4: UITextField!
-    @IBOutlet weak var plusTextfieldButton: UIButton!
-    @IBOutlet weak var sendButton: UIButton!
+class NewHouseViewController: UIViewController, UITextFieldDelegate {
+    var houseName = ""
+    var password = ""
+    let ref = Database.database().reference()
+    
+    @IBOutlet weak var createHouseLabel: UILabel!
+    @IBOutlet weak var houseNameTextfield: UITextField!
+    @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var passwordAgainTextfield: UITextField!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        saveButton.isEnabled = false
+        houseNameTextfield.delegate = self
+        passwordTextfield.delegate = self
+        passwordAgainTextfield.delegate = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        saveButton.isEnabled = filledIn()
     }
-    */
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func filledIn() -> Bool {
+        return houseNameTextfield.hasText && passwordTextfield.hasText && passwordAgainTextfield.hasText && passwordTextfield.text == passwordAgainTextfield.text
+    }
+    
+    func createAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+            _ = self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    /// save new house
+    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+        houseName = houseNameTextfield.text!
+        // check if house name exists
+        
+        password = passwordTextfield.text!
+        
+        
+        CurrentUser.user.house = houseName
+        
+        
+        createAlert(title: "Succesfully Created \(houseName)", message: "Password: \(password)")
+    }
 
+    
 }

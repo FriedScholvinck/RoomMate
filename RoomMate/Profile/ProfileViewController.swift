@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ProfileViewController: UIViewController {
 
@@ -26,7 +27,7 @@ class ProfileViewController: UIViewController {
         joinHouseButton.applyDesign()
         createHouseButton.applyDesign()
         nameLabel.text = CurrentUser.user.name
-        
+        emailLabel.text = CurrentUser.user.email
         houseButton.setTitle(CurrentUser.user.house, for: .normal)
     }
     

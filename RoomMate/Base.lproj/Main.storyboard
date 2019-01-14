@@ -24,6 +24,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
                                         <state key="normal" title="TO DO"/>
                                         <connections>
+                                            <action selector="toDoButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tgp-Qi-Las"/>
                                             <segue destination="sEc-VZ-H7T" kind="show" id="rc9-gj-uyJ"/>
                                         </connections>
                                     </button>
@@ -96,13 +97,18 @@
                         <viewLayoutGuide key="safeArea" id="iDV-rR-syk"/>
                     </view>
                     <navigationItem key="navigationItem" title="New House" largeTitleDisplayMode="never" id="Qxa-Wv-351">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="hKs-Z0-rBT"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="hKs-Z0-rBT">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="cdU-Xk-SL5" id="DWh-Z5-Ims"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="TextField1" destination="CXJ-Ug-US2" id="WFF-nZ-rM2"/>
-                        <outlet property="addRoomMatesLabel" destination="AHV-np-Osg" id="Z0I-dl-HAA"/>
-                        <outlet property="textField2" destination="bfj-HH-FeC" id="oeC-2G-1gU"/>
-                        <outlet property="textField3" destination="jwW-sA-rfT" id="VzC-Hi-9Aj"/>
+                        <outlet property="createHouseLabel" destination="AHV-np-Osg" id="7ga-er-RqA"/>
+                        <outlet property="houseNameTextfield" destination="CXJ-Ug-US2" id="9VF-Eh-bni"/>
+                        <outlet property="passwordAgainTextfield" destination="jwW-sA-rfT" id="xUk-G8-0UD"/>
+                        <outlet property="passwordTextfield" destination="bfj-HH-FeC" id="OCX-4h-Ijj"/>
+                        <outlet property="saveButton" destination="hKs-Z0-rBT" id="xst-Co-EF1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bzp-nQ-VGY" userLabel="First Responder" sceneMemberID="firstResponder"/>
