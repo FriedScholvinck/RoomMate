@@ -9,15 +9,14 @@
 import UIKit
 import Firebase
 
+
 class NewHouseViewController: UIViewController, UITextFieldDelegate {
-    
     
     @IBOutlet weak var createHouseLabel: UILabel!
     @IBOutlet weak var houseNameTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     @IBOutlet weak var passwordAgainTextfield: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +26,12 @@ class NewHouseViewController: UIViewController, UITextFieldDelegate {
         passwordAgainTextfield.delegate = self
     }
     
-    
+    ///
     func textFieldDidEndEditing(_ textField: UITextField) {
         saveButton.isEnabled = filledIn()
     }
     
+    ///
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

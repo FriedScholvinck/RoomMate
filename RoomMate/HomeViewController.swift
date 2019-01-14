@@ -5,9 +5,11 @@
 //  Created by Fried on 07/01/2019.
 //  Copyright © 2019 Fried. All rights reserved.
 //
+//  COMMMENTS
 
 import UIKit
 import Firebase
+
 
 class HomeViewController: UIViewController {
     var users: [User] = []
