@@ -9,8 +9,10 @@
 //  COMMENTS
 
 import UIKit
+import Firebase
 
 class PickHouseViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+    let ref = Database.database().reference()
     var pickerData = [String]()
     var selectedRow = 0
     
@@ -29,6 +31,10 @@ class PickHouseViewController: UIViewController, UITextFieldDelegate, UIPickerVi
         pickerData = ["huis 1", "huis 2", "huis 3", "huis 4", "huis 5", "huis 6"]
     }
     
+    
+    func getNames() {
+        
+    }
     
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {

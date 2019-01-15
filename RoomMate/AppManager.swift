@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 
 class AppManager {
+    let ref = Database.database().reference()
     
     static let shared = AppManager()
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -28,6 +29,7 @@ class AppManager {
             CurrentUser.user.id = (Auth.auth().currentUser?.uid)!
             CurrentUser.user.name = (Auth.auth().currentUser?.displayName)!
             CurrentUser.user.email = (Auth.auth().currentUser?.email)!
+            CurrentUser.ref = ref.child("users").child(CurrentUser.user.id)
 
         }
         

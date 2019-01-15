@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import Firebase
 
 class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var residents = ["wim", "klaas", "piet", "kees"]
+    let ref = Database.database().reference()
+    var residents: [String] = []
+    var drinks: [Int] = []
     
     @IBOutlet weak var drinkTableView: UITableView!
     @IBOutlet weak var totalDrinksLabel: UILabel!
@@ -20,7 +23,15 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
         drinkTableView.delegate = self
         drinkTableView.dataSource = self
         navigationItem.title = CurrentUser.user.house
-
+        getResidents()
+        drinksLabel.text = String(drinks.reduce(0, +))
+    }
+    
+    func getResidents() {
+        for memberID in (CurrentUser.houses[CurrentUser.user.house!]?.residents)! {
+            residents.append((CurrentUser.users[memberID]?.name)!)
+            drinks.append((CurrentUser.users[memberID]?.drinks)!)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,7 +53,7 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
     /// set cell text and image
     func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         cell.textLabel?.text = residents[indexPath.row]
-        cell.detailTextLabel?.text = "20"
+        cell.detailTextLabel?.text = String(drinks[indexPath.row])
     }
 
 }

@@ -12,6 +12,7 @@ import FirebaseUI
 import FirebaseDatabase
 
 class LogInViewController: UIViewController {
+    let ref = Database.database().reference()
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -54,10 +55,12 @@ extension LogInViewController: FUIAuthDelegate {
         CurrentUser.user.id = (authDataResult?.user.uid)!
         CurrentUser.user.name = (authDataResult?.user.displayName)!
         CurrentUser.user.email = (authDataResult?.user.email)!
+        CurrentUser.ref = ref.child("users").child(CurrentUser.user.id)
         
         // if new user, create account online
         if (authDataResult?.additionalUserInfo?.isNewUser)! {
-            DataController.shared.createNewUser(id: CurrentUser.user.id, name: CurrentUser.user.name, email: CurrentUser.user.email)
+            // create new user
+            ref.child("users").child(CurrentUser.user.id).setValue(["name": CurrentUser.user.name, "email": CurrentUser.user.email, "drinks": 0])
         }
         
         performSegue(withIdentifier: "goHome", sender: self)

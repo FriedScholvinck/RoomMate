@@ -12,9 +12,8 @@ import Firebase
 
 
 class HomeViewController: UIViewController {
-    var users: [User] = []
-    var houses: [House] = []
-    var uid: String = ""
+    let ref = Database.database().reference()
+    
     
     @IBOutlet weak var toDoButton: UIButton!
     
@@ -22,75 +21,76 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         toDoButton.applyDesign()
-        getUserInfo()
-        getHouseInfo()
         
-        
-        
+        getUsers()
+        getHouses()
     }
     
-    func loadSampleData() {
-        CurrentUser.user.house = "Huisj"
-        
-
-        
-        // load house
-        var huis = House()
-        huis.name = "Huis"
-        huis.password = "h"
-        huis.residents = ["jy1mKx1yNDYDJZeexs8ANHKCbDw1", "y8wVjOvNfrXXtzHOblrgtm7EWUz2", "NxWtGECgpxTZrhZei9ppxNoW8EE2"]
-        huis.drinks = 30
-        CurrentUser.houses[huis.name] = huis
-        
-        
+    func getUsers() {
+        ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let data = snapshot.value as? [String: Any] else { return }
+            for (key, value) in data {
+                
+                // id
+                var user = User()
+                user.id = key
+                
+                // name, email, drinks
+                let houseData = value as! Dictionary <String, Any>
+                user.name = houseData["name"]! as! String
+                user.email = houseData["email"]! as! String
+                user.drinks = houseData["drinks"] as! Int
+                
+                // house
+                if let house = houseData["house"] {
+                    user.house = (house as! String)
+                }
+                
+                
+                CurrentUser.users[user.id] = user
+                
+                DispatchQueue.main.async {
+                    
+                    // set house of current user
+                    if let house = CurrentUser.users[CurrentUser.user.id]!.house {
+                        CurrentUser.user.house = house
+                    }
+                    
+                    CurrentUser.user.drinks = CurrentUser.users[CurrentUser.user.id]!.drinks
+                    CurrentUser.ref = self.ref.child("users/\(CurrentUser.user.id)")
+                }
+            }
+        })
     }
     
-    @IBAction func refreshButtonTapped(_ sender: UIBarButtonItem) {
-        getUserInfo()
-        getHouseInfo()
-    }
-    
-    @IBAction func toDoButtonTapped(_ sender: UIButton) {
-
-        
-    }
-    
-    /// call getUsers() to download from local server
-    func getUserInfo() {
-        DataController.shared.getUsers() { (users) in
-            if let users = users {
-                self.users = users
+    func getHouses() {
+        ref.child("houses").observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let data = snapshot.value as? [String: Any] else { return }
+            for (key, value) in data {
+                // name
+                var house = House()
+                house.name = key
+                
+                // password & drinks
+                let houseData = value as! Dictionary <String, Any>
+                house.password = houseData["password"]! as! String
+                house.drinks = houseData["drinks"]! as! Int
+                
+                // residents
+                let residentData = houseData["residents"]! as! Dictionary <String, Any>
+                for resident in residentData.keys {
+                    house.residents.append(resident)
+                }
+                
+                CurrentUser.houses[house.name] = house
+                
             }
             DispatchQueue.main.async {
-                self.makeUserDictionary()
+                
             }
-        }
+        })
     }
     
-    /// call getHouses() to download from local server
-    func getHouseInfo() {
-        DataController.shared.getHouses() { (houses) in
-            if let houses = houses {
-                self.houses = houses
-            }
-            DispatchQueue.main.async {
-                self.makeHouseDictionary()
-            }
-        }
-    }
     
-    /// put all users in global dictionary
-    func makeUserDictionary() {
-        for user in users {
-            CurrentUser.users[user.id] = user
-        }
-    }
     
-    /// put all houses in global dictionary
-    func makeHouseDictionary() {
-        for house in houses {
-            CurrentUser.houses[house.name] = house
-        }
-    }
-        
 }

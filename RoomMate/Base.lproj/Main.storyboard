@@ -40,11 +40,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="zY4-g8-KVP">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="IX5-yx-6kf">
-                            <connections>
-                                <action selector="refreshButtonTapped:" destination="BYZ-38-t0r" id="s8S-6T-jpa"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="IX5-yx-6kf"/>
                     </navigationItem>
                     <connections>
                         <outlet property="toDoButton" destination="WLx-x1-LKE" id="L7x-Pg-maY"/>

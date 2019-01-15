@@ -7,18 +7,24 @@
 //
 
 import UIKit
+import Firebase
 
 class YourHouseViewController: UITableViewController {
-    var residents: [String] = ["piet", "klaas", "wim"]
-    
-    
+    let ref = Database.database().reference()
+    var residents: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getResidents()
 
-        // Do any additional setup after loading the view.
     }
     
+    
+    func getResidents() {
+        for memberID in (CurrentUser.houses[CurrentUser.user.house!]?.residents)! {
+            residents.append((CurrentUser.users[memberID]?.name)!)
+        }
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return residents.count

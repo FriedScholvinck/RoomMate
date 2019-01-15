@@ -11,6 +11,7 @@ import Firebase
 
 
 class NewHouseViewController: UIViewController, UITextFieldDelegate {
+    let ref = Database.database().reference()
     
     @IBOutlet weak var createHouseLabel: UILabel!
     @IBOutlet weak var houseNameTextfield: UITextField!
@@ -55,15 +56,16 @@ class NewHouseViewController: UIViewController, UITextFieldDelegate {
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         var house = House()
         house.name = houseNameTextfield.text!
-        print(CurrentUser.houses.keys)
-        if CurrentUser.houses.keys.contains(house.name) {
-            createAlert(title: "\(house.name) Already Exists", message: "Please Try Again")
-        }
+//        if CurrentUser.houses.keys.contains(house.name) {
+//            createAlert(title: "\(house.name) Already Exists", message: "Please Try Again")
+//        }
         house.password = passwordTextfield.text!
         house.residents = [CurrentUser.user.id]
         CurrentUser.houses[house.name] = house
         CurrentUser.houses[house.name] = house
-        DataController.shared.createNewHouse(name: house.name, password: house.password, residents: house.residents)
+        ref.child("houses").child(house.name).setValue(["password":house.password, "drinks": 0])
+        ref.child("houses").child(house.name).child("residents").setValue([CurrentUser.user.id: true])
+        CurrentUser.ref.child("house").setValue(house.name)
         createAlert(title: "Succesfully Created \(house.name)", message: "Password: \(house.password)")
     }
 

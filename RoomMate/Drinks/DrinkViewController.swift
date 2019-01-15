@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Firebase
 
 class DrinkViewController: UIViewController {
+    let ref = Database.database().reference()
     var totalDrinks = 0
     var yourDrinks = 0
     
@@ -22,22 +24,24 @@ class DrinkViewController: UIViewController {
     /// apply design
     override func viewDidLoad() {
         super.viewDidLoad()
-        progressView.setProgress(0, animated: true)
         changeDrinksButton.applyDesign()
         drinkOneButton.applyDesign()
-        
-        if CurrentUser.user.house == "" {
+        yourDrinks = CurrentUser.user.drinks
+        updateUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if CurrentUser.user.house == nil {
             changeDrinksButton.isEnabled = false
             changeDrinksButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:0.5)
             getOverviewButton.isEnabled = false
         }
         
         // set your drinks
-        if CurrentUser.user.house != "" {
-            if let home =  CurrentUser.houses[CurrentUser.user.house] {
+        if let houseName = CurrentUser.user.house {
+            if let home = CurrentUser.houses[houseName] {
                 totalDrinks = home.drinks
             }
-            
         }
         
         updateUI()
@@ -45,12 +49,7 @@ class DrinkViewController: UIViewController {
     
     /// update total drinks
     func updateUI() {
-        progressView.setProgress(Float(yourDrinks)/24.0, animated: true)
-        if yourDrinks == 24 {
-            yourDrinks = 0
-            createAlert(title: "Buy Crate!", message: "You drank 24 beers")
-        }
-        
+        progressView.setProgress(Float(yourDrinks % 24) / 24.0, animated: true)
         
         
         totalDrinksLabel.text = String(totalDrinks)
@@ -68,10 +67,17 @@ class DrinkViewController: UIViewController {
     @IBAction func drinkOneButtonTapped(_ sender: UIButton) {
         totalDrinks -= 1
         yourDrinks += 1
+        if yourDrinks % 24 == 0 {
+            createAlert(title: "Buy Crate!", message: "You drank 24 beers")
+        }
         
-        // change drinks in house
+        // change drinks in house, user and online
+        CurrentUser.houses[CurrentUser.user.house!]!.drinks += 1
+        ref.child("houses/\(CurrentUser.user.house!)/drinks").setValue(totalDrinks)
         
-        // change drinks for user
+        CurrentUser.user.drinks = yourDrinks
+        CurrentUser.ref.child("drinks").setValue(yourDrinks)
+        CurrentUser.users[CurrentUser.user.id]?.drinks = yourDrinks
         
         updateUI()
     }

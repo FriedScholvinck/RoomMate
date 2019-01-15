@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Firebase
 
 class ScheduleViewController: UIViewController {
+    let ref = Database.database().reference()
 
     override func viewDidLoad() {
         super.viewDidLoad()

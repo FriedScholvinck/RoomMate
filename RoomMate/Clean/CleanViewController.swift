@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Firebase
 
 class CleanViewController: UIViewController {
+    let ref = Database.database().reference()
 
     @IBOutlet weak var yourScheduleButton: UIButton!
     @IBOutlet weak var createScheduleButton: UIButton!

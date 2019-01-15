@@ -8,8 +8,10 @@
 //
 
 import UIKit
+import Firebase
 
 class AddDrinksViewController: UIViewController {
+    let ref = Database.database().reference()
     var totalDrinks = 0
     var boughtTotal = 0
     var changeTotal = 0
@@ -38,12 +40,12 @@ class AddDrinksViewController: UIViewController {
         minusOneButton.applyDesign()
         plusOneButton.applyDesign()
         plus24Button.applyDesign()
-
-
+        totalDrinks = CurrentUser.houses[CurrentUser.user.house!]!.drinks
+        updateUI()
     }
     
     func updateUI() {
-        totalDrinks = boughtTotal + changeTotal
+        totalDrinks = totalDrinks + boughtTotal + changeTotal
         totalBoughtLabel.text = String(boughtTotal)
         totalChangeLabel.text = String(changeTotal)
         totalDrinksLabel.text = String(totalDrinks)
@@ -58,9 +60,11 @@ class AddDrinksViewController: UIViewController {
     
     ///
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
-        // edit online
         
-        CurrentUser.houses[CurrentUser.user.house]!.drinks = totalDrinks
+        
+        CurrentUser.houses[CurrentUser.user.house!]!.drinks = totalDrinks
+        ref.child("houses/\(CurrentUser.user.house!)/drinks").setValue(totalDrinks)
+        
         
         createAlert(title: "Succesfully Added", message: "Enjoy Your Drinks!")
     }

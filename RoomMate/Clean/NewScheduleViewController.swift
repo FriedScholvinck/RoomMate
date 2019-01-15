@@ -8,8 +8,10 @@
 //  Class for creating a new cleaning schedule
 
 import UIKit
+import Firebase
 
 class NewScheduleViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+    let ref = Database.database().reference()
     var tasks: [String] = []
     
     @IBOutlet weak var addHouseTasksLabel: UILabel!

@@ -15,30 +15,31 @@ import Foundation
 import Firebase
 
 struct CurrentUser {
+    static var ref = Database.database().reference()
     static var user = User()
     static var users: [String: User] = [:]
     static var houses: [String: House] = [:]
 }
 
-struct User: Decodable {
+struct User {
     var id: String = ""
     var name: String = ""
     var email: String = ""
-    var house: String = ""
+    var house: String?
+    var drinks = 0
 }
 
-struct House: Decodable {
-    var id: Int = 0
+struct House {
     var name: String = ""
     var password: String = ""
     var residents: [String] = []
     var drinks: Int = 0
 }
 
-struct CleaningSchedule: Decodable {
+struct CleaningSchedule {
     
 }
 
-struct Drinks: Decodable {
+struct Drinks {
     
 }
