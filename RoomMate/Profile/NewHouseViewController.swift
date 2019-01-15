@@ -67,5 +67,8 @@ class NewHouseViewController: UIViewController, UITextFieldDelegate {
         createAlert(title: "Succesfully Created \(house.name)", message: "Password: \(house.password)")
     }
 
-    
+    /// hide keyboard with click on screen
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }

@@ -28,7 +28,7 @@ class ProfileViewController: UIViewController {
         createHouseButton.applyDesign()
         nameLabel.text = CurrentUser.user.name
         emailLabel.text = CurrentUser.user.email
-        houseButton.setTitle(CurrentUser.user.house, for: .normal)
+//        houseButton.setTitle(CurrentUser.user.house, for: .normal)
     }
     
     @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {

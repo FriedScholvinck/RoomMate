@@ -57,7 +57,7 @@ class DataController {
         var request = URLRequest(url: url)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
-        let postString = "id=\(id)&name=\(name)&email=\(email)"
+        let postString = "id=\(id)&name=\(name)&email=\(email)&house="
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
@@ -71,7 +71,7 @@ class DataController {
         var request = URLRequest(url: url)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
-        let postString = "name=\(name)&password=\(password)&residents=\(residents)&house="
+        let postString = "name=\(name)&password=\(password)&residents=\(residents)&drinks=0"
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             

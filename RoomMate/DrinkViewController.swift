@@ -12,8 +12,7 @@ class DrinkViewController: UIViewController {
     var totalDrinks = 0
     var yourDrinks = 0
     
-
-    
+    @IBOutlet weak var boughtDrinksButton: UIButton!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var totalDrinksLabel: UILabel!
     @IBOutlet weak var drinksInStoreLabel: UILabel!
@@ -27,6 +26,7 @@ class DrinkViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         progressView.setProgress(0, animated: true)
+        boughtDrinksButton.applyDesign()
         drinkOneButton.applyDesign()
         minusOneButton.applyDesign()
         plusOneButton.applyDesign()

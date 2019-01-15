@@ -19,7 +19,7 @@ struct User: Decodable {
     var id: String = ""
     var name: String = ""
     var email: String = ""
-    var house: String = ""
+    var house: String?
 }
 
 struct House: Decodable {

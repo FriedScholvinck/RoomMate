@@ -24,6 +24,8 @@ class HomeViewController: UIViewController {
         toDoButton.applyDesign()
         getUserInfo()
         getHouseInfo()
+        
+        CurrentUser.user.house = "Huis"
     }
     
     @IBAction func refreshButtonTapped(_ sender: UIBarButtonItem) {
