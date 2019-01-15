@@ -5,6 +5,11 @@
 //  Created by Fried on 09/01/2019.
 //  Copyright © 2019 Fried. All rights reserved.
 //
+//  this file contains all structures for RoomMate
+//  the struct CurrentUser is global and holds
+//      - the current user information
+//      - a dictionary with all users
+//      - a dictionary with all houses
 
 import Foundation
 import Firebase
@@ -19,7 +24,7 @@ struct User: Decodable {
     var id: String = ""
     var name: String = ""
     var email: String = ""
-    var house: String?
+    var house: String = ""
 }
 
 struct House: Decodable {
@@ -27,8 +32,7 @@ struct House: Decodable {
     var name: String = ""
     var password: String = ""
     var residents: [String] = []
-//    var cleaningSchedule: CleaningSchedule
-//    var drinks: Int
+    var drinks: Int = 0
 }
 
 struct CleaningSchedule: Decodable {

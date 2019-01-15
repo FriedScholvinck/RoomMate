@@ -27,4 +27,7 @@
 * local database doens't yet allow for changing the data at a specific location, so I implemented things without working with actual data
 
 ## day 7
-
+* added functionality and extra view to drink-view
+* added functionality to Create House and Join House
+* database doesn't yet allow for filtering on something other than predefined id's
+* grouping users in houses and making houses with residents is not possible using a list within the database structure (same as in Firebase) -> solution needed

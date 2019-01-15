@@ -25,7 +25,24 @@ class HomeViewController: UIViewController {
         getUserInfo()
         getHouseInfo()
         
-        CurrentUser.user.house = "Huis"
+        
+        
+    }
+    
+    func loadSampleData() {
+        CurrentUser.user.house = "Huisj"
+        
+
+        
+        // load house
+        var huis = House()
+        huis.name = "Huis"
+        huis.password = "h"
+        huis.residents = ["jy1mKx1yNDYDJZeexs8ANHKCbDw1", "y8wVjOvNfrXXtzHOblrgtm7EWUz2", "NxWtGECgpxTZrhZei9ppxNoW8EE2"]
+        huis.drinks = 30
+        CurrentUser.houses[huis.name] = huis
+        
+        
     }
     
     @IBAction func refreshButtonTapped(_ sender: UIBarButtonItem) {

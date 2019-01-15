@@ -12,26 +12,33 @@ class DrinkViewController: UIViewController {
     var totalDrinks = 0
     var yourDrinks = 0
     
-    @IBOutlet weak var boughtDrinksButton: UIButton!
+    @IBOutlet weak var getOverviewButton: UIBarButtonItem!
+    @IBOutlet weak var changeDrinksButton: UIButton!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var totalDrinksLabel: UILabel!
     @IBOutlet weak var drinksInStoreLabel: UILabel!
     @IBOutlet weak var drinkOneButton: UIButton!
-    @IBOutlet weak var minusOneButton: UIButton!
-    @IBOutlet weak var plusOneButton: UIButton!
-    @IBOutlet weak var plus24Button: UIButton!
     
-    
-    
+    /// apply design
     override func viewDidLoad() {
         super.viewDidLoad()
         progressView.setProgress(0, animated: true)
-        boughtDrinksButton.applyDesign()
+        changeDrinksButton.applyDesign()
         drinkOneButton.applyDesign()
-        minusOneButton.applyDesign()
-        plusOneButton.applyDesign()
-        plus24Button.applyDesign()
+        
+        if CurrentUser.user.house == "" {
+            changeDrinksButton.isEnabled = false
+            changeDrinksButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:0.5)
+            getOverviewButton.isEnabled = false
+        }
+        
         // set your drinks
+        if CurrentUser.user.house != "" {
+            if let home =  CurrentUser.houses[CurrentUser.user.house] {
+                totalDrinks = home.drinks
+            }
+            
+        }
         
         updateUI()
     }
@@ -50,13 +57,9 @@ class DrinkViewController: UIViewController {
         if totalDrinks == 0 {
             drinkOneButton.isEnabled = false
             drinkOneButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:0.5)
-            minusOneButton.isEnabled = false
-            minusOneButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:0.5)
         } else {
             drinkOneButton.isEnabled = true
             drinkOneButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:1.0)
-            minusOneButton.isEnabled = true
-            minusOneButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:1.0)
         }
         
     }
@@ -73,23 +76,6 @@ class DrinkViewController: UIViewController {
         updateUI()
     }
     
-    ///
-    @IBAction func minusOneButtonTapped(_ sender: UIButton) {
-        totalDrinks -= 1
-        updateUI()
-    }
-    
-    ///
-    @IBAction func plusOneButtonTapped(_ sender: UIButton) {
-        totalDrinks += 1
-        updateUI()
-    }
-    
-    ///
-    @IBAction func plus24ButtonTapped(_ sender: UIButton) {
-        totalDrinks += 24
-        updateUI()
-    }
     
     func createAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
