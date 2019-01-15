@@ -31,3 +31,13 @@
 * added functionality to Create House and Join House
 * database doesn't yet allow for filtering on something other than predefined id's
 * grouping users in houses and making houses with residents is not possible using a list within the database structure (same as in Firebase) -> solution needed
+
+## day 8
+* Decided to use Firebase instead of local server because of:
+    * usage without running server
+    * database was easier to implement, change, delete
+    * easier to insert data in database
+    * easier to use Firebase user id (also safer)
+    * at first it seemed difficult to download Firebase data into the app and properly into usable structs, but once I knew how, it seemed more convenient than the flask server
+* copied old files to computer and changed files on github repository to 
+
