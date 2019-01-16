@@ -16,11 +16,14 @@ class YourHouseViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getResidents()
+        
 
+        navigationItem.title = CurrentUser.user.house
     }
     
     
     func getResidents() {
+        residents = []
         for memberID in (CurrentUser.houses[CurrentUser.user.house!]?.residents)! {
             residents.append((CurrentUser.users[memberID]?.name)!)
         }

@@ -13,10 +13,18 @@ import FirebaseDatabase
 
 class LogInViewController: UIViewController {
     let ref = Database.database().reference()
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return .allButUpsideDown
+        } else {
+            return .all
+        }
+    }
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,16 +63,42 @@ extension LogInViewController: FUIAuthDelegate {
         CurrentUser.user.id = (authDataResult?.user.uid)!
         CurrentUser.user.name = (authDataResult?.user.displayName)!
         CurrentUser.user.email = (authDataResult?.user.email)!
-        CurrentUser.ref = ref.child("users").child(CurrentUser.user.id)
         
         // if new user, create account online
         if (authDataResult?.additionalUserInfo?.isNewUser)! {
             // create new user
-            ref.child("users").child(CurrentUser.user.id).setValue(["name": CurrentUser.user.name, "email": CurrentUser.user.email, "drinks": 0])
+            ref.child("users/\(CurrentUser.user.id)").setValue(["name": CurrentUser.user.name, "email": CurrentUser.user.email, "drinks": 0])
+            CurrentUser.ref = ref.child("users/\(CurrentUser.user.id)")
+
         }
         
         performSegue(withIdentifier: "goHome", sender: self)
     }
+}
+
+// this extension makes it able for any view controller to create a loading alert, which will be dismissed as the data request is completed - makes it impossible for the user to continue while the data is requested and shows 'Please wait...' - accessible via every viewcontroller, calling getData()
+extension UIViewController {
+    
+    func getData() {
+//        let alert = createLoadingAlert()
+        DataController.shared.getData {
+//            alert.dismiss(animated: false, completion: nil)
+        }
+    }
+    
+    func createLoadingAlert() -> UIAlertController {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+        return alert
+    }
+    
+    
 }
 
 // green round label design

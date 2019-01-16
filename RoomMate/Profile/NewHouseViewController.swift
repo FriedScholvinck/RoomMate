@@ -28,6 +28,47 @@ class NewHouseViewController: UIViewController, UITextFieldDelegate {
         print(CurrentUser.houses.keys)
     }
     
+    /// save new house
+    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+        var house = House()
+        house.name = houseNameTextfield.text!
+        if CurrentUser.houses.keys.contains(house.name) {
+            createAlert(title: "\(house.name) Already Exists", message: "Please Try Again")
+            return
+        }
+        house.password = passwordTextfield.text!
+        house.residents = [CurrentUser.user.id]
+        
+        // remove user from old house if any
+        if let oldHome = CurrentUser.user.house {
+            
+            // check for residents left
+            if (CurrentUser.houses[oldHome]?.residents.count)! > 1 {
+                
+                ref.child("houses/\(oldHome)/residents/\(CurrentUser.user.id)").removeValue()
+            } else {
+                ref.child("houses/\(oldHome)").removeValue()
+            }
+        }
+        
+        // create new house
+        ref.child("houses/\(house.name)").setValue(["password":house.password, "drinks": 0, "residents": [CurrentUser.user.id: true]])
+        
+        // set user in new house
+        CurrentUser.ref.child("house").setValue(house.name)
+        CurrentUser.ref.child("drinks").setValue(0)
+        
+        
+        
+        
+
+        // alert user in application
+        self.createAlert(title: "Succesfully Created '\(house.name)'", message: "Password: \(house.password)")
+        
+        getData()
+        print("HDFSOAF")
+    }
+    
     ///
     func textFieldDidEndEditing(_ textField: UITextField) {
         saveButton.isEnabled = filledIn()
@@ -50,23 +91,6 @@ class NewHouseViewController: UIViewController, UITextFieldDelegate {
             _ = self.navigationController?.popViewController(animated: true)
         }))
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    /// save new house
-    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
-        var house = House()
-        house.name = houseNameTextfield.text!
-//        if CurrentUser.houses.keys.contains(house.name) {
-//            createAlert(title: "\(house.name) Already Exists", message: "Please Try Again")
-//        }
-        house.password = passwordTextfield.text!
-        house.residents = [CurrentUser.user.id]
-        CurrentUser.houses[house.name] = house
-        CurrentUser.houses[house.name] = house
-        ref.child("houses").child(house.name).setValue(["password":house.password, "drinks": 0])
-        ref.child("houses").child(house.name).child("residents").setValue([CurrentUser.user.id: true])
-        CurrentUser.ref.child("house").setValue(house.name)
-        createAlert(title: "Succesfully Created \(house.name)", message: "Password: \(house.password)")
     }
 
     /// hide keyboard with click on screen

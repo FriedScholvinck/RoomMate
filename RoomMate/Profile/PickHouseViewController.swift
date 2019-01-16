@@ -18,6 +18,7 @@ class PickHouseViewController: UIViewController, UITextFieldDelegate, UIPickerVi
     
     @IBOutlet weak var housePicker: UIPickerView!
     @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     
     override func viewDidLoad() {
@@ -25,27 +26,57 @@ class PickHouseViewController: UIViewController, UITextFieldDelegate, UIPickerVi
         housePicker.dataSource = self
         housePicker.delegate = self
         passwordTextfield.delegate = self
+        setPickerData()
         
-//        pickerData = CurrentUser.houses.keys
-        
-        pickerData = ["huis 1", "huis 2", "huis 3", "huis 4", "huis 5", "huis 6"]
-    }
-    
-    
-    func getNames() {
         
     }
     
+    func setPickerData() {
+        if let home = CurrentUser.user.house {
+            pickerData = Array(CurrentUser.houses.keys).filter(){$0 != home}
+        } else {
+            pickerData = Array(CurrentUser.houses.keys)
+        }
+        if pickerData == [] {
+            pickerData = ["No Houses Available"]
+            saveButton.isEnabled = false
+        }
+    }
     
+    /// save user in new house
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         let house = pickerData[selectedRow]
         let password = CurrentUser.houses[house]?.password
         if passwordTextfield.text == password {
-            // set user in house
-            CurrentUser.user.house = house
-            createAlert(title: "Password Correct!", message: "You just joined \(pickerData[selectedRow])")
+            
+            // remove user from old house if any
+            if let oldHome = CurrentUser.user.house {
+                
+                // check for residents left
+                if (CurrentUser.houses[oldHome]?.residents.count)! > 1 {
+                
+                    ref.child("houses/\(oldHome)/residents/\(CurrentUser.user.id)").removeValue()
+                } else {
+                    ref.child("houses/\(oldHome)").removeValue()
+                }
+            }
+            
+            CurrentUser.ref.child("house").setValue(house)
+            ref.child("houses/\(house)/residents/\(CurrentUser.user.id)").setValue(true)
+            
+            // set user drinks to 0
+            CurrentUser.ref.child("drinks").setValue(0)
+            
+            self.createAlert(title: "Password Correct!", message: "You just joined \(self.pickerData[self.selectedRow])")
+            
+            getData()
+            
+        } else {
+            createAlert(title: "Password Incorrect", message: "Try again!")
         }
+        
     }
+    
     
     func createAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

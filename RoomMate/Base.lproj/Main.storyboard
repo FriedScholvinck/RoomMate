@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TxC-TQ-woi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TxC-TQ-woi">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,7 +41,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="zY4-g8-KVP">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="IX5-yx-6kf"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="IX5-yx-6kf">
+                            <connections>
+                                <action selector="refreshButtonTapped:" destination="BYZ-38-t0r" id="a1R-t0-ktZ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="toDoButton" destination="WLx-x1-LKE" id="L7x-Pg-maY"/>
@@ -162,6 +167,7 @@
                     <connections>
                         <outlet property="housePicker" destination="Tkw-yq-M7t" id="VXi-dO-ixl"/>
                         <outlet property="passwordTextfield" destination="7GC-bw-Lrq" id="BM5-6u-KJe"/>
+                        <outlet property="saveButton" destination="cFM-bM-HY0" id="e3s-x5-SQw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T65-VG-eLL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -734,7 +740,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="houses" translatesAutoresizingMaskIntoConstraints="NO" id="OY2-i2-i6n">
                                 <rect key="frame" x="-10" y="360.5" width="340" height="215.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="OY2-i2-i6n" secondAttribute="height" multiplier="341:216" id="Vmf-WA-lw4"/>
+                                    <constraint firstAttribute="width" secondItem="OY2-i2-i6n" secondAttribute="height" multiplier="341:216" id="Vmf-WA-lw4">
+                                        <variation key="heightClass=compact" constant="1000"/>
+                                    </constraint>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -743,7 +751,9 @@
                             <constraint firstItem="lsl-Zc-zQa" firstAttribute="trailing" secondItem="iil-SU-HzS" secondAttribute="trailingMargin" id="AB6-Jn-Q4Y"/>
                             <constraint firstItem="lsl-Zc-zQa" firstAttribute="leading" secondItem="iil-SU-HzS" secondAttribute="leadingMargin" id="BfX-5A-Rdd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fEI-ih-pIh" secondAttribute="trailing" id="Iz7-uI-e0I"/>
-                            <constraint firstItem="fEI-ih-pIh" firstAttribute="centerY" secondItem="iil-SU-HzS" secondAttribute="centerY" id="TId-nd-jUJ"/>
+                            <constraint firstItem="fEI-ih-pIh" firstAttribute="centerY" secondItem="iil-SU-HzS" secondAttribute="centerY" id="TId-nd-jUJ">
+                                <variation key="heightClass=compact" constant="-30"/>
+                            </constraint>
                             <constraint firstAttribute="trailing" secondItem="OY2-i2-i6n" secondAttribute="trailing" constant="-10" id="arG-O8-ekc"/>
                             <constraint firstItem="fEI-ih-pIh" firstAttribute="leading" secondItem="iil-SU-HzS" secondAttribute="leadingMargin" id="g4S-cd-W2r"/>
                             <constraint firstItem="OY2-i2-i6n" firstAttribute="leading" secondItem="iil-SU-HzS" secondAttribute="leading" constant="-10" id="iv0-6s-zZE"/>
@@ -755,6 +765,7 @@
                         <viewLayoutGuide key="safeArea" id="zxK-Ch-8qc"/>
                     </view>
                     <connections>
+                        <outlet property="imageView" destination="OY2-i2-i6n" id="scr-h8-XAE"/>
                         <outlet property="loginButton" destination="fEI-ih-pIh" id="D3w-zU-vKJ"/>
                         <outlet property="subtitleLabel" destination="2vf-jg-Dva" id="EEd-4x-K08"/>
                         <outlet property="titleLabel" destination="IoA-KZ-seQ" id="BHW-G9-hfa"/>

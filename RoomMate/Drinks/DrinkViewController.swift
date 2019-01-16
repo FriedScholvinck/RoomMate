@@ -35,23 +35,21 @@ class DrinkViewController: UIViewController {
             changeDrinksButton.isEnabled = false
             changeDrinksButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:0.5)
             getOverviewButton.isEnabled = false
-        }
-        
-        // set your drinks
-        if let houseName = CurrentUser.user.house {
-            if let home = CurrentUser.houses[houseName] {
+            createAlert(title: "You're not yet in a house.", message: "Join or create one at 'Profile'")
+        } else {
+            if let home = CurrentUser.houses[CurrentUser.user.house!] {
                 totalDrinks = home.drinks
             }
+            changeDrinksButton.isEnabled = true
+            changeDrinksButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:1.0)
+            getOverviewButton.isEnabled = true
         }
-        
         updateUI()
     }
     
     /// update total drinks
     func updateUI() {
-        progressView.setProgress(Float(yourDrinks % 24) / 24.0, animated: true)
-        
-        
+        progressView.setProgress(Float(yourDrinks % 24) / 24.0, animated: true)        
         totalDrinksLabel.text = String(totalDrinks)
         if totalDrinks == 0 {
             drinkOneButton.isEnabled = false
@@ -72,13 +70,9 @@ class DrinkViewController: UIViewController {
         }
         
         // change drinks in house, user and online
-        CurrentUser.houses[CurrentUser.user.house!]!.drinks += 1
         ref.child("houses/\(CurrentUser.user.house!)/drinks").setValue(totalDrinks)
-        
-        CurrentUser.user.drinks = yourDrinks
         CurrentUser.ref.child("drinks").setValue(yourDrinks)
-        CurrentUser.users[CurrentUser.user.id]?.drinks = yourDrinks
-        
+        getData()
         updateUI()
     }
     

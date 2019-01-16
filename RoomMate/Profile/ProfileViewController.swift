@@ -21,14 +21,19 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        updateUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         if CurrentUser.user.house != nil {
             houseButton.isEnabled = true
         } else {
             houseButton.isEnabled = false
         }
-        
-        
-        updateUI()
+        houseButton.setTitle(CurrentUser.user.house, for: .normal)
     }
     
     func updateUI() {
@@ -36,10 +41,10 @@ class ProfileViewController: UIViewController {
         createHouseButton.applyDesign()
         nameLabel.text = CurrentUser.user.name
         emailLabel.text = CurrentUser.user.email
-        houseButton.setTitle(CurrentUser.user.house, for: .normal)
     }
     
     @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
+        CurrentUser.user = User()
         AppManager.shared.logout()
     }
     

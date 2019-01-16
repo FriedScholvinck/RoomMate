@@ -41,3 +41,5 @@
     * at first it seemed difficult to download Firebase data into the app and properly into usable structs, but once I knew how, it seemed more convenient than the flask server
 * copied old files to computer and changed files on github repository to 
 
+* added global getData() functions to load all data from firebase into app
+    * within app only change data online and then call getData() again

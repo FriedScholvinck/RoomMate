@@ -24,15 +24,33 @@ class CleanViewController: UIViewController {
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func updateUI() {
+        
     }
-    */
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if CurrentUser.user.house == nil {
+            yourScheduleButton.isEnabled = false
+            yourScheduleButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:0.5)
+            createScheduleButton.isEnabled = false
+            createScheduleButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:0.5)
+            createAlert(title: "You're not yet in a house.", message: "Join or create one at 'Profile'")
+        } else {
+            if let home = CurrentUser.houses[CurrentUser.user.house!] {
+                // get your schedule
+            }
+        }
+        updateUI()
+    }
+    
+    func createAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    
 
 }
