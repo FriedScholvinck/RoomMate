@@ -27,8 +27,6 @@ class DrinkViewController: UIViewController {
         super.viewDidLoad()
         changeDrinksButton.applyDesign()
         drinkOneButton.applyDesign()
-        yourDrinks = CurrentUser.user.drinks
-        drinksBehind = CurrentUser.user.drinksBehind
         updateUI()
     }
     
@@ -46,6 +44,8 @@ class DrinkViewController: UIViewController {
             changeDrinksButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:1.0)
             getOverviewButton.isEnabled = true
         }
+        yourDrinks = CurrentUser.user.drinks
+        drinksBehind = CurrentUser.user.drinksBehind
         updateUI()
     }
     
@@ -72,7 +72,7 @@ class DrinkViewController: UIViewController {
             createAlert(title: "Buy Crate!", message: "You drank 24 beers")
         }
         
-        // change drinks in house, user and online
+        // change drinks in database
         ref.child("houses/\(CurrentUser.user.house!)/drinks").setValue(totalDrinks)
         CurrentUser.ref.child("drinks").setValue(yourDrinks)
         CurrentUser.ref.child("drinksBehind").setValue(drinksBehind)

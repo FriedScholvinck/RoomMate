@@ -53,7 +53,12 @@ class AddDrinksViewController: UIViewController {
         totalBoughtLabel.text = String(boughtTotal)
         totalChangeLabel.text = String(changeTotal)
         totalDrinksLabel.text = String(newTotalDrinks)
-        drinksToBuyLabel.text = String(drinksBehind)
+        if drinksBehind < 0 {
+            drinksToBuyLabel.text = "0"
+        } else {
+            drinksToBuyLabel.text = String(drinksBehind)
+        }
+        
         if totalDrinks == 0 {
             minusOneButton.isEnabled = false
             minusOneButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:0.5)
@@ -68,10 +73,11 @@ class AddDrinksViewController: UIViewController {
         
         
         CurrentUser.houses[CurrentUser.user.house!]!.drinks = newTotalDrinks
-        ref.child("houses/\(CurrentUser.user.house!)/drinks").setValue(totalDrinks)
+        ref.child("houses/\(CurrentUser.user.house!)/drinks").setValue(newTotalDrinks)
         CurrentUser.ref.child("drinksBehind").setValue(drinksBehind)
-        
+        getData()
         createAlert(title: "Succesfully Added", message: "Enjoy Your Drinks!")
+        
     }
     
     /// creates alert to notify user
