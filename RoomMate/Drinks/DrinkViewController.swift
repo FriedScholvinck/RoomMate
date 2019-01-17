@@ -13,6 +13,7 @@ class DrinkViewController: UIViewController {
     let ref = Database.database().reference()
     var totalDrinks = 0
     var yourDrinks = 0
+    var drinksBehind = 0
     
     @IBOutlet weak var getOverviewButton: UIBarButtonItem!
     @IBOutlet weak var changeDrinksButton: UIButton!
@@ -27,6 +28,7 @@ class DrinkViewController: UIViewController {
         changeDrinksButton.applyDesign()
         drinkOneButton.applyDesign()
         yourDrinks = CurrentUser.user.drinks
+        drinksBehind = CurrentUser.user.drinksBehind
         updateUI()
     }
     
@@ -65,6 +67,7 @@ class DrinkViewController: UIViewController {
     @IBAction func drinkOneButtonTapped(_ sender: UIButton) {
         totalDrinks -= 1
         yourDrinks += 1
+        drinksBehind += 1
         if yourDrinks % 24 == 0 {
             createAlert(title: "Buy Crate!", message: "You drank 24 beers")
         }
@@ -72,6 +75,7 @@ class DrinkViewController: UIViewController {
         // change drinks in house, user and online
         ref.child("houses/\(CurrentUser.user.house!)/drinks").setValue(totalDrinks)
         CurrentUser.ref.child("drinks").setValue(yourDrinks)
+        CurrentUser.ref.child("drinksBehind").setValue(drinksBehind)
         getData()
         updateUI()
     }

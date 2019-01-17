@@ -137,8 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				35618A0521E3C819001B7CE5 /* DrinkViewController.swift */,
-				3595F03C21ECDE43000D74D5 /* OverviewDrinksViewController.swift */,
 				35EA426921EDFF1A0039654E /* AddDrinksViewController.swift */,
+				3595F03C21ECDE43000D74D5 /* OverviewDrinksViewController.swift */,
 			);
 			path = Drinks;
 			sourceTree = "<group>";

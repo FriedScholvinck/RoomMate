@@ -13,8 +13,10 @@ import Firebase
 class AddDrinksViewController: UIViewController {
     let ref = Database.database().reference()
     var totalDrinks = 0
+    var newTotalDrinks = 0
     var boughtTotal = 0
     var changeTotal = 0
+    var drinksBehind = 0
     
     // when bought, change total drinks
     @IBOutlet weak var boughtLabel: UILabel!
@@ -31,6 +33,7 @@ class AddDrinksViewController: UIViewController {
     
     
     @IBOutlet weak var totalDrinksLabel: UILabel!
+    @IBOutlet weak var drinksToBuyLabel: UILabel!
     
 
     override func viewDidLoad() {
@@ -41,14 +44,16 @@ class AddDrinksViewController: UIViewController {
         plusOneButton.applyDesign()
         plus24Button.applyDesign()
         totalDrinks = CurrentUser.houses[CurrentUser.user.house!]!.drinks
+        drinksBehind = CurrentUser.user.drinksBehind
         updateUI()
     }
     
     func updateUI() {
-        totalDrinks = totalDrinks + boughtTotal + changeTotal
+        newTotalDrinks = totalDrinks + boughtTotal + changeTotal
         totalBoughtLabel.text = String(boughtTotal)
         totalChangeLabel.text = String(changeTotal)
-        totalDrinksLabel.text = String(totalDrinks)
+        totalDrinksLabel.text = String(newTotalDrinks)
+        drinksToBuyLabel.text = String(drinksBehind)
         if totalDrinks == 0 {
             minusOneButton.isEnabled = false
             minusOneButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:0.5)
@@ -62,9 +67,9 @@ class AddDrinksViewController: UIViewController {
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         
         
-        CurrentUser.houses[CurrentUser.user.house!]!.drinks = totalDrinks
+        CurrentUser.houses[CurrentUser.user.house!]!.drinks = newTotalDrinks
         ref.child("houses/\(CurrentUser.user.house!)/drinks").setValue(totalDrinks)
-        
+        CurrentUser.ref.child("drinksBehind").setValue(drinksBehind)
         
         createAlert(title: "Succesfully Added", message: "Enjoy Your Drinks!")
     }
@@ -82,11 +87,13 @@ class AddDrinksViewController: UIViewController {
     
     @IBAction func plusOneBoughtButtonTapped(_ sender: UIButton) {
         boughtTotal += 1
+        drinksBehind -= 1
         updateUI()
     }
     
     @IBAction func plus24BoughtButtonTapped(_ sender: UIButton) {
         boughtTotal += 24
+        drinksBehind -= 24
         updateUI()
     }
     

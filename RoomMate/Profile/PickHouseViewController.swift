@@ -66,6 +66,7 @@ class PickHouseViewController: UIViewController, UITextFieldDelegate, UIPickerVi
             
             // set user drinks to 0
             CurrentUser.ref.child("drinks").setValue(0)
+            CurrentUser.ref.child("drinksBehind").setValue(0)
             
             self.createAlert(title: "Password Correct!", message: "You just joined \(self.pickerData[self.selectedRow])")
             

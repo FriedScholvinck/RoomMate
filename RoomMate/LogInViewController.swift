@@ -67,7 +67,7 @@ extension LogInViewController: FUIAuthDelegate {
         // if new user, create account online
         if (authDataResult?.additionalUserInfo?.isNewUser)! {
             // create new user
-            ref.child("users/\(CurrentUser.user.id)").setValue(["name": CurrentUser.user.name, "email": CurrentUser.user.email, "drinks": 0])
+            ref.child("users/\(CurrentUser.user.id)").setValue(["name": CurrentUser.user.name, "email": CurrentUser.user.email, "drinks": 0, "drinksBehind": 0])
             CurrentUser.ref = ref.child("users/\(CurrentUser.user.id)")
 
         }

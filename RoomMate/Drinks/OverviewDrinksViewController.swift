@@ -13,32 +13,33 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
     let ref = Database.database().reference()
     var residents: [String] = []
     var drinks: [Int] = []
+    var drinksBehind: [Int] = []
     
+    @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var drinkTableView: UITableView!
     @IBOutlet weak var totalDrinksLabel: UILabel!
     @IBOutlet weak var drinksLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getResidents()
         drinkTableView.delegate = self
         drinkTableView.dataSource = self
-        navigationItem.title = CurrentUser.user.house
-        getResidents()
         drinksLabel.text = String(drinks.reduce(0, +))
     }
+    
+    @IBAction func segmentTapped(_ sender: UISegmentedControl) {
+        drinkTableView.reloadData()
+    }
+    
     
     func getResidents() {
         for memberID in (CurrentUser.houses[CurrentUser.user.house!]?.residents)! {
             residents.append((CurrentUser.users[memberID]?.name)!)
             drinks.append((CurrentUser.users[memberID]?.drinks)!)
+            drinksBehind.append((CurrentUser.users[memberID]?.drinksBehind)!)
         }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-//        residents = (CurrentUser.houses[CurrentUser.user.house]?.residents)!
-    }
-    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return residents.count
@@ -53,7 +54,12 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
     /// set cell text and image
     func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         cell.textLabel?.text = residents[indexPath.row]
-        cell.detailTextLabel?.text = String(drinks[indexPath.row])
+        if segmentControl.selectedSegmentIndex == 1 {
+            cell.detailTextLabel?.text = String(drinks[indexPath.row])
+        } else {
+            cell.detailTextLabel?.text = String(drinksBehind[indexPath.row])
+        }
+        
     }
 
 }

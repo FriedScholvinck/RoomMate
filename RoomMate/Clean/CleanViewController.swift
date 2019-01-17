@@ -38,6 +38,7 @@ class CleanViewController: UIViewController {
         } else {
             if let home = CurrentUser.houses[CurrentUser.user.house!] {
                 // get your schedule
+                print(home)
             }
         }
         updateUI()

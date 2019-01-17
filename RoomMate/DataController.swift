@@ -48,13 +48,14 @@ class DataController {
                 user.id = key
                 
                 // name, email, drinks
-                let houseData = value as! Dictionary <String, Any>
-                user.name = houseData["name"]! as! String
-                user.email = houseData["email"]! as! String
-                user.drinks = houseData["drinks"] as! Int
+                let userData = value as! Dictionary <String, Any>
+                user.name = userData["name"]! as! String
+                user.email = userData["email"]! as! String
+                user.drinks = userData["drinks"] as! Int
+                user.drinksBehind = userData["drinksBehind"] as! Int
                 
                 // house
-                if let house = houseData["house"] {
+                if let house = userData["house"] {
                     user.house = (house as! String)
                 }
                 
@@ -69,6 +70,7 @@ class DataController {
                     }
                     
                     CurrentUser.user.drinks = CurrentUser.users[CurrentUser.user.id]!.drinks
+                    CurrentUser.user.drinksBehind = CurrentUser.users[CurrentUser.user.id]!.drinksBehind
                     CurrentUser.ref = self.ref.child("users/\(CurrentUser.user.id)")
                 }
                 completion()
