@@ -48,4 +48,5 @@
 * added functionality to drinks section
      * drinks behind (visible under segment control at lubrication overview)
 * landscape design
+* added 'about' view controller
 

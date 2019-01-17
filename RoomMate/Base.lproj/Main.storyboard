@@ -174,6 +174,47 @@
             </objects>
             <point key="canvasLocation" x="3803" y="2993"/>
         </scene>
+        <!--About-->
+        <scene sceneID="5NI-uy-RxW">
+            <objects>
+                <viewController id="OAw-XT-YQe" customClass="AboutViewController" customModule="RoomMate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="72g-ah-ZXq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RoomMate ©" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ljg-0Q-ltM">
+                                <rect key="frame" x="16" y="79" width="288" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Information" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmZ-p0-1U2">
+                                <rect key="frame" x="16" y="114.5" width="288" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ljg-0Q-ltM" firstAttribute="top" secondItem="72g-ah-ZXq" secondAttribute="topMargin" constant="15" id="0SE-N3-tBP"/>
+                            <constraint firstItem="ljg-0Q-ltM" firstAttribute="trailing" secondItem="72g-ah-ZXq" secondAttribute="trailingMargin" id="Jj6-aU-ZXO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qmZ-p0-1U2" secondAttribute="trailing" id="eKh-zq-8zW"/>
+                            <constraint firstItem="ljg-0Q-ltM" firstAttribute="leading" secondItem="72g-ah-ZXq" secondAttribute="leadingMargin" id="ohp-9B-N0D"/>
+                            <constraint firstItem="qmZ-p0-1U2" firstAttribute="top" secondItem="ljg-0Q-ltM" secondAttribute="bottom" constant="15" id="ruL-QD-72g"/>
+                            <constraint firstItem="qmZ-p0-1U2" firstAttribute="leading" secondItem="72g-ah-ZXq" secondAttribute="leadingMargin" id="xlF-Nf-lhr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Blb-Tx-cro"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="About" id="42B-k7-qfL"/>
+                    <connections>
+                        <outlet property="infoLabel" destination="qmZ-p0-1U2" id="vBV-ot-XPf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ojf-Pw-PCx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3802.5" y="4428.1690140845067"/>
+        </scene>
         <!--Your House-->
         <scene sceneID="Usg-bH-R1y">
             <objects>
@@ -1002,6 +1043,11 @@
                         <viewLayoutGuide key="safeArea" id="dd8-Pd-rhB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="DEG-eR-lXZ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="mRt-Kq-Yay">
+                            <connections>
+                                <segue destination="OAw-XT-YQe" kind="show" id="vKu-Ka-H1M"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="Osi-tY-bMG">
                             <connections>
                                 <action selector="logoutButtonTapped:" destination="w4D-FB-II1" id="U6z-rC-kxb"/>
