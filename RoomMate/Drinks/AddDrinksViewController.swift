@@ -75,9 +75,9 @@ class AddDrinksViewController: UIViewController {
         CurrentUser.houses[CurrentUser.user.house!]!.drinks = newTotalDrinks
         ref.child("houses/\(CurrentUser.user.house!)/drinks").setValue(newTotalDrinks)
         CurrentUser.ref.child("drinksBehind").setValue(drinksBehind)
-        getData()
-        createAlert(title: "Succesfully Added", message: "Enjoy Your Drinks!")
-        
+        getData() {
+            self.createAlert(title: "Succesfully Added", message: "Enjoy Your Drinks!")
+        }
     }
     
     /// creates alert to notify user

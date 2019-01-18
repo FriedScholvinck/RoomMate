@@ -28,6 +28,7 @@ struct User {
     var house: String?
     var drinks = 0
     var drinksBehind = 0
+    var currentTask = ""
 }
 
 struct House {
@@ -36,12 +37,4 @@ struct House {
     var residents: [String] = []
     var drinks: Int = 0
     var tasks: [String] = []
-}
-
-struct CleaningSchedule {
-    
-}
-
-struct Drinks {
-    
 }

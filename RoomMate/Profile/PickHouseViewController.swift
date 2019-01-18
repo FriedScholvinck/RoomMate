@@ -68,9 +68,9 @@ class PickHouseViewController: UIViewController, UITextFieldDelegate, UIPickerVi
             CurrentUser.ref.child("drinks").setValue(0)
             CurrentUser.ref.child("drinksBehind").setValue(0)
             
-            self.createAlert(title: "Password Correct!", message: "You just joined \(self.pickerData[self.selectedRow])")
-            
-            getData()
+            getData {
+                self.createAlert(title: "Password Correct!", message: "You just joined \(self.pickerData[self.selectedRow])")
+            }
             
         } else {
             createAlert(title: "Password Incorrect", message: "Try again!")

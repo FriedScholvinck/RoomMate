@@ -57,4 +57,6 @@
 * prototype is finished
     * design layout
 * next step: creating home screen
+    * having some trouble with completion
+        * decided to not show loading message (loading was short)
 

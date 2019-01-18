@@ -59,10 +59,11 @@ class NewHouseViewController: UIViewController, UITextFieldDelegate {
         CurrentUser.ref.child("drinks").setValue(0)
         CurrentUser.ref.child("drinksBehind").setValue(0)
 
-        // alert user in application
-        self.createAlert(title: "Succesfully Created '\(house.name)'", message: "Password: \(house.password)")
-        
-        getData()
+        getData {
+            
+            // alert user in application
+            self.createAlert(title: "Succesfully Created '\(house.name)'", message: "Password: \(house.password)")
+        }
     }
     
     ///

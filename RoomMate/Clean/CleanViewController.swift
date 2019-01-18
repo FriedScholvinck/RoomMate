@@ -20,14 +20,8 @@ class CleanViewController: UIViewController {
         super.viewDidLoad()
         yourScheduleButton.applyDesign()
         createScheduleButton.applyDesign()
-        
-        
     }
-    
-    func updateUI() {
-        
-    }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         if CurrentUser.user.house == nil {
             yourScheduleButton.isEnabled = false
@@ -37,10 +31,10 @@ class CleanViewController: UIViewController {
             createAlert(title: "You're not yet in a house.", message: "Join or create one at 'Profile'")
         } else {
             if CurrentUser.houses[CurrentUser.user.house!] != nil {
-                getData()
+                getData {
+                }
             }
         }
-        updateUI()
     }
     
     func createAlert(title: String, message: String) {

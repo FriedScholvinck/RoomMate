@@ -27,7 +27,9 @@ class DrinkViewController: UIViewController {
         super.viewDidLoad()
         changeDrinksButton.applyDesign()
         drinkOneButton.applyDesign()
-        updateUI()
+        getData {
+            self.updateUI()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,8 +78,10 @@ class DrinkViewController: UIViewController {
         ref.child("houses/\(CurrentUser.user.house!)/drinks").setValue(totalDrinks)
         CurrentUser.ref.child("drinks").setValue(yourDrinks)
         CurrentUser.ref.child("drinksBehind").setValue(drinksBehind)
-        getData()
-        updateUI()
+        getData {
+            self.updateUI()
+        }
+        
     }
     
     

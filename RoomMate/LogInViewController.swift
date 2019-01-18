@@ -67,7 +67,7 @@ extension LogInViewController: FUIAuthDelegate {
         // if new user, create account online
         if (authDataResult?.additionalUserInfo?.isNewUser)! {
             // create new user
-            ref.child("users/\(CurrentUser.user.id)").setValue(["name": CurrentUser.user.name, "email": CurrentUser.user.email, "drinks": 0, "drinksBehind": 0, "tasks": ""])
+            ref.child("users/\(CurrentUser.user.id)").setValue(["name": CurrentUser.user.name, "email": CurrentUser.user.email, "drinks": 0, "drinksBehind": 0, "currentTask": ""])
             CurrentUser.ref = ref.child("users/\(CurrentUser.user.id)")
 
         }
@@ -79,10 +79,11 @@ extension LogInViewController: FUIAuthDelegate {
 // this extension makes it able for any view controller to create a loading alert, which will be dismissed as the data request is completed - makes it impossible for the user to continue while the data is requested and shows 'Please wait...' - accessible via every viewcontroller, calling getData()
 extension UIViewController {
     
-    func getData() {
+    func getData(completion: @escaping () -> Void) {
 //        let alert = createLoadingAlert()
         DataController.shared.getData {
 //            alert.dismiss(animated: false, completion: nil)
+            completion()
         }
     }
     

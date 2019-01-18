@@ -42,8 +42,9 @@ class NewScheduleViewController: UIViewController, UITextFieldDelegate, UITableV
             ref.child("houses/\(CurrentUser.user.house!)/tasks/\(task)").setValue(true)
         }
         
-        createAlert(title: "Tasks Set!", message: "")
-        getData()
+        getData {
+            self.createAlert(title: "Tasks Set!", message: "")
+        }
     }
     
     /// add task to list

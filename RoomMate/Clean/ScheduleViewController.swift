@@ -21,12 +21,12 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        getData()
-        tableView.delegate = self
-        tableView.dataSource = self
         navigationItem.title = CurrentUser.user.house!
         getResidents()
         getTasks()
+        tableView.delegate = self
+        tableView.dataSource = self
+        
     }
     
     func getTasks() {
@@ -42,8 +42,6 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
     
     /// create moved lists of tasks
     func divideTasks() {
-        
-        //
         for week in 0...4 {
             var movedTasks = Array(tasks[week][1...])
             movedTasks.append(tasks[week][0])
@@ -61,7 +59,6 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.reloadData()
     }
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return residents.count
     }
@@ -77,7 +74,4 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
         cell.textLabel?.text = residents[indexPath.row]
         cell.detailTextLabel?.text = String(tasks[segmentControl.selectedSegmentIndex][indexPath.row])
     }
-
-    
-
 }

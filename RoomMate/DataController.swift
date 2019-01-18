@@ -5,6 +5,7 @@
 //  Created by Fried on 09/01/2019.
 //  Copyright © 2019 Fried. All rights reserved.
 //
+//  This shared class holds function to collect all data from Firebase Realtime Database
 
 import Foundation
 import UIKit
@@ -14,7 +15,7 @@ class DataController {
     static let shared = DataController()
     let ref = Database.database().reference()
 
-    
+    /// call functions to get data correctly
     func getData(completion: @escaping () -> Void) {
         var finished = 0
         deleteExistingData()
@@ -33,11 +34,13 @@ class DataController {
         
     }
     
+    /// delete existing data in structs
     func deleteExistingData() {
         CurrentUser.houses = [:]
         CurrentUser.users = [:]
     }
     
+    /// get users from Firebase into structs
     func getUsers(completion: @escaping () -> Void) {
         ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
             guard let data = snapshot.value as? [String: Any] else { return }
@@ -53,31 +56,32 @@ class DataController {
                 user.email = userData["email"]! as! String
                 user.drinks = userData["drinks"] as! Int
                 user.drinksBehind = userData["drinksBehind"] as! Int
-                
+                user.currentTask = userData["currentTask"] as! String
+
                 // house
                 if let house = userData["house"] {
                     user.house = (house as! String)
                 }
                 
-                
                 CurrentUser.users[user.id] = user
-                
-                DispatchQueue.main.async {
-                    
-                    // set current user
-                    if let house = CurrentUser.users[CurrentUser.user.id]!.house {
-                        CurrentUser.user.house = house
-                    }
-                    
-                    CurrentUser.user.drinks = CurrentUser.users[CurrentUser.user.id]!.drinks
-                    CurrentUser.user.drinksBehind = CurrentUser.users[CurrentUser.user.id]!.drinksBehind
-                    CurrentUser.ref = self.ref.child("users/\(CurrentUser.user.id)")
-                }
-                completion()
             }
+            DispatchQueue.main.async {
+                
+                // set current user
+                if let houseName = CurrentUser.users[CurrentUser.user.id]!.house {
+                    CurrentUser.user.house = houseName
+                }
+                
+                CurrentUser.user.drinks = CurrentUser.users[CurrentUser.user.id]!.drinks
+                CurrentUser.user.drinksBehind = CurrentUser.users[CurrentUser.user.id]!.drinksBehind
+                CurrentUser.user.currentTask = CurrentUser.users[CurrentUser.user.id]!.currentTask
+                CurrentUser.ref = self.ref.child("users/\(CurrentUser.user.id)")
+            }
+            completion()
         })
     }
     
+    /// get houses from Firebase into structs
     func getHouses(completion: @escaping () -> Void) {
         ref.child("houses").observeSingleEvent(of: .value, with: { (snapshot) in
             guard let data = snapshot.value as? [String: Any] else { return }

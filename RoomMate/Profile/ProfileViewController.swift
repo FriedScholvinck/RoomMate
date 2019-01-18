@@ -21,7 +21,9 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUI()
+        getData {
+            self.updateUI()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
