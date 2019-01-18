@@ -50,3 +50,11 @@
 * landscape design
 * added 'about' view controller
 
+## day 10
+* set up house schedule in table view with segment control to change days/weeks
+    * just like in the drinking section with 'drinks total' and 'drinks behind'
+    * schedule changes automatically when new user comes in or day/week is changed
+* prototype is finished
+    * design layout
+* next step: creating home screen
+

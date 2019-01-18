@@ -35,6 +35,7 @@ struct House {
     var password: String = ""
     var residents: [String] = []
     var drinks: Int = 0
+    var tasks: [String] = []
 }
 
 struct CleaningSchedule {

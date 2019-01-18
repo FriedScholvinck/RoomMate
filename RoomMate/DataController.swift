@@ -96,8 +96,22 @@ class DataController {
                 for resident in residentData.keys {
                     house.residents.append(resident)
                 }
+                house.residents = house.residents.sorted()
+                
+                // tasks
+                let tasksData = houseData["tasks"]! as! Dictionary <String, Any>
+                for task in tasksData.keys {
+                    house.tasks.append(task)
+                }
+                house.tasks  = house.tasks.sorted()
+                
+                // remove default task
+                if house.tasks[0] == "default" {
+                    house.tasks.remove(at: 0)
+                }
                 
                 CurrentUser.houses[house.name] = house
+                
                 
             }
             DispatchQueue.main.async {

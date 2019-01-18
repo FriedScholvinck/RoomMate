@@ -36,9 +36,8 @@ class CleanViewController: UIViewController {
             createScheduleButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:0.5)
             createAlert(title: "You're not yet in a house.", message: "Join or create one at 'Profile'")
         } else {
-            if let home = CurrentUser.houses[CurrentUser.user.house!] {
-                // get your schedule
-                print(home)
+            if CurrentUser.houses[CurrentUser.user.house!] != nil {
+                getData()
             }
         }
         updateUI()
@@ -51,7 +50,6 @@ class CleanViewController: UIViewController {
         }))
         self.present(alert, animated: true, completion: nil)
     }
-
     
 
 }

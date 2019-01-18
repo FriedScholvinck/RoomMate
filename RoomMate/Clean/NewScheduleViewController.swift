@@ -31,9 +31,19 @@ class NewScheduleViewController: UIViewController, UITextFieldDelegate, UITableV
 
     
     
-    ///
+    /// create schedule
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
-        print(tasks)
+        
+        // empty old schedule
+        ref.child("houses/\(CurrentUser.user.house!)/tasks").removeValue()
+        
+        // set new tasks
+        for task in tasks {
+            ref.child("houses/\(CurrentUser.user.house!)/tasks/\(task)").setValue(true)
+        }
+        
+        createAlert(title: "Tasks Set!", message: "")
+        getData()
     }
     
     /// add task to list
@@ -75,6 +85,16 @@ class NewScheduleViewController: UIViewController, UITextFieldDelegate, UITableV
             tasks.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+    
+    func createAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+            _ = self.navigationController?.popViewController(animated: true)
+
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     /// hide keyboard with click on screen
