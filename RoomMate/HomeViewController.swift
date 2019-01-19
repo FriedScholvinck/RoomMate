@@ -33,11 +33,13 @@ class HomeViewController: UIViewController {
         dinnerSwitch.setOn(CurrentUser.user.dinner, animated: true)
     }
     
+    ///
     @IBAction func dinnerSwitchChanged(_ sender: UISwitch) {
         CurrentUser.ref.child("dinner").setValue(dinnerSwitch.isOn)
-        updateUI()
+        CurrentUser.users[CurrentUser.user.id]!.dinner = dinnerSwitch.isOn
     }
     
+    /// set this weeks task in label
     func setCurrentTask() {
         if let houseName = CurrentUser.user.house {
             if let house = CurrentUser.houses[houseName] {
@@ -49,16 +51,10 @@ class HomeViewController: UIViewController {
         }
     }
     
-    
-
-    
     /// get data from database again
     @IBAction func refreshButtonTapped(_ sender: UIBarButtonItem) {
         getData {
             self.updateUI()
         }
     }
-    
-    
-    
 }

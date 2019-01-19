@@ -42,6 +42,7 @@ class CleanViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    /// returns true when user is in house
     func hasHouse() -> Bool {
         if CurrentUser.user.house != nil {
             return true
@@ -50,9 +51,9 @@ class CleanViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
 
+    /// set segment title for scheduled weeks
     func setWeekSegments() {
         for week in 0...4 {
-            print(CurrentUser.user.house, CurrentUser.residents)
             segmentControl.setTitle(String(CurrentUser.houses[CurrentUser.user.house!]!.firstWeek + week), forSegmentAt: week)
         }
         segmentControl.selectedSegmentIndex = getCurrentWeek() - CurrentUser.houses[CurrentUser.user.house!]!.firstWeek
