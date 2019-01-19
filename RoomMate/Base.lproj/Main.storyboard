@@ -41,10 +41,31 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="66" translatesAutoresizingMaskIntoConstraints="NO" id="6lU-0b-Tva">
+                                <rect key="frame" x="16" y="473" width="288" height="31"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0P-EZ-Ild">
+                                        <rect key="frame" x="0.0" y="0.0" width="173" height="31"/>
+                                        <state key="normal" title="Dinner Tonight?"/>
+                                        <connections>
+                                            <segue destination="X3M-Z4-3MI" kind="show" id="Ye0-ML-euz"/>
+                                        </connections>
+                                    </button>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2nv-yp-HwQ">
+                                        <rect key="frame" x="239" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="dinnerSwitchChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="fYQ-LA-sJP"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="RlK-KR-1Jk" secondAttribute="trailing" id="JZq-sf-jxQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6lU-0b-Tva" secondAttribute="bottom" constant="15" id="KOi-ts-ohW"/>
+                            <constraint firstItem="6lU-0b-Tva" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Tn3-az-i7S"/>
+                            <constraint firstItem="6lU-0b-Tva" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="XI9-Gb-GK2"/>
                             <constraint firstItem="RlK-KR-1Jk" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="15" id="pRL-Av-qhe"/>
                             <constraint firstItem="RlK-KR-1Jk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qew-2T-6d9"/>
                         </constraints>
@@ -58,6 +79,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dinnerButton" destination="Z0P-EZ-Ild" id="6tg-bn-nvy"/>
+                        <outlet property="dinnerSwitch" destination="2nv-yp-HwQ" id="xJm-70-TSd"/>
                         <outlet property="taskLabel" destination="fHI-If-SSc" id="2b1-RO-ieY"/>
                         <outlet property="yourTaskLabel" destination="PC0-0l-VnV" id="cra-u0-PqP"/>
                     </connections>
@@ -65,6 +88,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2820" y="-1001.4084507042254"/>
+        </scene>
+        <!--Dinner Tonight-->
+        <scene sceneID="6wH-0o-QMF">
+            <objects>
+                <tableViewController id="X3M-Z4-3MI" customClass="DinnerTableViewController" customModule="RoomMate" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vWC-fr-0Wt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DinnerCell" textLabel="3WD-dn-jJ2" detailTextLabel="g9q-G4-sSn" style="IBUITableViewCellStyleValue1" id="0b8-cY-Zqv">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0b8-cY-Zqv" id="HAK-Nt-VCP">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3WD-dn-jJ2">
+                                            <rect key="frame" x="16" y="12" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g9q-G4-sSn">
+                                            <rect key="frame" x="260" y="12" width="44" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="X3M-Z4-3MI" id="aAN-8z-ijN"/>
+                            <outlet property="delegate" destination="X3M-Z4-3MI" id="q7O-eO-dst"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Dinner Tonight" largeTitleDisplayMode="never" id="a0J-dU-MfK"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gcA-Ri-BCD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3803" y="-1001"/>
         </scene>
         <!--New House-->
         <scene sceneID="biP-od-bey">
@@ -97,7 +165,7 @@
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initiate House" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHV-np-Osg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create House" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHV-np-Osg">
                                 <rect key="frame" x="16" y="79" width="288" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -194,13 +262,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RoomMate ©" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ljg-0Q-ltM">
-                                <rect key="frame" x="16" y="79" width="288" height="20.5"/>
+                                <rect key="frame" x="16" y="69" width="288" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Information" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmZ-p0-1U2">
-                                <rect key="frame" x="16" y="114.5" width="288" height="20.5"/>
+                                <rect key="frame" x="16" y="94.5" width="288" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -208,11 +276,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ljg-0Q-ltM" firstAttribute="top" secondItem="72g-ah-ZXq" secondAttribute="topMargin" constant="15" id="0SE-N3-tBP"/>
+                            <constraint firstItem="ljg-0Q-ltM" firstAttribute="top" secondItem="72g-ah-ZXq" secondAttribute="topMargin" constant="5" id="0SE-N3-tBP"/>
                             <constraint firstItem="ljg-0Q-ltM" firstAttribute="trailing" secondItem="72g-ah-ZXq" secondAttribute="trailingMargin" id="Jj6-aU-ZXO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qmZ-p0-1U2" secondAttribute="trailing" id="eKh-zq-8zW"/>
                             <constraint firstItem="ljg-0Q-ltM" firstAttribute="leading" secondItem="72g-ah-ZXq" secondAttribute="leadingMargin" id="ohp-9B-N0D"/>
-                            <constraint firstItem="qmZ-p0-1U2" firstAttribute="top" secondItem="ljg-0Q-ltM" secondAttribute="bottom" constant="15" id="ruL-QD-72g"/>
+                            <constraint firstItem="qmZ-p0-1U2" firstAttribute="top" secondItem="ljg-0Q-ltM" secondAttribute="bottom" constant="5" id="ruL-QD-72g"/>
                             <constraint firstItem="qmZ-p0-1U2" firstAttribute="leading" secondItem="72g-ah-ZXq" secondAttribute="leadingMargin" id="xlF-Nf-lhr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Blb-Tx-cro"/>
@@ -651,12 +719,19 @@
                         <viewLayoutGuide key="safeArea" id="I0z-4r-Bd6"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="xal-fY-AON"/>
-                    <navigationItem key="navigationItem" title="Lubrication" largeTitleDisplayMode="never" id="kZ4-TW-6b6"/>
+                    <navigationItem key="navigationItem" title="Lubrication" largeTitleDisplayMode="never" id="kZ4-TW-6b6">
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="OOJ-gG-hVf">
+                            <connections>
+                                <action selector="trashButtonTapped:" destination="kY6-mW-feP" id="R8S-M8-era"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="drinkTableView" destination="fCD-A9-Cs7" id="LUs-NW-2UE"/>
                         <outlet property="drinksLabel" destination="69z-L9-6oz" id="dLh-yB-z0D"/>
                         <outlet property="segmentControl" destination="VqN-IO-E4r" id="VUF-vh-lmU"/>
                         <outlet property="totalDrinksLabel" destination="s8t-P0-h0Z" id="SJZ-JU-XTo"/>
+                        <outlet property="trashButton" destination="OOJ-gG-hVf" id="bSM-ew-goT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="leS-6c-JOs" userLabel="First Responder" sceneMemberID="firstResponder"/>

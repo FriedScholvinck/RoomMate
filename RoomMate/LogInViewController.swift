@@ -67,7 +67,7 @@ extension LogInViewController: FUIAuthDelegate {
         // if new user, create account online
         if (authDataResult?.additionalUserInfo?.isNewUser)! {
             // create new user
-            ref.child("users/\(CurrentUser.user.id)").setValue(["name": CurrentUser.user.name, "email": CurrentUser.user.email, "drinks": 0, "drinksBehind": 0, "currentTask": ""])
+            ref.child("users/\(CurrentUser.user.id)").setValue(["name": CurrentUser.user.name, "email": CurrentUser.user.email, "drinks": 0, "drinksBehind": 0, "dinner": false])
             CurrentUser.ref = ref.child("users/\(CurrentUser.user.id)")
 
         }
@@ -79,14 +79,45 @@ extension LogInViewController: FUIAuthDelegate {
 // this extension makes it able for any view controller to create a loading alert, which will be dismissed as the data request is completed - makes it impossible for the user to continue while the data is requested and shows 'Please wait...' - accessible via every viewcontroller, calling getData()
 extension UIViewController {
     
+    /// get data from firebase and store in global variables
     func getData(completion: @escaping () -> Void) {
 //        let alert = createLoadingAlert()
         DataController.shared.getData {
 //            alert.dismiss(animated: false, completion: nil)
+            
+            // set house info if available
+            if let houseName = CurrentUser.user.house {
+                if let house = CurrentUser.houses[houseName] {
+                    
+                    CurrentUser.residents = house.residents
+                    self.setTasks()
+                }
+            }
             completion()
         }
     }
     
+    func setTasks() {
+        CurrentUser.tasks = [(CurrentUser.houses[CurrentUser.user.house!]?.tasks)!]
+        
+        // set empty tasks if not enough
+        while CurrentUser.tasks[0].count < CurrentUser.residents.count {
+            CurrentUser.tasks[0].append("")
+        }
+        
+        divideTasks()
+    }
+    
+    /// create moved lists of tasks
+    func divideTasks() {
+        for week in 0...4 {
+            var movedTasks = Array(CurrentUser.tasks[week][1...])
+            movedTasks.append(CurrentUser.tasks[week][0])
+            CurrentUser.tasks.append(movedTasks)
+        }
+    }
+    
+    /// create alert when loading data
     func createLoadingAlert() -> UIAlertController {
         let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
@@ -97,6 +128,12 @@ extension UIViewController {
         alert.view.addSubview(loadingIndicator)
         present(alert, animated: true, completion: nil)
         return alert
+    }
+    
+    func getCurrentWeek() -> Int {
+        let calendar = NSCalendar.current
+        let component = calendar.component(.weekOfYear, from: Date())
+        return component
     }
     
     

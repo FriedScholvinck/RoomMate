@@ -27,6 +27,7 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         if CurrentUser.user.house != nil {
             houseButton.isEnabled = true
         } else {

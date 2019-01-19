@@ -52,7 +52,7 @@ class NewHouseViewController: UIViewController, UITextFieldDelegate {
         }
         
         // create new house
-        ref.child("houses/\(house.name)").setValue(["password":house.password, "drinks": 0, "residents": [CurrentUser.user.id: true], "tasks": ["default": true]])
+        ref.child("houses/\(house.name)").setValue(["password":house.password, "drinks": 0, "residents": [CurrentUser.user.id: true], "tasks": ["default": true], "firstWeek": 0])
         
         // set user in new house
         CurrentUser.ref.child("house").setValue(house.name)

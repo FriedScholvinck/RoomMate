@@ -19,10 +19,11 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var drinkTableView: UITableView!
     @IBOutlet weak var totalDrinksLabel: UILabel!
     @IBOutlet weak var drinksLabel: UILabel!
+    @IBOutlet weak var trashButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getResidents()
+        getResidentNames()
         drinkTableView.delegate = self
         drinkTableView.dataSource = self
         drinksLabel.text = String(drinks.reduce(0, +))
@@ -33,14 +34,40 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     
-    func getResidents() {
-        for memberID in (CurrentUser.houses[CurrentUser.user.house!]?.residents)! {
+    func getResidentNames() {
+        for memberID in CurrentUser.residents {
             residents.append((CurrentUser.users[memberID]?.name)!)
             drinks.append((CurrentUser.users[memberID]?.drinks)!)
             drinksBehind.append((CurrentUser.users[memberID]?.drinksBehind)!)
         }
     }
+    
+    /// set all drinking data to zero
+    @IBAction func trashButtonTapped(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Are You Sure?", message: "All drinking data will be deleted", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+            
+            // delete all drinking data
+            for user in CurrentUser.residents {
+                self.ref.child("users/\(user)/drinks").setValue(0)
+                self.ref.child("users/\(user)/drinksBehind").setValue(0)
+                self.ref.child("houses/\(CurrentUser.user.house)/drinks").setValue(0)
+            }
+            
+            self.getData {
+                _ = self.navigationController?.popViewController(animated: true)
+            }
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+        
 
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return residents.count
     }
@@ -61,5 +88,7 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
         }
         
     }
+    
+    
 
 }

@@ -38,6 +38,8 @@ class DataController {
     func deleteExistingData() {
         CurrentUser.houses = [:]
         CurrentUser.users = [:]
+        CurrentUser.residents = []
+        CurrentUser.tasks = []
     }
     
     /// get users from Firebase into structs
@@ -56,7 +58,7 @@ class DataController {
                 user.email = userData["email"]! as! String
                 user.drinks = userData["drinks"] as! Int
                 user.drinksBehind = userData["drinksBehind"] as! Int
-                user.currentTask = userData["currentTask"] as! String
+                user.dinner = userData["dinner"] as! Bool
 
                 // house
                 if let house = userData["house"] {
@@ -74,7 +76,7 @@ class DataController {
                 
                 CurrentUser.user.drinks = CurrentUser.users[CurrentUser.user.id]!.drinks
                 CurrentUser.user.drinksBehind = CurrentUser.users[CurrentUser.user.id]!.drinksBehind
-                CurrentUser.user.currentTask = CurrentUser.users[CurrentUser.user.id]!.currentTask
+                CurrentUser.user.dinner = CurrentUser.users[CurrentUser.user.id]!.dinner
                 CurrentUser.ref = self.ref.child("users/\(CurrentUser.user.id)")
             }
             completion()
@@ -94,6 +96,7 @@ class DataController {
                 let houseData = value as! Dictionary <String, Any>
                 house.password = houseData["password"]! as! String
                 house.drinks = houseData["drinks"]! as! Int
+                house.firstWeek = houseData["firstWeek"] as! Int
                 
                 // residents
                 let residentData = houseData["residents"]! as! Dictionary <String, Any>
@@ -108,7 +111,7 @@ class DataController {
                     house.tasks.append(task)
                 }
                 house.tasks  = house.tasks.sorted()
-                
+            
                 // remove default task
                 if house.tasks[0] == "default" {
                     house.tasks.remove(at: 0)
@@ -119,6 +122,7 @@ class DataController {
                 
             }
             DispatchQueue.main.async {
+                
                 
             }
             completion()

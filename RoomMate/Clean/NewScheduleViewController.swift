@@ -42,6 +42,9 @@ class NewScheduleViewController: UIViewController, UITextFieldDelegate, UITableV
             ref.child("houses/\(CurrentUser.user.house!)/tasks/\(task)").setValue(true)
         }
         
+        // set creation date
+        ref.child("houses/\(CurrentUser.user.house!)/firstWeek").setValue(getCurrentWeek())
+        
         getData {
             self.createAlert(title: "Tasks Set!", message: "")
         }

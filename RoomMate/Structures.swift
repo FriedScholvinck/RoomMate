@@ -19,6 +19,8 @@ struct CurrentUser {
     static var user = User()
     static var users: [String: User] = [:]
     static var houses: [String: House] = [:]
+    static var tasks: [[String]] = []
+    static var residents: [String] = []
 }
 
 struct User {
@@ -28,7 +30,7 @@ struct User {
     var house: String?
     var drinks = 0
     var drinksBehind = 0
-    var currentTask = ""
+    var dinner: Bool = false
 }
 
 struct House {
@@ -37,4 +39,5 @@ struct House {
     var residents: [String] = []
     var drinks: Int = 0
     var tasks: [String] = []
+    var firstWeek: Int = 0
 }

@@ -12,8 +12,7 @@ import Firebase
 class ScheduleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let ref = Database.database().reference()
     var residents: [String] = []
-    var tasks: [[String]] = []
-
+//    var week: Int = 0
 
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -22,35 +21,23 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = CurrentUser.user.house!
-        getResidents()
-        getTasks()
+        getResidentNames()
+        setWeekSegments()
         tableView.delegate = self
         tableView.dataSource = self
         
     }
     
-    func getTasks() {
-        tasks = [(CurrentUser.houses[CurrentUser.user.house!]?.tasks)!]
-
-        // set empty tasks if not enough
-        while tasks[0].count < residents.count {
-            tasks[0].append("")
-        }
-        
-        divideTasks()
-    }
-    
-    /// create moved lists of tasks
-    func divideTasks() {
+    func setWeekSegments() {
         for week in 0...4 {
-            var movedTasks = Array(tasks[week][1...])
-            movedTasks.append(tasks[week][0])
-            tasks.append(movedTasks)
+            segmentControl.setTitle(String(CurrentUser.houses[CurrentUser.user.house!]!.firstWeek + week), forSegmentAt: week)
         }
+        segmentControl.selectedSegmentIndex = getCurrentWeek() - CurrentUser.houses[CurrentUser.user.house!]!.firstWeek
     }
     
-    func getResidents() {
-        for memberID in (CurrentUser.houses[CurrentUser.user.house!]?.residents)! {
+    
+    func getResidentNames() {
+        for memberID in CurrentUser.residents {
             residents.append((CurrentUser.users[memberID]?.name)!)
         }
     }
@@ -72,6 +59,6 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
     /// set cell text and image
     func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         cell.textLabel?.text = residents[indexPath.row]
-        cell.detailTextLabel?.text = String(tasks[segmentControl.selectedSegmentIndex][indexPath.row])
+        cell.detailTextLabel?.text = String(CurrentUser.tasks[segmentControl.selectedSegmentIndex][indexPath.row])
     }
 }

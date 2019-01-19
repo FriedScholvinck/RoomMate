@@ -23,6 +23,7 @@ class CleanViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         if CurrentUser.user.house == nil {
             yourScheduleButton.isEnabled = false
             yourScheduleButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:0.5)
