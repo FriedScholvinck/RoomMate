@@ -19,20 +19,18 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var dinnerButton: UIButton!
     @IBOutlet weak var dinnerSwitch: UISwitch!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()        
         taskLabel.applyDesign()
         dinnerButton.applyDesign()
-        
-        updateUI()
+        getData {
+            self.updateUI()
+        }
     }
     
     func updateUI() {
-        getData {
-            self.setCurrentTask()
-            self.dinnerSwitch.setOn(CurrentUser.user.dinner, animated: true)
-        }
+        setCurrentTask()
+        dinnerSwitch.setOn(CurrentUser.user.dinner, animated: true)
     }
     
     @IBAction func dinnerSwitchChanged(_ sender: UISwitch) {
@@ -43,11 +41,10 @@ class HomeViewController: UIViewController {
     func setCurrentTask() {
         if let houseName = CurrentUser.user.house {
             if let house = CurrentUser.houses[houseName] {
-                print("TEST")
                 let residentIndex = house.residents.firstIndex(of: CurrentUser.user.id)
                 let weekIndex = getCurrentWeek() - house.firstWeek
                 currentTask = CurrentUser.tasks[weekIndex][residentIndex!]
-                print(CurrentUser.tasks[weekIndex][residentIndex!])
+                taskLabel.text = currentTask
             }
         }
     }
@@ -57,7 +54,9 @@ class HomeViewController: UIViewController {
     
     /// get data from database again
     @IBAction func refreshButtonTapped(_ sender: UIBarButtonItem) {
-        updateUI()
+        getData {
+            self.updateUI()
+        }
     }
     
     

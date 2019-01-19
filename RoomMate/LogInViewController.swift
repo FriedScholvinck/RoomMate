@@ -13,13 +13,7 @@ import FirebaseDatabase
 
 class LogInViewController: UIViewController {
     let ref = Database.database().reference()
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
-    }
+
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -86,14 +80,16 @@ extension UIViewController {
 //            alert.dismiss(animated: false, completion: nil)
             
             // set house info if available
-            if let houseName = CurrentUser.user.house {
-                if let house = CurrentUser.houses[houseName] {
-                    
-                    CurrentUser.residents = house.residents
-                    self.setTasks()
+            DispatchQueue.main.async {
+                if let houseName = CurrentUser.user.house {
+                    if let house = CurrentUser.houses[houseName] {
+                        
+                        CurrentUser.residents = house.residents
+                        self.setTasks()
+                    }
                 }
+                completion()
             }
-            completion()
         }
     }
     

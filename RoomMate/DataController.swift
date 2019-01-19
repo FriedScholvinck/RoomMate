@@ -38,8 +38,8 @@ class DataController {
     func deleteExistingData() {
         CurrentUser.houses = [:]
         CurrentUser.users = [:]
-        CurrentUser.residents = []
-        CurrentUser.tasks = []
+//        CurrentUser.residents = []
+//        CurrentUser.tasks = []
     }
     
     /// get users from Firebase into structs

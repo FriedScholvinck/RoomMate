@@ -63,7 +63,6 @@ class DrinkViewController: UIViewController {
             drinkOneButton.isEnabled = true
             drinkOneButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:1.0)
         }
-        
     }
     
     ///

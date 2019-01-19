@@ -52,8 +52,8 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
             for user in CurrentUser.residents {
                 self.ref.child("users/\(user)/drinks").setValue(0)
                 self.ref.child("users/\(user)/drinksBehind").setValue(0)
-                self.ref.child("houses/\(CurrentUser.user.house)/drinks").setValue(0)
             }
+            self.ref.child("houses/\(CurrentUser.user.house!)/drinks").setValue(0)
             
             self.getData {
                 _ = self.navigationController?.popViewController(animated: true)
