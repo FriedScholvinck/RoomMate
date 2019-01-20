@@ -27,6 +27,7 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
         drinkTableView.dataSource = self
         getData {
             self.getResidentNames()
+            self.drinkTableView.reloadData()
         }
     }
     
