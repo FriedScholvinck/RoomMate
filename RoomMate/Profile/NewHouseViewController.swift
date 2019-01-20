@@ -62,7 +62,7 @@ class NewHouseViewController: UIViewController, UITextFieldDelegate {
         getData {
             
             // alert user in application
-            self.createAlert(title: "Succesfully Created '\(house.name)'", message: "Password: \(house.password)")
+            self.createPopAlert(title: "Succesfully Created '\(house.name)'", message: "Password: \(house.password)")
         }
     }
     
@@ -79,15 +79,6 @@ class NewHouseViewController: UIViewController, UITextFieldDelegate {
     
     func filledIn() -> Bool {
         return houseNameTextfield.hasText && passwordTextfield.hasText && passwordAgainTextfield.hasText && passwordTextfield.text == passwordAgainTextfield.text
-    }
-    
-    func createAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-            _ = self.navigationController?.popViewController(animated: true)
-        }))
-        self.present(alert, animated: true, completion: nil)
     }
 
     /// hide keyboard with click on screen

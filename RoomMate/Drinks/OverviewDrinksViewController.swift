@@ -23,49 +23,55 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getResidentNames()
         drinkTableView.delegate = self
         drinkTableView.dataSource = self
-        drinksLabel.text = String(drinks.reduce(0, +))
+        getData {
+            self.getResidentNames()
+        }
     }
     
-    @IBAction func segmentTapped(_ sender: UISegmentedControl) {
-        drinkTableView.reloadData()
-    }
-    
-    
+    /// get table view date (names and drinks)
     func getResidentNames() {
         for memberID in CurrentUser.residents {
             residents.append((CurrentUser.users[memberID]?.name)!)
             drinks.append((CurrentUser.users[memberID]?.drinks)!)
             drinksBehind.append((CurrentUser.users[memberID]?.drinksBehind)!)
+            
+            // sum up all drink for total
+            drinksLabel.text = String(drinks.reduce(0, +))
         }
     }
     
-    /// set all drinking data to zero
+    /// data reload in other segment
+    @IBAction func segmentTapped(_ sender: UISegmentedControl) {
+        drinkTableView.reloadData()
+    }
+    
+    /// set all drinking data to zero (first check if user is sure)
     @IBAction func trashButtonTapped(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "Are You Sure?", message: "All drinking data will be deleted", preferredStyle: .alert)
+        
+        // delete all drinking data
         alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { (action) in
             alert.dismiss(animated: true, completion: nil)
-            
-            // delete all drinking data
             for user in CurrentUser.residents {
                 self.ref.child("users/\(user)/drinks").setValue(0)
                 self.ref.child("users/\(user)/drinksBehind").setValue(0)
             }
             self.ref.child("houses/\(CurrentUser.user.house!)/drinks").setValue(0)
             
+            // go back to DrinkViewController
             self.getData {
                 _ = self.navigationController?.popViewController(animated: true)
             }
             
         }))
+        
+        // cancel removal
         alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
             alert.dismiss(animated: true, completion: nil)
         }))
         self.present(alert, animated: true, completion: nil)
-        
-
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,7 +84,6 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
         return cell
     }
     
-    /// set cell text and image
     func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         cell.textLabel?.text = residents[indexPath.row]
         if segmentControl.selectedSegmentIndex == 1 {
@@ -88,7 +93,4 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
         }
         
     }
-    
-    
-
 }

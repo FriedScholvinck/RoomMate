@@ -60,3 +60,12 @@
     * having some trouble with completion
         * decided to not show loading message (loading was short)
 
+## day 11
+* maken schedule work and moved it to first view controller in 'Clean' tab
+* added completion functionality to getData()
+* added new function 'Dinner Tonight'
+    * switch button whether or not you'll eat at home tonight
+* added icons, pictures
+* had some problems with roommates drinking at the same time
+    * fix: get all data again when drink button is tapped
+

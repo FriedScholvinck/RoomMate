@@ -22,40 +22,43 @@ class DrinkViewController: UIViewController {
     @IBOutlet weak var drinksInStoreLabel: UILabel!
     @IBOutlet weak var drinkOneButton: UIButton!
     
-    /// apply design
+    /// check if user is in house
     override func viewDidLoad() {
         super.viewDidLoad()
         changeDrinksButton.applyDesign()
         drinkOneButton.applyDesign()
         getData {
-            self.updateUI()
+            if CurrentUser.user.house == nil {
+                self.changeDrinksButton.isEnabled = false
+                self.changeDrinksButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:0.5)
+                self.getOverviewButton.isEnabled = false
+                self.createAlert(title: "You're not yet in a house.", message: "Join or create one at 'Profile'")
+            } else {
+                self.changeDrinksButton.isEnabled = true
+                self.changeDrinksButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:1.0)
+                self.getOverviewButton.isEnabled = true
+                
+                // set UI
+                self.updateValues()
+                self.updateUI()
+            }
+            
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        if CurrentUser.user.house == nil {
-            changeDrinksButton.isEnabled = false
-            changeDrinksButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:0.5)
-            getOverviewButton.isEnabled = false
-            createAlert(title: "You're not yet in a house.", message: "Join or create one at 'Profile'")
-        } else {
-            if let home = CurrentUser.houses[CurrentUser.user.house!] {
-                totalDrinks = home.drinks
-            }
-            changeDrinksButton.isEnabled = true
-            changeDrinksButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:1.0)
-            getOverviewButton.isEnabled = true
+    /// set variables in app
+    func updateValues() {
+        if let home = CurrentUser.houses[CurrentUser.user.house!] {
+            self.totalDrinks = home.drinks
         }
         yourDrinks = CurrentUser.user.drinks
         drinksBehind = CurrentUser.user.drinksBehind
-        updateUI()
     }
     
     /// update total drinks
     func updateUI() {
-        progressView.setProgress(Float(yourDrinks % 24) / 24.0, animated: true)        
-        totalDrinksLabel.text = String(totalDrinks)
+        progressView.setProgress(Float(self.yourDrinks % 24) / 24.0, animated: true)
+        totalDrinksLabel.text = String(self.totalDrinks)
         if totalDrinks == 0 {
             drinkOneButton.isEnabled = false
             drinkOneButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:0.5)
@@ -65,36 +68,23 @@ class DrinkViewController: UIViewController {
         }
     }
     
-    ///
+    /// get data and update values, room mates might have had a drink at the same time
     @IBAction func drinkOneButtonTapped(_ sender: UIButton) {
-        totalDrinks -= 1
-        yourDrinks += 1
-        drinksBehind += 1
-        if yourDrinks % 24 == 0 {
-            createAlert(title: "Buy Crate!", message: "You drank 24 beers")
-        }
-        
-        // change drinks in database
-        ref.child("houses/\(CurrentUser.user.house!)/drinks").setValue(totalDrinks)
-        CurrentUser.ref.child("drinks").setValue(yourDrinks)
-        CurrentUser.ref.child("drinksBehind").setValue(drinksBehind)
         getData {
+            self.updateValues()
+            self.totalDrinks -= 1
+            self.yourDrinks += 1
+            self.drinksBehind += 1
             self.updateUI()
+            
+            // change drinks in database
+            self.ref.child("houses/\(CurrentUser.user.house!)/drinks").setValue(self.totalDrinks)
+            CurrentUser.ref.child("drinks").setValue(self.yourDrinks)
+            CurrentUser.ref.child("drinksBehind").setValue(self.drinksBehind)
+            
+            if self.yourDrinks % 24 == 0 {
+                self.createAlert(title: "Buy Crate!", message: "You drank 24 beers")
+            }
         }
-        
     }
-    
-    
-    func createAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    
-    
-    
-    
 }

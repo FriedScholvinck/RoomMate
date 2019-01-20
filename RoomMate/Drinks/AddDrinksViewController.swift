@@ -43,9 +43,15 @@ class AddDrinksViewController: UIViewController {
         minusOneButton.applyDesign()
         plusOneButton.applyDesign()
         plus24Button.applyDesign()
+        getData {
+            self.updateValues()
+            self.updateUI()
+        }
+    }
+    
+    func updateValues() {
         totalDrinks = CurrentUser.houses[CurrentUser.user.house!]!.drinks
         drinksBehind = CurrentUser.user.drinksBehind
-        updateUI()
     }
     
     func updateUI() {
@@ -70,26 +76,14 @@ class AddDrinksViewController: UIViewController {
     
     ///
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
-        
-        
         CurrentUser.houses[CurrentUser.user.house!]!.drinks = newTotalDrinks
         ref.child("houses/\(CurrentUser.user.house!)/drinks").setValue(newTotalDrinks)
         CurrentUser.ref.child("drinksBehind").setValue(drinksBehind)
         getData() {
-            self.createAlert(title: "Succesfully Added", message: "Enjoy Your Drinks!")
+            self.createPopAlert(title: "Succesfully Added", message: "Enjoy Your Drinks!")
         }
     }
-    
-    /// creates alert to notify user
-    func createAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-            _ = self.navigationController?.popViewController(animated: true)
-        }))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
+
     
     @IBAction func plusOneBoughtButtonTapped(_ sender: UIButton) {
         boughtTotal += 1
@@ -103,19 +97,16 @@ class AddDrinksViewController: UIViewController {
         updateUI()
     }
     
-    ///
     @IBAction func minusOneButtonTapped(_ sender: UIButton) {
         changeTotal -= 1
         updateUI()
     }
     
-    ///
     @IBAction func plusOneButtonTapped(_ sender: UIButton) {
         changeTotal += 1
         updateUI()
     }
     
-    ///
     @IBAction func plus24ButtonTapped(_ sender: UIButton) {
         changeTotal += 24
         updateUI()

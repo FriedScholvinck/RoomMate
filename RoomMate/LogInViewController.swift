@@ -5,15 +5,15 @@
 //  Created by Fried on 07/01/2019.
 //  Copyright © 2019 Fried. All rights reserved.
 //
-//  View Controller for logging in and register via Google Firebase
+//  View Controller for log in and register via Google Firebase (shows AuthViewController by Google Firebase)
+//  Extensions for ViewControllers, buttons and labels below
 
 import UIKit
 import FirebaseUI
 import FirebaseDatabase
 
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController, FUIAuthDelegate {
     let ref = Database.database().reference()
-
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -42,11 +42,6 @@ class LogInViewController: UIViewController {
         present(authViewController, animated: true, completion: nil)
     }
     
-    
-}
-
-extension LogInViewController: FUIAuthDelegate {
-    
     /// log in user
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         if error != nil {
@@ -63,21 +58,19 @@ extension LogInViewController: FUIAuthDelegate {
             // create new user
             ref.child("users/\(CurrentUser.user.id)").setValue(["name": CurrentUser.user.name, "email": CurrentUser.user.email, "drinks": 0, "drinksBehind": 0, "dinner": false])
             CurrentUser.ref = ref.child("users/\(CurrentUser.user.id)")
-
+            
         }
         
         performSegue(withIdentifier: "goHome", sender: self)
     }
 }
 
-// this extension makes it able for any view controller to create a loading alert, which will be dismissed as the data request is completed - makes it impossible for the user to continue while the data is requested and shows 'Please wait...' - accessible via every viewcontroller, calling getData()
+// call getData from every view controller
 extension UIViewController {
     
     /// get data from firebase and store in global variables
     func getData(completion: @escaping () -> Void) {
-//        let alert = createLoadingAlert()
         DataController.shared.getData {
-//            alert.dismiss(animated: false, completion: nil)
             
             // set house info if available
             DispatchQueue.main.async {
@@ -93,6 +86,7 @@ extension UIViewController {
         }
     }
     
+    /// set current cleaning schedule
     func setTasks() {
         CurrentUser.tasks = [(CurrentUser.houses[CurrentUser.user.house!]?.tasks)!]
         
@@ -113,26 +107,30 @@ extension UIViewController {
         }
     }
     
-    /// create alert when loading data
-    func createLoadingAlert() -> UIAlertController {
-        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.gray
-        loadingIndicator.startAnimating();
-        
-        alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
-        return alert
-    }
-    
+    /// get current week number in year
     func getCurrentWeek() -> Int {
         let calendar = NSCalendar.current
         let component = calendar.component(.weekOfYear, from: Date())
         return component
     }
     
+    /// alert user if not yet in house (for clean and drinks overview)
+    func createAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
     
+    func createPopAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+            _ = self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 // green round label design

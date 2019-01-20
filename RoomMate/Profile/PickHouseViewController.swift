@@ -69,24 +69,17 @@ class PickHouseViewController: UIViewController, UITextFieldDelegate, UIPickerVi
             CurrentUser.ref.child("drinksBehind").setValue(0)
             
             getData {
-                self.createAlert(title: "Password Correct!", message: "You just joined \(self.pickerData[self.selectedRow])")
+                self.createPopAlert(title: "Password Correct!", message: "You just joined \(self.pickerData[self.selectedRow])")
             }
             
         } else {
-            createAlert(title: "Password Incorrect", message: "Try again!")
+            createPopAlert(title: "Password Incorrect", message: "Try again!")
         }
         
     }
     
     
-    func createAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-            _ = self.navigationController?.popViewController(animated: true)
-        }))
-        self.present(alert, animated: true, completion: nil)
-    }
+    
     
     // Number of columns of data
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

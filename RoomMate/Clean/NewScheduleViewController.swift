@@ -19,7 +19,6 @@ class NewScheduleViewController: UIViewController, UITextFieldDelegate, UITableV
     @IBOutlet weak var plusTaskButton: UIButton!
     @IBOutlet weak var taskTableView: UITableView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         taskTextfield1.delegate = self
@@ -46,7 +45,7 @@ class NewScheduleViewController: UIViewController, UITextFieldDelegate, UITableV
         ref.child("houses/\(CurrentUser.user.house!)/firstWeek").setValue(getCurrentWeek())
         
         getData {
-            self.createAlert(title: "Tasks Set!", message: "")
+            self.createPopAlert(title: "Tasks Set!", message: "")
         }
     }
     
@@ -89,16 +88,6 @@ class NewScheduleViewController: UIViewController, UITextFieldDelegate, UITableV
             tasks.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
-    }
-    
-    func createAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-            _ = self.navigationController?.popViewController(animated: true)
-
-        }))
-        self.present(alert, animated: true, completion: nil)
     }
     
     /// hide keyboard with click on screen

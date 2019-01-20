@@ -18,7 +18,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var joinHouseButton: UIButton!
     @IBOutlet weak var createHouseButton: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         joinHouseButton.applyDesign()
@@ -35,6 +34,7 @@ class ProfileViewController: UIViewController {
             houseButton.isEnabled = true
         } else {
             houseButton.isEnabled = false
+            
         }
         houseButton.setTitle(CurrentUser.user.house, for: .normal)
     }

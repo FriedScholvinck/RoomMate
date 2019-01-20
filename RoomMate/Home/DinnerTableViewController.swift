@@ -5,6 +5,7 @@
 //  Created by Fried on 19/01/2019.
 //  Copyright © 2019 Fried. All rights reserved.
 //
+//  Overview of all Room Mates and if they eat at home tonight
 
 import UIKit
 import Firebase
@@ -16,10 +17,14 @@ class DinnerTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getResidentNames()
-        getDinnerDetail()
+        getData {
+            self.getResidentNames()
+            self.getDinnerDetail()
+            self.tableView.reloadData()
+        }
     }
 
+    /// assign names of room mates
     func getResidentNames() {
         residents = []
         for memberID in CurrentUser.residents {
@@ -27,6 +32,7 @@ class DinnerTableViewController: UITableViewController {
         }
     }
     
+    /// assign whether room mates will eat at home tonight
     func getDinnerDetail() {
         for resident in CurrentUser.residents {
             if (CurrentUser.users[resident]?.dinner)! {
@@ -47,11 +53,8 @@ class DinnerTableViewController: UITableViewController {
         return cell
     }
     
-    /// set cell text
     func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         cell.textLabel?.text = residents[indexPath.row]
         cell.detailTextLabel?.text = dinner[indexPath.row]
     }
-
-    
 }

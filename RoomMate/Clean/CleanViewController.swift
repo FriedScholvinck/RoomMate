@@ -17,7 +17,6 @@ class CleanViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -27,9 +26,10 @@ class CleanViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.updateUI()
         }
     }
-    
+
+    ///
     func updateUI() {
-        if hasHouse() {
+        if CurrentUser.user.house != nil {
             getResidentNames()
             setWeekSegments()
             tableView.reloadData()
@@ -42,15 +42,13 @@ class CleanViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    /// returns true when user is in house
-    func hasHouse() -> Bool {
-        if CurrentUser.user.house != nil {
-            return true
-        } else {
-            return false
+    /// set variable with names for table view
+    func getResidentNames() {
+        for memberID in CurrentUser.residents {
+            residents.append((CurrentUser.users[memberID]?.name)!)
         }
     }
-
+    
     /// set segment title for scheduled weeks
     func setWeekSegments() {
         for week in 0...4 {
@@ -59,25 +57,11 @@ class CleanViewController: UIViewController, UITableViewDelegate, UITableViewDat
         segmentControl.selectedSegmentIndex = getCurrentWeek() - CurrentUser.houses[CurrentUser.user.house!]!.firstWeek
     }
     
-    
-    func getResidentNames() {
-        for memberID in CurrentUser.residents {
-            residents.append((CurrentUser.users[memberID]?.name)!)
-        }
-    }
-    
+    /// reload data in table view
     @IBAction func segmentTapped(_ sender: UISegmentedControl) {
         tableView.reloadData()
     }
-    
-    func createAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return residents.count
     }
@@ -88,7 +72,6 @@ class CleanViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    /// set cell text and image
     func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         cell.textLabel?.text = residents[indexPath.row]
         cell.detailTextLabel?.text = String(CurrentUser.tasks[segmentControl.selectedSegmentIndex][indexPath.row])
