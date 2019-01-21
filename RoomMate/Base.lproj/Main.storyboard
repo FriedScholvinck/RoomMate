@@ -277,34 +277,38 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Information" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmZ-p0-1U2">
-                                <rect key="frame" x="16" y="114.5" width="288" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=compact">
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                </variation>
-                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dz5-2c-cju">
+                                <rect key="frame" x="0.0" y="160" width="320" height="359"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WTO-Yq-jmL">
+                                        <rect key="frame" x="8" y="8" width="304" height="601"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <mutableString key="text"> - Home\nHome View\n\n - Clean\nAdd house tasks to be divided by the system on a 5 week schedule. Simply create a new schedule when you want to change the current one.\n\n - Drinks\nAdd beer drinking information for all your Room Mates. Drinks Behind tells you how many you have to buy. Press 'Drink One' whenever you \n\n - Profile\nJoin or create your house and ask your Room Mates to join with the correct password.       hallo        - Home\nHome View\n\n - Clean\nAdd house tasks to be divided by the system on a 5 week schedule. Simply create a new schedule when you want to change the current one.\n\n - Drinks\nAdd beer drinking information for all your Room Mates. Drinks Behind tells you how many you have to buy. Press 'Drink One' whenever you \n\n - Profile\nJoin or create your house and ask your Room Mates to join with the correct password.</mutableString>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ljg-0Q-ltM" firstAttribute="top" secondItem="72g-ah-ZXq" secondAttribute="topMargin" constant="15" id="0SE-N3-tBP">
                                 <variation key="heightClass=compact" constant="5"/>
                             </constraint>
+                            <constraint firstItem="Dz5-2c-cju" firstAttribute="leading" secondItem="Blb-Tx-cro" secondAttribute="leading" id="0ck-YT-RZ6"/>
+                            <constraint firstItem="Dz5-2c-cju" firstAttribute="bottom" secondItem="Blb-Tx-cro" secondAttribute="bottom" id="Beb-Mt-2OX"/>
                             <constraint firstItem="ljg-0Q-ltM" firstAttribute="trailing" secondItem="72g-ah-ZXq" secondAttribute="trailingMargin" id="Jj6-aU-ZXO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="qmZ-p0-1U2" secondAttribute="trailing" id="eKh-zq-8zW"/>
+                            <constraint firstItem="Dz5-2c-cju" firstAttribute="trailing" secondItem="Blb-Tx-cro" secondAttribute="trailing" id="Npp-l6-XcR"/>
+                            <constraint firstItem="Dz5-2c-cju" firstAttribute="top" secondItem="ljg-0Q-ltM" secondAttribute="bottom" constant="60.5" id="Sg0-Er-9Iz"/>
                             <constraint firstItem="ljg-0Q-ltM" firstAttribute="leading" secondItem="72g-ah-ZXq" secondAttribute="leadingMargin" id="ohp-9B-N0D"/>
-                            <constraint firstItem="qmZ-p0-1U2" firstAttribute="top" secondItem="ljg-0Q-ltM" secondAttribute="bottom" constant="15" id="ruL-QD-72g">
-                                <variation key="heightClass=compact" constant="5"/>
-                            </constraint>
-                            <constraint firstItem="qmZ-p0-1U2" firstAttribute="leading" secondItem="72g-ah-ZXq" secondAttribute="leadingMargin" id="xlF-Nf-lhr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Blb-Tx-cro"/>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="42B-k7-qfL"/>
                     <connections>
-                        <outlet property="infoLabel" destination="qmZ-p0-1U2" id="vBV-ot-XPf"/>
+                        <outlet property="scrollView" destination="Dz5-2c-cju" id="UQN-3n-fRu"/>
+                        <outlet property="textView" destination="WTO-Yq-jmL" id="Pqo-1p-aGg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ojf-Pw-PCx" userLabel="First Responder" sceneMemberID="firstResponder"/>

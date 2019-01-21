@@ -68,4 +68,8 @@
 * added icons, pictures
 * had some problems with roommates drinking at the same time
     * fix: get all data again when drink button is tapped
+* dinner function (notification every day for who eats at home only possible if you pay Apple)
+    * set to zero from Firebase every day might be possible?
+* struggle with scroll view (about section in Profile)
+* cleaning schedule for 5 weeks now -> how to expend?
 
