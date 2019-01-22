@@ -13,7 +13,7 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
     let ref = Database.database().reference()
     var residents: [String] = []
     var drinks: [Int] = []
-    var drinksBehind: [Int] = []
+    var drinksToBuy: [Int] = []
     
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var drinkTableView: UITableView!
@@ -36,7 +36,7 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
         for memberID in CurrentUser.residents {
             residents.append((CurrentUser.users[memberID]?.name)!)
             drinks.append((CurrentUser.users[memberID]?.drinks)!)
-            drinksBehind.append((CurrentUser.users[memberID]?.drinksBehind)!)
+            drinksToBuy.append((CurrentUser.users[memberID]?.drinksToBuy)!)
             
             // sum up all drink for total
             drinksLabel.text = String(drinks.reduce(0, +))
@@ -57,7 +57,7 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
             alert.dismiss(animated: true, completion: nil)
             for user in CurrentUser.residents {
                 self.ref.child("users/\(user)/drinks").setValue(0)
-                self.ref.child("users/\(user)/drinksBehind").setValue(0)
+                self.ref.child("users/\(user)/drinksToBuy").setValue(0)
             }
             self.ref.child("houses/\(CurrentUser.user.house!)/drinks").setValue(0)
             
@@ -90,7 +90,7 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
         if segmentControl.selectedSegmentIndex == 1 {
             cell.detailTextLabel?.text = String(drinks[indexPath.row])
         } else {
-            cell.detailTextLabel?.text = String(drinksBehind[indexPath.row])
+            cell.detailTextLabel?.text = String(drinksToBuy[indexPath.row])
         }
         
     }

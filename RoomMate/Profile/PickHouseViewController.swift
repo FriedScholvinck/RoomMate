@@ -27,8 +27,6 @@ class PickHouseViewController: UIViewController, UITextFieldDelegate, UIPickerVi
         housePicker.delegate = self
         passwordTextfield.delegate = self
         setPickerData()
-        
-        
     }
     
     func setPickerData() {
@@ -38,7 +36,7 @@ class PickHouseViewController: UIViewController, UITextFieldDelegate, UIPickerVi
             pickerData = Array(CurrentUser.houses.keys)
         }
         if pickerData == [] {
-            pickerData = ["No Houses Available"]
+            pickerData = ["no houses available"]
             saveButton.isEnabled = false
         }
     }
@@ -66,7 +64,7 @@ class PickHouseViewController: UIViewController, UITextFieldDelegate, UIPickerVi
             
             // set user drinks to 0
             CurrentUser.ref.child("drinks").setValue(0)
-            CurrentUser.ref.child("drinksBehind").setValue(0)
+            CurrentUser.ref.child("drinksToBuy").setValue(0)
             
             getData {
                 self.createPopAlert(title: "Password Correct!", message: "You just joined \(self.pickerData[self.selectedRow])")

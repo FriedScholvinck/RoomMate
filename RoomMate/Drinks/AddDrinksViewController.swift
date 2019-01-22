@@ -16,7 +16,7 @@ class AddDrinksViewController: UIViewController {
     var newTotalDrinks = 0
     var boughtTotal = 0
     var changeTotal = 0
-    var drinksBehind = 0
+    var drinksToBuy = 0
     
     // when bought, change total drinks
     @IBOutlet weak var boughtLabel: UILabel!
@@ -51,7 +51,7 @@ class AddDrinksViewController: UIViewController {
     
     func updateValues() {
         totalDrinks = CurrentUser.houses[CurrentUser.user.house!]!.drinks
-        drinksBehind = CurrentUser.user.drinksBehind
+        drinksToBuy = CurrentUser.user.drinksToBuy
     }
     
     func updateUI() {
@@ -59,10 +59,10 @@ class AddDrinksViewController: UIViewController {
         totalBoughtLabel.text = String(boughtTotal)
         totalChangeLabel.text = String(changeTotal)
         totalDrinksLabel.text = String(newTotalDrinks)
-        if drinksBehind < 0 {
+        if drinksToBuy < 0 {
             drinksToBuyLabel.text = "0"
         } else {
-            drinksToBuyLabel.text = String(drinksBehind)
+            drinksToBuyLabel.text = String(drinksToBuy)
         }
         
         if totalDrinks == 0 {
@@ -78,7 +78,7 @@ class AddDrinksViewController: UIViewController {
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         CurrentUser.houses[CurrentUser.user.house!]!.drinks = newTotalDrinks
         ref.child("houses/\(CurrentUser.user.house!)/drinks").setValue(newTotalDrinks)
-        CurrentUser.ref.child("drinksBehind").setValue(drinksBehind)
+        CurrentUser.ref.child("drinksToBuy").setValue(drinksToBuy)
         getData() {
             self.createPopAlert(title: "Succesfully Added", message: "Enjoy Your Drinks!")
         }
@@ -87,13 +87,13 @@ class AddDrinksViewController: UIViewController {
     
     @IBAction func plusOneBoughtButtonTapped(_ sender: UIButton) {
         boughtTotal += 1
-        drinksBehind -= 1
+        drinksToBuy -= 1
         updateUI()
     }
     
     @IBAction func plus24BoughtButtonTapped(_ sender: UIButton) {
         boughtTotal += 24
-        drinksBehind -= 24
+        drinksToBuy -= 24
         updateUI()
     }
     

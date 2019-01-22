@@ -100,7 +100,7 @@ extension UIViewController {
     
     /// create moved lists of tasks
     func divideTasks() {
-        for week in 0...4 {
+        for week in 0...CurrentUser.residents.count - 1 {
             var movedTasks = Array(CurrentUser.tasks[week][1...])
             movedTasks.append(CurrentUser.tasks[week][0])
             CurrentUser.tasks.append(movedTasks)

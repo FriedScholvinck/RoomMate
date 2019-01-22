@@ -29,7 +29,7 @@ struct User {
     var email: String = ""
     var house: String?
     var drinks = 0
-    var drinksBehind = 0
+    var drinksToBuy = 0
     var dinner: Bool = false
 }
 

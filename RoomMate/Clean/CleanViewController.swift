@@ -26,12 +26,16 @@ class CleanViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.updateUI()
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        segmentControl.selectedSegmentIndex = getCurrentWeek() - CurrentUser.houses[CurrentUser.user.house!]!.firstWeek
+    }
 
     ///
     func updateUI() {
         if CurrentUser.user.house != nil {
             getResidentNames()
-            setWeekSegments()
+            checkIfWeekInSchedule()
             tableView.reloadData()
             createScheduleButton.isEnabled = true
             createScheduleButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:1.0)
@@ -49,9 +53,37 @@ class CleanViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    // if this week is past last week in schedule, repeat schedule starting with current week
+    func checkIfWeekInSchedule() {
+        if getCurrentWeek() > CurrentUser.houses[CurrentUser.user.house!]!.firstWeek + (CurrentUser.residents.count - 1) {
+            
+            // set firstWeek variable to current week
+            ref.child("houses/\(CurrentUser.user.house!)/firstWeek").setValue(getCurrentWeek())
+            getData {
+                self.setSegmentControl()
+            }
+        } else {
+            setSegmentControl()
+        }
+        
+    }
+    
+    
+    /// set segment control size
+    func setSegmentControl() {
+        segmentControl.removeAllSegments()
+        
+        
+        
+        for week in 0...residents.count - 1 {
+            segmentControl.insertSegment(withTitle: String(CurrentUser.houses[CurrentUser.user.house!]!.firstWeek + week), at: week, animated: true)
+        }
+        segmentControl.selectedSegmentIndex = getCurrentWeek() - CurrentUser.houses[CurrentUser.user.house!]!.firstWeek
+    }
+    
     /// set segment title for scheduled weeks
     func setWeekSegments() {
-        for week in 0...4 {
+        for week in 0...residents.count {
             segmentControl.setTitle(String(CurrentUser.houses[CurrentUser.user.house!]!.firstWeek + week), forSegmentAt: week)
         }
         segmentControl.selectedSegmentIndex = getCurrentWeek() - CurrentUser.houses[CurrentUser.user.house!]!.firstWeek

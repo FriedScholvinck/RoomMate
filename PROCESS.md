@@ -73,3 +73,12 @@
 * struggle with scroll view (about section in Profile)
 * cleaning schedule for 5 weeks now -> how to expend?
 
+## day 12
+* solution to cleaning schedule problems:
+    * the amount of residents in the house is amount of weeks shown
+    * after the last week is set, the schedule will begin again
+    * every resident will get 1 of the tasks during the entire schedule
+        * unless: users put in more tasks than residents (which is silly)
+        * if users put in less tasks than residents, some weeks you'll have to do nothing
+* drinks behind changed to drinks to buy -> easier to understand
+

@@ -57,7 +57,7 @@ class DataController {
                 user.name = userData["name"]! as! String
                 user.email = userData["email"]! as! String
                 user.drinks = userData["drinks"] as! Int
-                user.drinksBehind = userData["drinksBehind"] as! Int
+                user.drinksToBuy = userData["drinksToBuy"] as! Int
                 user.dinner = userData["dinner"] as! Bool
 
                 // house
@@ -75,7 +75,7 @@ class DataController {
                 }
                 
                 CurrentUser.user.drinks = CurrentUser.users[CurrentUser.user.id]!.drinks
-                CurrentUser.user.drinksBehind = CurrentUser.users[CurrentUser.user.id]!.drinksBehind
+                CurrentUser.user.drinksToBuy = CurrentUser.users[CurrentUser.user.id]!.drinksToBuy
                 CurrentUser.user.dinner = CurrentUser.users[CurrentUser.user.id]!.dinner
                 CurrentUser.ref = self.ref.child("users/\(CurrentUser.user.id)")
             }

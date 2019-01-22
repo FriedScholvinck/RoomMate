@@ -272,23 +272,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RoomMate ©" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ljg-0Q-ltM">
-                                <rect key="frame" x="16" y="79" width="288" height="20.5"/>
+                                <rect key="frame" x="16" y="79" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dz5-2c-cju">
-                                <rect key="frame" x="0.0" y="160" width="320" height="359"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dz5-2c-cju">
+                                <rect key="frame" x="0.0" y="105" width="320" height="414"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WTO-Yq-jmL">
-                                        <rect key="frame" x="8" y="8" width="304" height="601"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WTO-Yq-jmL">
+                                        <rect key="frame" x="8" y="8" width="304" height="414"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <mutableString key="text"> - Home\nHome View\n\n - Clean\nAdd house tasks to be divided by the system on a 5 week schedule. Simply create a new schedule when you want to change the current one.\n\n - Drinks\nAdd beer drinking information for all your Room Mates. Drinks Behind tells you how many you have to buy. Press 'Drink One' whenever you \n\n - Profile\nJoin or create your house and ask your Room Mates to join with the correct password.       hallo        - Home\nHome View\n\n - Clean\nAdd house tasks to be divided by the system on a 5 week schedule. Simply create a new schedule when you want to change the current one.\n\n - Drinks\nAdd beer drinking information for all your Room Mates. Drinks Behind tells you how many you have to buy. Press 'Drink One' whenever you \n\n - Profile\nJoin or create your house and ask your Room Mates to join with the correct password.</mutableString>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <mutableString key="text"> - Home Here, you can find your taks for this week. Press 'Dinner Tonight?' to see whom of your Room Mates eats at home tonight. Set yourself present using the switch button. Press the refresh button if you think changes of your Room Mates didn't come through in your application.   - Clean Add house tasks to be divided by the system on a week schedule. The schedule is as long as the amount of Room Mates you have and shows the current week of the year. It will start again when the last week has past. Simply create a new schedule when you want to change the current one.   - Drinks Add beer drinking information for all of your Room Mates. Press 'Drink One' whenever you drink a beer and add  when you've bought.   - Profile Join or create your house and ask your Room Mates to join with the correct password. You can only be in one house at a time. If you move, you'll be removed from your old house.  </mutableString>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="WTO-Yq-jmL" firstAttribute="leading" secondItem="Dz5-2c-cju" secondAttribute="leading" constant="8" id="441-uB-ytA"/>
+                                    <constraint firstAttribute="bottom" secondItem="WTO-Yq-jmL" secondAttribute="bottom" constant="8" id="FDr-8S-OwS"/>
+                                    <constraint firstItem="WTO-Yq-jmL" firstAttribute="centerX" secondItem="Dz5-2c-cju" secondAttribute="centerX" id="e17-IU-zEK"/>
+                                    <constraint firstItem="WTO-Yq-jmL" firstAttribute="top" secondItem="Dz5-2c-cju" secondAttribute="top" constant="8" id="iDv-0d-w6Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="WTO-Yq-jmL" secondAttribute="trailing" constant="8" id="jGp-Tc-wBi"/>
+                                    <constraint firstItem="WTO-Yq-jmL" firstAttribute="height" secondItem="Dz5-2c-cju" secondAttribute="height" id="wua-le-aOd"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -300,7 +307,7 @@
                             <constraint firstItem="Dz5-2c-cju" firstAttribute="bottom" secondItem="Blb-Tx-cro" secondAttribute="bottom" id="Beb-Mt-2OX"/>
                             <constraint firstItem="ljg-0Q-ltM" firstAttribute="trailing" secondItem="72g-ah-ZXq" secondAttribute="trailingMargin" id="Jj6-aU-ZXO"/>
                             <constraint firstItem="Dz5-2c-cju" firstAttribute="trailing" secondItem="Blb-Tx-cro" secondAttribute="trailing" id="Npp-l6-XcR"/>
-                            <constraint firstItem="Dz5-2c-cju" firstAttribute="top" secondItem="ljg-0Q-ltM" secondAttribute="bottom" constant="60.5" id="Sg0-Er-9Iz"/>
+                            <constraint firstItem="Dz5-2c-cju" firstAttribute="top" secondItem="ljg-0Q-ltM" secondAttribute="bottom" constant="5" id="Sg0-Er-9Iz"/>
                             <constraint firstItem="ljg-0Q-ltM" firstAttribute="leading" secondItem="72g-ah-ZXq" secondAttribute="leadingMargin" id="ohp-9B-N0D"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Blb-Tx-cro"/>
@@ -703,7 +710,7 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VqN-IO-E4r">
                                 <rect key="frame" x="16" y="79" width="288" height="29"/>
                                 <segments>
-                                    <segment title="Drinks Behind"/>
+                                    <segment title="Drinks To Buy"/>
                                     <segment title="Total Drinks"/>
                                 </segments>
                                 <connections>

@@ -57,7 +57,7 @@ class NewHouseViewController: UIViewController, UITextFieldDelegate {
         // set user in new house
         CurrentUser.ref.child("house").setValue(house.name)
         CurrentUser.ref.child("drinks").setValue(0)
-        CurrentUser.ref.child("drinksBehind").setValue(0)
+        CurrentUser.ref.child("drinksToBuy").setValue(0)
 
         getData {
             
