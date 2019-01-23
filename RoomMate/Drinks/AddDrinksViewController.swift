@@ -43,7 +43,7 @@ class AddDrinksViewController: UIViewController {
         minusOneButton.applyDesign()
         plusOneButton.applyDesign()
         plus24Button.applyDesign()
-        getData {
+        getAllData {
             self.updateValues()
             self.updateUI()
         }
@@ -67,10 +67,10 @@ class AddDrinksViewController: UIViewController {
         
         if totalDrinks == 0 {
             minusOneButton.isEnabled = false
-            minusOneButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:0.5)
+            minusOneButton.backgroundColor = UIColor(red: 0.22, green: 0.57, blue: 0.47, alpha: 0.5)
         } else {
             minusOneButton.isEnabled = true
-            minusOneButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:1.0)
+            minusOneButton.backgroundColor = UIColor(red: 0.22, green: 0.57, blue: 0.47, alpha: 1.0)
         }
     }
     
@@ -79,8 +79,8 @@ class AddDrinksViewController: UIViewController {
         CurrentUser.houses[CurrentUser.user.house!]!.drinks = newTotalDrinks
         ref.child("houses/\(CurrentUser.user.house!)/drinks").setValue(newTotalDrinks)
         CurrentUser.ref.child("drinksToBuy").setValue(drinksToBuy)
-        getData() {
-            self.createPopAlert(title: "Succesfully Added", message: "Enjoy Your Drinks!")
+        getAllData() {
+            self.createAlert(title: "Succesfully Added", message: "Enjoy Your Drinks!", pop: true)
         }
     }
 

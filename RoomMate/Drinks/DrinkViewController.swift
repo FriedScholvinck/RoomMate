@@ -27,15 +27,15 @@ class DrinkViewController: UIViewController {
         super.viewDidLoad()
         changeDrinksButton.applyDesign()
         drinkOneButton.applyDesign()
-        getData {
+        getAllData {
             if CurrentUser.user.house == nil {
                 self.changeDrinksButton.isEnabled = false
-                self.changeDrinksButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:0.5)
+                self.changeDrinksButton.backgroundColor = UIColor(red: 0.22, green: 0.57, blue: 0.47, alpha: 0.5)
                 self.getOverviewButton.isEnabled = false
-                self.createAlert(title: "You're not yet in a house.", message: "Join or create one at 'Profile'")
+                self.createAlert(title: "You're not yet in a house.", message: "Join or create one at 'Profile'", pop: false)
             } else {
                 self.changeDrinksButton.isEnabled = true
-                self.changeDrinksButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:1.0)
+                self.changeDrinksButton.backgroundColor = UIColor(red: 0.22, green: 0.57, blue: 0.47, alpha: 1.0)
                 self.getOverviewButton.isEnabled = true
                 
                 // set UI
@@ -70,7 +70,7 @@ class DrinkViewController: UIViewController {
     
     /// get data and update values, room mates might have had a drink at the same time
     @IBAction func drinkOneButtonTapped(_ sender: UIButton) {
-        getData {
+        getAllData {
             self.updateValues()
             self.totalDrinks -= 1
             self.yourDrinks += 1
@@ -83,7 +83,7 @@ class DrinkViewController: UIViewController {
             CurrentUser.ref.child("drinksToBuy").setValue(self.drinksToBuy)
             
             if self.yourDrinks % 24 == 0 {
-                self.createAlert(title: "Buy Crate!", message: "You drank 24 beers")
+                self.createAlert(title: "Buy Crate!", message: "You drank 24 beers", pop: false)
             }
         }
     }

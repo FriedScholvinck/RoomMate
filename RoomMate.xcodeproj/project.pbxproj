@@ -100,8 +100,8 @@
 				351B71E421E797070080A497 /* AppManager.swift */,
 				356189EF21E3441F001B7CE5 /* LogInViewController.swift */,
 				35D52EED21F4B22D0063AB6E /* Home */,
-				357FE6B121E776E5000175F2 /* Drinks */,
 				357FE6B021E776DB000175F2 /* Clean */,
+				357FE6B121E776E5000175F2 /* Drinks */,
 				357FE6AF21E776B6000175F2 /* Profile */,
 				35618A0721E62BE0001B7CE5 /* DataController.swift */,
 				35618A0921E62CB9001B7CE5 /* Structures.swift */,
@@ -148,8 +148,8 @@
 		35D52EED21F4B22D0063AB6E /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				356490C521F32ED6001E8E2C /* DinnerTableViewController.swift */,
 				35618A0121E3C7FA001B7CE5 /* HomeViewController.swift */,
+				356490C521F32ED6001E8E2C /* DinnerTableViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";

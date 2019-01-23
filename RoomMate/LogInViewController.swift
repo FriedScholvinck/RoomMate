@@ -65,12 +65,15 @@ class LogInViewController: UIViewController, FUIAuthDelegate {
     }
 }
 
-// call getData from every view controller
+// this extension hold functions that are usefull and used by multiple view controllers
+// getData() - calls setTasks(), divideTasks() - to get data from Firebase Database
+// getCurrentWeek() - get the current week in the year
+// createAlert() -
 extension UIViewController {
     
     /// get data from firebase and store in global variables
-    func getData(completion: @escaping () -> Void) {
-        DataController.shared.getData {
+    func getAllData(completion: @escaping () -> Void) {
+        DataController.shared.getUserAndHouseData {
             
             // set house info if available
             DispatchQueue.main.async {
@@ -115,20 +118,17 @@ extension UIViewController {
     }
     
     /// alert user if not yet in house (for clean and drinks overview)
-    func createAlert(title: String, message: String) {
+    func createAlert(title: String, message: String, pop: Bool) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
             alert.dismiss(animated: true, completion: nil)
+            
+            // show previous viewcontroller
+            if pop {
+                _ = self.navigationController?.popViewController(animated: true)
+            }
         }))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func createPopAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-            _ = self.navigationController?.popViewController(animated: true)
-        }))
+        
         self.present(alert, animated: true, completion: nil)
     }
 }

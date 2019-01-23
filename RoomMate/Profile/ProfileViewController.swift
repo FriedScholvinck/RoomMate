@@ -24,7 +24,7 @@ class ProfileViewController: UIViewController {
         createHouseButton.applyDesign()
         nameLabel.text = CurrentUser.user.name
         emailLabel.text = CurrentUser.user.email
-        getData {
+        getAllData {
             self.updateUI()
         }
     }

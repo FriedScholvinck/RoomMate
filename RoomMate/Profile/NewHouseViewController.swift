@@ -5,10 +5,10 @@
 //  Created by Fried on 09/01/2019.
 //  Copyright © 2019 Fried. All rights reserved.
 //
+//  This
 
 import UIKit
 import Firebase
-
 
 class NewHouseViewController: UIViewController, UITextFieldDelegate {
     let ref = Database.database().reference()
@@ -25,7 +25,6 @@ class NewHouseViewController: UIViewController, UITextFieldDelegate {
         houseNameTextfield.delegate = self
         passwordTextfield.delegate = self
         passwordAgainTextfield.delegate = self
-        print(CurrentUser.houses.keys)
     }
     
     /// save new house
@@ -33,7 +32,7 @@ class NewHouseViewController: UIViewController, UITextFieldDelegate {
         var house = House()
         house.name = houseNameTextfield.text!
         if CurrentUser.houses.keys.contains(house.name) {
-            createAlert(title: "\(house.name) Already Exists", message: "Please Try Again")
+            createAlert(title: "\(house.name) Already Exists", message: "Please Try Again", pop: false)
             return
         }
         house.password = passwordTextfield.text!
@@ -59,10 +58,10 @@ class NewHouseViewController: UIViewController, UITextFieldDelegate {
         CurrentUser.ref.child("drinks").setValue(0)
         CurrentUser.ref.child("drinksToBuy").setValue(0)
 
-        getData {
+        getAllData {
             
             // alert user in application
-            self.createPopAlert(title: "Succesfully Created '\(house.name)'", message: "Password: \(house.password)")
+            self.createAlert(title: "Succesfully Created '\(house.name)'", message: "Password: \(house.password)", pop: true)
         }
     }
     

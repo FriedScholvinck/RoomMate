@@ -25,7 +25,7 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
         drinkTableView.delegate = self
         drinkTableView.dataSource = self
-        getData {
+        getAllData {
             self.getResidentNames()
             self.drinkTableView.reloadData()
         }
@@ -62,7 +62,7 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
             self.ref.child("houses/\(CurrentUser.user.house!)/drinks").setValue(0)
             
             // go back to DrinkViewController
-            self.getData {
+            self.getAllData {
                 _ = self.navigationController?.popViewController(animated: true)
             }
             
@@ -85,6 +85,7 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
         return cell
     }
     
+    /// helper function for setting table view
     func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         cell.textLabel?.text = residents[indexPath.row]
         if segmentControl.selectedSegmentIndex == 1 {
@@ -92,6 +93,5 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
         } else {
             cell.detailTextLabel?.text = String(drinksToBuy[indexPath.row])
         }
-        
     }
 }

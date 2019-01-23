@@ -20,7 +20,6 @@ class PickHouseViewController: UIViewController, UITextFieldDelegate, UIPickerVi
     @IBOutlet weak var passwordTextfield: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         housePicker.dataSource = self
@@ -66,18 +65,14 @@ class PickHouseViewController: UIViewController, UITextFieldDelegate, UIPickerVi
             CurrentUser.ref.child("drinks").setValue(0)
             CurrentUser.ref.child("drinksToBuy").setValue(0)
             
-            getData {
-                self.createPopAlert(title: "Password Correct!", message: "You just joined \(self.pickerData[self.selectedRow])")
+            getAllData {
+                self.createAlert(title: "Password Correct!", message: "You just joined \(self.pickerData[self.selectedRow])", pop: true)
             }
             
         } else {
-            createPopAlert(title: "Password Incorrect", message: "Try again!")
+            createAlert(title: "Password Incorrect", message: "Try again!", pop: false)
         }
-        
     }
-    
-    
-    
     
     // Number of columns of data
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -98,7 +93,6 @@ class PickHouseViewController: UIViewController, UITextFieldDelegate, UIPickerVi
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedRow = row
     }
-    
     
     /// hide keyboard with click on screen
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

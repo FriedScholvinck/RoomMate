@@ -283,7 +283,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WTO-Yq-jmL">
                                         <rect key="frame" x="8" y="8" width="304" height="414"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <mutableString key="text"> - Home Here, you can find your taks for this week. Press 'Dinner Tonight?' to see whom of your Room Mates eats at home tonight. Set yourself present using the switch button. Press the refresh button if you think changes of your Room Mates didn't come through in your application.   - Clean Add house tasks to be divided by the system on a week schedule. The schedule is as long as the amount of Room Mates you have and shows the current week of the year. It will start again when the last week has past. Simply create a new schedule when you want to change the current one.   - Drinks Add beer drinking information for all of your Room Mates. Press 'Drink One' whenever you drink a beer and add  when you've bought.   - Profile Join or create your house and ask your Room Mates to join with the correct password. You can only be in one house at a time. If you move, you'll be removed from your old house.  </mutableString>
+                                        <string key="text"> - Home Here, you can find your taks for this week. Press 'Dinner Tonight?' to see whom of your Room Mates eats at home tonight. Set yourself present using the switch button. Press the refresh button if you think changes of your Room Mates didn't come through in your application.   - Clean Add house tasks to be divided by the system on a week schedule. The schedule is as long as the amount of Room Mates you have and shows the current week of the year. It will start again when the last week has past. Simply create a new schedule when you want to change the current one.   - Drinks Add beer drinking information for all of your Room Mates. Press 'Drink One' whenever you drink a beer and add  when you've bought.   - Profile Join or create your house and ask your Room Mates to join with the correct password. You can only be in one house at a time. If you move, you'll be removed from your old house.  </string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -1045,7 +1045,7 @@
         <scene sceneID="kta-kQ-5Uw">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2U5-pc-zui" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="icons8-home" selectedImage="icons8-home-filled" id="oih-hg-Nbs">
+                    <tabBarItem key="tabBarItem" title="Home" image="icons8-user-48" selectedImage="icons8-user-filled-48" id="oih-hg-Nbs">
                         <inset key="largeContentSizeImageInsets" minX="0.0" minY="-1" maxX="0.0" maxY="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -1066,7 +1066,7 @@
         <scene sceneID="l2B-a4-ZU9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ar1-tR-KOG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Clean" image="icons8-broom-25" selectedImage="icons8-broom-filled-25" id="R3o-NV-Ixx"/>
+                    <tabBarItem key="tabBarItem" title="Clean" image="icons8-broom-48" selectedImage="icons8-broom-filled-48" id="R3o-NV-Ixx"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="B8P-Dt-dYG">
                         <rect key="frame" x="0.0" y="20" width="320" height="91"/>
@@ -1085,7 +1085,7 @@
         <scene sceneID="3dZ-GL-0Hd">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Smb-Yv-hUj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Drinks" image="icons8-beer-25" selectedImage="icons8-beer-filled-25" id="Xu5-K1-K6h"/>
+                    <tabBarItem key="tabBarItem" title="Drinks" image="icons8-beer-48" selectedImage="icons8-beer-filled-48" id="Xu5-K1-K6h"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="fiF-1y-LSC">
                         <rect key="frame" x="0.0" y="20" width="320" height="91"/>
@@ -1245,7 +1245,7 @@
         <scene sceneID="q2v-n2-Fj5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3gr-gw-2CH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="icons8-user-25" selectedImage="icons8-user-filled-25" id="VdK-d4-k7L"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="icons8-user-48" selectedImage="icons8-user-filled-48" id="VdK-d4-k7L"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7qE-ng-69T">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -1264,15 +1264,13 @@
     <resources>
         <image name="houses" width="709" height="433"/>
         <image name="icons8-beer-100" width="75" height="75"/>
-        <image name="icons8-beer-25" width="18.75" height="18.75"/>
-        <image name="icons8-beer-filled-25" width="18.75" height="18.75"/>
+        <image name="icons8-beer-48" width="36" height="36"/>
+        <image name="icons8-beer-filled-48" width="36" height="36"/>
         <image name="icons8-broom-100" width="75" height="75"/>
-        <image name="icons8-broom-25" width="18.75" height="18.75"/>
-        <image name="icons8-broom-filled-25" width="18.75" height="18.75"/>
-        <image name="icons8-home" width="25" height="25"/>
+        <image name="icons8-broom-48" width="36" height="36"/>
+        <image name="icons8-broom-filled-48" width="36" height="36"/>
         <image name="icons8-home (1)" width="1000" height="1000"/>
-        <image name="icons8-home-filled" width="25" height="25"/>
-        <image name="icons8-user-25" width="18.75" height="18.75"/>
-        <image name="icons8-user-filled-25" width="18.75" height="18.75"/>
+        <image name="icons8-user-48" width="36" height="36"/>
+        <image name="icons8-user-filled-48" width="36" height="36"/>
     </resources>
 </document>

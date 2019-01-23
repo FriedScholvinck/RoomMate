@@ -82,3 +82,10 @@
         * if users put in less tasks than residents, some weeks you'll have to do nothing
 * drinks behind changed to drinks to buy -> easier to understand
 
+## day 13
+* set viewWillAppear at Clean table view to update the table view when a new schedule has been made
+    * I ran into weird errors first, because the old tableview would effect the new one in some way - so I decided to initialise an empty table view, before loading it again.
+* what to do when a new year has begon or when the schedule exceeds the last week of the year?
+    * added functions to 'Home' and 'Clean' to check if the schedule fits in the year or that the year has ended and the schedule has to start again.
+    * it will also function when none of the residents in a house opens the app in the first few weeks of the year -> the schedule will just reset whenever someone opens the application.
+* it isn't really necessary to notify the user when data is loaded from the Firebase server, but if one would have a really bad connection, I might need to implement a activity indicator

@@ -39,9 +39,8 @@ class YourHouseViewController: UITableViewController {
         return cell
     }
     
-    /// set cell text
+    /// helper function for setting table view
     func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         cell.textLabel?.text = residents[indexPath.row]
     }
-
 }

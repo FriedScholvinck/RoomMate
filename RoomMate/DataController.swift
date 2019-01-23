@@ -16,7 +16,7 @@ class DataController {
     let ref = Database.database().reference()
 
     /// call functions to get data correctly
-    func getData(completion: @escaping () -> Void) {
+    func getUserAndHouseData(completion: @escaping () -> Void) {
         var finished = 0
         deleteExistingData()
         getUsers { ()
@@ -38,8 +38,6 @@ class DataController {
     func deleteExistingData() {
         CurrentUser.houses = [:]
         CurrentUser.users = [:]
-//        CurrentUser.residents = []
-//        CurrentUser.tasks = []
     }
     
     /// get users from Firebase into structs

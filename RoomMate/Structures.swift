@@ -14,6 +14,7 @@
 import Foundation
 import Firebase
 
+/// global
 struct CurrentUser {
     static var ref = Database.database().reference()
     static var user = User()
@@ -23,6 +24,7 @@ struct CurrentUser {
     static var residents: [String] = []
 }
 
+///
 struct User {
     var id: String = ""
     var name: String = ""
@@ -33,6 +35,7 @@ struct User {
     var dinner: Bool = false
 }
 
+///
 struct House {
     var name: String = ""
     var password: String = ""

@@ -24,14 +24,13 @@ class NewScheduleViewController: UIViewController, UITextFieldDelegate, UITableV
         taskTextfield1.delegate = self
         taskTableView.delegate = self
         taskTableView.dataSource = self
-
-        
     }
 
-    
-    
     /// create schedule
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+        if tasks == [] {
+            return
+        }
         
         // empty old schedule
         ref.child("houses/\(CurrentUser.user.house!)/tasks").removeValue()
@@ -44,8 +43,8 @@ class NewScheduleViewController: UIViewController, UITextFieldDelegate, UITableV
         // set creation date
         ref.child("houses/\(CurrentUser.user.house!)/firstWeek").setValue(getCurrentWeek())
         
-        getData {
-            self.createPopAlert(title: "Tasks Set!", message: "")
+        getAllData {
+            self.createAlert(title: "Tasks Set!", message: "", pop: true)
         }
     }
     

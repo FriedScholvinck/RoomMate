@@ -17,14 +17,14 @@ class DinnerTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getData {
+        getAllData {
             self.getResidentNames()
             self.getDinnerDetail()
             self.tableView.reloadData()
         }
     }
 
-    /// assign names of room mates
+    /// assign names of room mates for table view
     func getResidentNames() {
         residents = []
         for memberID in CurrentUser.residents {
@@ -53,6 +53,7 @@ class DinnerTableViewController: UITableViewController {
         return cell
     }
     
+    /// helper function for setting table view
     func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         cell.textLabel?.text = residents[indexPath.row]
         cell.detailTextLabel?.text = dinner[indexPath.row]

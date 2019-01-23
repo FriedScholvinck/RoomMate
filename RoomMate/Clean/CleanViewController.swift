@@ -5,6 +5,7 @@
 //  Created by Fried on 07/01/2019.
 //  Copyright © 2019 Fried. All rights reserved.
 //
+//  This view controller holds the cleaning schedule and a button to 
 
 import UIKit
 import Firebase
@@ -22,27 +23,30 @@ class CleanViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.delegate = self
         tableView.dataSource = self
         createScheduleButton.applyDesign()
-        getData {
+    }
+    
+    /// clean table view first, otherwise Indexpath gets too big
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        residents = []
+        tableView.reloadData()
+        getAllData {
             self.updateUI()
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        segmentControl.selectedSegmentIndex = getCurrentWeek() - CurrentUser.houses[CurrentUser.user.house!]!.firstWeek
-    }
-
-    ///
+    /// update user interface only if user is in house, else create alert
     func updateUI() {
         if CurrentUser.user.house != nil {
             getResidentNames()
-            checkIfWeekInSchedule()
+            setSegmentControl()
             tableView.reloadData()
             createScheduleButton.isEnabled = true
-            createScheduleButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:1.0)
+            createScheduleButton.backgroundColor = UIColor(red: 0.22, green: 0.57, blue: 0.47, alpha: 1.0)
         } else {
             createScheduleButton.isEnabled = false
-            createScheduleButton.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:0.5)
-            createAlert(title: "You're not yet in a house.", message: "Join or create one at 'Profile'")
+            createScheduleButton.backgroundColor = UIColor(red: 0.22, green: 0.57, blue: 0.47, alpha: 0.5)
+            createAlert(title: "You're not yet in a house.", message: "Join or create one at 'Profile'", pop: false)
         }
     }
     
@@ -53,39 +57,22 @@ class CleanViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    // if this week is past last week in schedule, repeat schedule starting with current week
-    func checkIfWeekInSchedule() {
-        if getCurrentWeek() > CurrentUser.houses[CurrentUser.user.house!]!.firstWeek + (CurrentUser.residents.count - 1) {
-            
-            // set firstWeek variable to current week
-            ref.child("houses/\(CurrentUser.user.house!)/firstWeek").setValue(getCurrentWeek())
-            getData {
-                self.setSegmentControl()
-            }
-        } else {
-            setSegmentControl()
-        }
-        
-    }
-    
-    
-    /// set segment control size
+    /// set segment control size to amount of residents
     func setSegmentControl() {
         segmentControl.removeAllSegments()
         
-        
-        
+        // insert as many segments as residents + right title
         for week in 0...residents.count - 1 {
+            
+            // if cleaning schedule exceeds last week in year, stop adding segments
+            if CurrentUser.houses[CurrentUser.user.house!]!.firstWeek + week > 52 {
+                break
+            }
+            
             segmentControl.insertSegment(withTitle: String(CurrentUser.houses[CurrentUser.user.house!]!.firstWeek + week), at: week, animated: true)
         }
-        segmentControl.selectedSegmentIndex = getCurrentWeek() - CurrentUser.houses[CurrentUser.user.house!]!.firstWeek
-    }
-    
-    /// set segment title for scheduled weeks
-    func setWeekSegments() {
-        for week in 0...residents.count {
-            segmentControl.setTitle(String(CurrentUser.houses[CurrentUser.user.house!]!.firstWeek + week), forSegmentAt: week)
-        }
+        
+        // make current week selected when view appears
         segmentControl.selectedSegmentIndex = getCurrentWeek() - CurrentUser.houses[CurrentUser.user.house!]!.firstWeek
     }
     
@@ -104,6 +91,7 @@ class CleanViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
+    /// helper function for setting table view
     func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         cell.textLabel?.text = residents[indexPath.row]
         cell.detailTextLabel?.text = String(CurrentUser.tasks[segmentControl.selectedSegmentIndex][indexPath.row])
