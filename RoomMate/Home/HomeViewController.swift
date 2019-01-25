@@ -23,14 +23,13 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()        
         taskLabel.applyDesign()
         dinnerButton.applyDesign()
-        getAllData {
-            self.updateUI()
-        }
     }
     
     /// set interface again so make sure the view shows the most recent data 
     override func viewWillAppear(_ animated: Bool) {
-        updateUI()
+        getAllData {
+            self.updateUI()
+        }
     }
     
     /// show current task and dinner boolean
@@ -51,6 +50,9 @@ class HomeViewController: UIViewController {
             if let house = CurrentUser.houses[houseName] {
                 checkForEndOfYear(house: house)
             }
+        } else {
+            taskLabel.isHidden = true
+            yourTaskLabel.isHidden = true
         }
     }
     
@@ -65,7 +67,6 @@ class HomeViewController: UIViewController {
         } else {
             checkIfWeekInSchedule(house: house)
         }
-    
     }
     
     /// if this week is past the last week in the schedule, repeat schedule starting with current week
@@ -84,12 +85,17 @@ class HomeViewController: UIViewController {
     
     /// helper for setCurrentTask(): set label with right task
     func showCurrentTask(house: House) {
-        
-        // get right index to get corresponding task
-        let residentIndex = house.residents.firstIndex(of: CurrentUser.user.id)
-        let weekIndex = getCurrentWeek() - house.firstWeek
-        currentTask = CurrentUser.tasks[weekIndex][residentIndex!]
-        taskLabel.text = currentTask
+        if house.tasks.count > 0 {
+            yourTaskLabel.isHidden = false
+            taskLabel.isHidden = false
+            yourTaskLabel.text = "Your Task for Week \(getCurrentWeek())"
+            
+            // get right index to get corresponding task
+            let residentIndex = house.residents.firstIndex(of: CurrentUser.user.id)
+            let weekIndex = getCurrentWeek() - house.firstWeek
+            currentTask = CurrentUser.tasks[weekIndex][residentIndex!]
+            taskLabel.text = currentTask
+        }
     }
     
     /// get data from database again and update interface

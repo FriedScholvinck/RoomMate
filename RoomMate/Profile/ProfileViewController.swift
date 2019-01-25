@@ -24,6 +24,9 @@ class ProfileViewController: UIViewController {
         createHouseButton.applyDesign()
         nameLabel.text = CurrentUser.user.name
         emailLabel.text = CurrentUser.user.email
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         getAllData {
             self.updateUI()
         }

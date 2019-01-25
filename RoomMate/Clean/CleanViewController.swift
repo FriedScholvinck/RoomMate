@@ -94,6 +94,8 @@ class CleanViewController: UIViewController, UITableViewDelegate, UITableViewDat
     /// helper function for setting table view
     func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         cell.textLabel?.text = residents[indexPath.row]
-        cell.detailTextLabel?.text = String(CurrentUser.tasks[segmentControl.selectedSegmentIndex][indexPath.row])
+        if CurrentUser.tasks.count > 0 {
+            cell.detailTextLabel?.text = String(CurrentUser.tasks[segmentControl.selectedSegmentIndex][indexPath.row])
+        }
     }
 }

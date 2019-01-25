@@ -90,3 +90,12 @@
     * it will also function when none of the residents in a house opens the app in the first few weeks of the year -> the schedule will just reset whenever someone opens the application.
 * it isn't really necessary to notify the user when data is loaded from the Firebase server, but if one would have a really bad connection, I might need to implement a activity indicator
 * added new tab bar icons, correctly sized to render them sharp
+
+## day 14
+* hackathon
+
+## day 15
+* details:
+    * view will appear
+    * remove task labels if no tasks set (or not yet in a house)
+    * checking what happens when a new user registers, and chooses a house etc...

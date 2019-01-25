@@ -27,6 +27,9 @@ class DrinkViewController: UIViewController {
         super.viewDidLoad()
         changeDrinksButton.applyDesign()
         drinkOneButton.applyDesign()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         getAllData {
             if CurrentUser.user.house == nil {
                 self.changeDrinksButton.isEnabled = false
@@ -42,7 +45,6 @@ class DrinkViewController: UIViewController {
                 self.updateValues()
                 self.updateUI()
             }
-            
         }
     }
     

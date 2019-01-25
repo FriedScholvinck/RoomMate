@@ -56,7 +56,7 @@ class LogInViewController: UIViewController, FUIAuthDelegate {
         // if new user, create account online
         if (authDataResult?.additionalUserInfo?.isNewUser)! {
             // create new user
-            ref.child("users/\(CurrentUser.user.id)").setValue(["name": CurrentUser.user.name, "email": CurrentUser.user.email, "drinks": 0, "drinksBehind": 0, "dinner": false])
+            ref.child("users/\(CurrentUser.user.id)").setValue(["name": CurrentUser.user.name, "email": CurrentUser.user.email, "drinks": 0, "drinksToBuy": 0, "dinner": false])
             CurrentUser.ref = ref.child("users/\(CurrentUser.user.id)")
             
         }

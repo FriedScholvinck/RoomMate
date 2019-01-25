@@ -20,7 +20,7 @@ class AppManager {
     /// check if user has already logged in
     func showApp() {
         var viewController: UIViewController
-        
+
         // set viewController to 'Log In' or 'Home'
         if Auth.auth().currentUser == nil {
             viewController = storyboard.instantiateViewController(withIdentifier: "LogInViewController")
