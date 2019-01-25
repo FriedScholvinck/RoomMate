@@ -27,6 +27,7 @@
 		35618A1221E63E72001B7CE5 /* NewScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35618A1121E63E72001B7CE5 /* NewScheduleViewController.swift */; };
 		35618A1621E7715A001B7CE5 /* PickHouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35618A1521E7715A001B7CE5 /* PickHouseViewController.swift */; };
 		356490C621F32ED6001E8E2C /* DinnerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356490C521F32ED6001E8E2C /* DinnerTableViewController.swift */; };
+		357F5E3121FB2FC40083084C /* Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F5E3021FB2FC40083084C /* Extenstions.swift */; };
 		3595F03D21ECDE43000D74D5 /* OverviewDrinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595F03C21ECDE43000D74D5 /* OverviewDrinksViewController.swift */; };
 		359E3F2621F0DB43000ED1AE /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359E3F2521F0DB43000ED1AE /* AboutViewController.swift */; };
 		35EA426A21EDFF1A0039654E /* AddDrinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EA426921EDFF1A0039654E /* AddDrinksViewController.swift */; };
@@ -55,6 +56,7 @@
 		35618A1121E63E72001B7CE5 /* NewScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScheduleViewController.swift; sourceTree = "<group>"; };
 		35618A1521E7715A001B7CE5 /* PickHouseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickHouseViewController.swift; sourceTree = "<group>"; };
 		356490C521F32ED6001E8E2C /* DinnerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DinnerTableViewController.swift; sourceTree = "<group>"; };
+		357F5E3021FB2FC40083084C /* Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extenstions.swift; sourceTree = "<group>"; };
 		3595F03C21ECDE43000D74D5 /* OverviewDrinksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewDrinksViewController.swift; sourceTree = "<group>"; };
 		359E3F2521F0DB43000ED1AE /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		35EA426921EDFF1A0039654E /* AddDrinksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrinksViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				351B71E221E796AB0080A497 /* AppContainerViewController.swift */,
 				351B71E421E797070080A497 /* AppManager.swift */,
 				356189EF21E3441F001B7CE5 /* LogInViewController.swift */,
+				357F5E3021FB2FC40083084C /* Extenstions.swift */,
 				35D52EED21F4B22D0063AB6E /* Home */,
 				357FE6B021E776DB000175F2 /* Clean */,
 				357FE6B121E776E5000175F2 /* Drinks */,
@@ -334,6 +337,7 @@
 				35EA426A21EDFF1A0039654E /* AddDrinksViewController.swift in Sources */,
 				35618A0E21E63DDF001B7CE5 /* NewHouseViewController.swift in Sources */,
 				359E3F2621F0DB43000ED1AE /* AboutViewController.swift in Sources */,
+				357F5E3121FB2FC40083084C /* Extenstions.swift in Sources */,
 				35618A1221E63E72001B7CE5 /* NewScheduleViewController.swift in Sources */,
 				351B71E321E796AB0080A497 /* AppContainerViewController.swift in Sources */,
 				351B71E121E7937D0080A497 /* ProfileViewController.swift in Sources */,

@@ -6,7 +6,6 @@
 //  Copyright © 2019 Fried. All rights reserved.
 //
 //  View Controller for log in and register via Google Firebase (shows AuthViewController by Google Firebase)
-//  Extensions for ViewControllers, buttons and labels below
 
 import UIKit
 import FirebaseUI
@@ -14,7 +13,7 @@ import FirebaseDatabase
 
 class LogInViewController: UIViewController, FUIAuthDelegate {
     let ref = Database.database().reference()
-
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
@@ -24,7 +23,7 @@ class LogInViewController: UIViewController, FUIAuthDelegate {
         super.viewDidLoad()
         loginButton.applyDesign()
     }
-
+    
     /// prepare for Firebase login and register
     @IBAction func logInButtonTapped(_ sender: UIButton) {
         
@@ -62,92 +61,5 @@ class LogInViewController: UIViewController, FUIAuthDelegate {
         }
         
         performSegue(withIdentifier: "goHome", sender: self)
-    }
-}
-
-// this extension hold functions that are usefull and used by multiple view controllers
-// getData() - calls setTasks(), divideTasks() - to get data from Firebase Database
-// getCurrentWeek() - get the current week in the year
-// createAlert() -
-extension UIViewController {
-    
-    /// get data from firebase and store in global variables
-    func getAllData(completion: @escaping () -> Void) {
-        DataController.shared.getUserAndHouseData {
-            
-            // set house info if available
-            DispatchQueue.main.async {
-                if let houseName = CurrentUser.user.house {
-                    if let house = CurrentUser.houses[houseName] {
-                        
-                        CurrentUser.residents = house.residents
-                        self.setTasks()
-                    }
-                }
-                completion()
-            }
-        }
-    }
-    
-    /// set current cleaning schedule
-    func setTasks() {
-        CurrentUser.tasks = [(CurrentUser.houses[CurrentUser.user.house!]?.tasks)!]
-        
-        // set empty tasks if not enough
-        while CurrentUser.tasks[0].count < CurrentUser.residents.count {
-            CurrentUser.tasks[0].append("")
-        }
-        
-        divideTasks()
-    }
-    
-    /// create moved lists of tasks
-    func divideTasks() {
-        for week in 0...CurrentUser.residents.count - 1 {
-            var movedTasks = Array(CurrentUser.tasks[week][1...])
-            movedTasks.append(CurrentUser.tasks[week][0])
-            CurrentUser.tasks.append(movedTasks)
-        }
-    }
-    
-    /// get current week number in year
-    func getCurrentWeek() -> Int {
-        let calendar = NSCalendar.current
-        let component = calendar.component(.weekOfYear, from: Date())
-        return component
-    }
-    
-    /// alert user if not yet in house (for clean and drinks overview)
-    func createAlert(title: String, message: String, pop: Bool) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-            
-            // show previous viewcontroller
-            if pop {
-                _ = self.navigationController?.popViewController(animated: true)
-            }
-        }))
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-}
-
-// green round label design
-extension UILabel {
-    func applyDesign() {
-        self.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:1.0)
-        self.layer.cornerRadius = self.frame.height / 2
-        self.textColor = UIColor.white
-    }
-}
-
-// green round button design
-extension UIButton {
-    func applyDesign() {
-        self.backgroundColor = UIColor(red:0.22, green:0.57, blue:0.47, alpha:1.0)
-        self.layer.masksToBounds = true
-        self.layer.cornerRadius = self.frame.height / 2
-        self.setTitleColor(UIColor.white, for: .normal)
     }
 }

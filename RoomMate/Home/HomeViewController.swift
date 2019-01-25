@@ -5,7 +5,7 @@
 //  Created by Fried on 07/01/2019.
 //  Copyright © 2019 Fried. All rights reserved.
 //
-//  Home View with your task for this week and navigation to dinner view
+//  Home View which shows your task for this week and navigation to dinner view.
 
 import UIKit
 import Firebase
@@ -44,7 +44,7 @@ class HomeViewController: UIViewController {
         CurrentUser.users[CurrentUser.user.id]!.dinner = dinnerSwitch.isOn
     }
     
-    /// set this weeks task in label, if any
+    /// set this weeks task in label, if any, else hide task labels
     func setCurrentTask() {
         if let houseName = CurrentUser.user.house {
             if let house = CurrentUser.houses[houseName] {

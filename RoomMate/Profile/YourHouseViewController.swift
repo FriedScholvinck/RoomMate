@@ -17,7 +17,7 @@ class YourHouseViewController: UITableViewController {
         super.viewDidLoad()
         getResidentNames()
         
-
+        
         navigationItem.title = CurrentUser.user.house
     }
     
@@ -28,7 +28,7 @@ class YourHouseViewController: UITableViewController {
             residents.append((CurrentUser.users[memberID]?.name)!)
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return residents.count
     }

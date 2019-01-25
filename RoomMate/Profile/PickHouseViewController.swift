@@ -51,7 +51,7 @@ class PickHouseViewController: UIViewController, UITextFieldDelegate, UIPickerVi
                 
                 // check for residents left
                 if (CurrentUser.houses[oldHome]?.residents.count)! > 1 {
-                
+                    
                     ref.child("houses/\(oldHome)/residents/\(CurrentUser.user.id)").removeValue()
                 } else {
                     ref.child("houses/\(oldHome)").removeValue()

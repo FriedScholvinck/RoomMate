@@ -57,7 +57,7 @@ class NewHouseViewController: UIViewController, UITextFieldDelegate {
         CurrentUser.ref.child("house").setValue(house.name)
         CurrentUser.ref.child("drinks").setValue(0)
         CurrentUser.ref.child("drinksToBuy").setValue(0)
-
+        
         getAllData {
             
             // alert user in application
@@ -79,7 +79,7 @@ class NewHouseViewController: UIViewController, UITextFieldDelegate {
     func filledIn() -> Bool {
         return houseNameTextfield.hasText && passwordTextfield.hasText && passwordAgainTextfield.hasText && passwordTextfield.text == passwordAgainTextfield.text
     }
-
+    
     /// hide keyboard with click on screen
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)

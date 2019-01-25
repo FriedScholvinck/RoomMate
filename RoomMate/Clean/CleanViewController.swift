@@ -35,7 +35,7 @@ class CleanViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    /// update user interface only if user is in house, else create alert
+    /// update user interface only if user is in house, else alert user there not in a house yet
     func updateUI() {
         if CurrentUser.user.house != nil {
             getResidentNames()
@@ -50,14 +50,14 @@ class CleanViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    /// set variable with names for table view
+    /// set variable residents with names for table view
     func getResidentNames() {
         for memberID in CurrentUser.residents {
             residents.append((CurrentUser.users[memberID]?.name)!)
         }
     }
     
-    /// set segment control size to amount of residents
+    /// set segment control size to amount of residents and add week numbers as titles
     func setSegmentControl() {
         segmentControl.removeAllSegments()
         
@@ -80,7 +80,7 @@ class CleanViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBAction func segmentTapped(_ sender: UISegmentedControl) {
         tableView.reloadData()
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return residents.count
     }

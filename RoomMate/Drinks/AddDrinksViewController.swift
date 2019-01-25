@@ -35,7 +35,7 @@ class AddDrinksViewController: UIViewController {
     @IBOutlet weak var totalDrinksLabel: UILabel!
     @IBOutlet weak var drinksToBuyLabel: UILabel!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         plusOneBoughtButton.applyDesign()
@@ -83,7 +83,7 @@ class AddDrinksViewController: UIViewController {
             self.createAlert(title: "Succesfully Added", message: "Enjoy Your Drinks!", pop: true)
         }
     }
-
+    
     
     @IBAction func plusOneBoughtButtonTapped(_ sender: UIButton) {
         boughtTotal += 1

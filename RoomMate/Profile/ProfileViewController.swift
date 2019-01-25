@@ -11,7 +11,7 @@ import Firebase
 
 class ProfileViewController: UIViewController {
     let ref = Database.database().reference()
-
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var houseButton: UIButton!
@@ -46,5 +46,4 @@ class ProfileViewController: UIViewController {
         CurrentUser.user = User()
         AppManager.shared.logout()
     }
-    
 }

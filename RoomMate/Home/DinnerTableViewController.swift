@@ -23,7 +23,7 @@ class DinnerTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
-
+    
     /// assign names of room mates for table view
     func getResidentNames() {
         residents = []

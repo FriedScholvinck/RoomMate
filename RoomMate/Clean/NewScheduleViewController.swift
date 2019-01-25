@@ -25,8 +25,8 @@ class NewScheduleViewController: UIViewController, UITextFieldDelegate, UITableV
         taskTableView.delegate = self
         taskTableView.dataSource = self
     }
-
-    /// create schedule
+    
+    /// save tasks in database and alert user, schedule will be created in CleanViewController
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         if tasks == [] {
             return
@@ -40,15 +40,16 @@ class NewScheduleViewController: UIViewController, UITextFieldDelegate, UITableV
             ref.child("houses/\(CurrentUser.user.house!)/tasks/\(task)").setValue(true)
         }
         
-        // set creation date
+        // set creation date as week of the year
         ref.child("houses/\(CurrentUser.user.house!)/firstWeek").setValue(getCurrentWeek())
         
+        // get data from database and pop to CleanViewController
         getAllData {
             self.createAlert(title: "Tasks Set!", message: "", pop: true)
         }
     }
     
-    /// add task to list
+    /// add task from textfield to list of new tasks
     @IBAction func plusButtonTapped(_ sender: UIButton) {
         if taskTextfield1.text != "" {
             tasks.append(taskTextfield1.text!)
@@ -71,7 +72,7 @@ class NewScheduleViewController: UIViewController, UITextFieldDelegate, UITableV
         return cell
     }
     
-    /// set cell text
+    /// set cell text from tasks
     func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         cell.textLabel?.text = tasks[indexPath.row]
     }

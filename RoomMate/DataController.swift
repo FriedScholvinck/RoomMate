@@ -14,7 +14,7 @@ import Firebase
 class DataController {
     static let shared = DataController()
     let ref = Database.database().reference()
-
+    
     /// call functions to get data correctly
     func getUserAndHouseData(completion: @escaping () -> Void) {
         var finished = 0
@@ -57,7 +57,7 @@ class DataController {
                 user.drinks = userData["drinks"] as! Int
                 user.drinksToBuy = userData["drinksToBuy"] as! Int
                 user.dinner = userData["dinner"] as! Bool
-
+                
                 // house
                 if let house = userData["house"] {
                     user.house = (house as! String)
@@ -109,7 +109,7 @@ class DataController {
                     house.tasks.append(task)
                 }
                 house.tasks  = house.tasks.sorted()
-            
+                
                 // remove default task
                 if house.tasks[0] == "default" {
                     house.tasks.remove(at: 0)
