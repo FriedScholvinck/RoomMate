@@ -13,7 +13,7 @@ import Firebase
 
 class PickHouseViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     let ref = Database.database().reference()
-    var pickerData = [String]()
+    var pickerData: [String] = []
     var selectedRow = 0
     
     @IBOutlet weak var housePicker: UIPickerView!
@@ -25,19 +25,32 @@ class PickHouseViewController: UIViewController, UITextFieldDelegate, UIPickerVi
         housePicker.dataSource = self
         housePicker.delegate = self
         passwordTextfield.delegate = self
-        setPickerData()
+        getAllData {
+            self.setPickerData()
+        }
     }
     
+    /// load houses in picker view
     func setPickerData() {
+        
+        // don't show own house
         if let home = CurrentUser.user.house {
+            print(home)
             pickerData = Array(CurrentUser.houses.keys).filter(){$0 != home}
+            print("1", pickerData)
         } else {
             pickerData = Array(CurrentUser.houses.keys)
+            print(pickerData)
         }
+        
+        // if no other houses
         if pickerData == [] {
             pickerData = ["no houses available"]
             saveButton.isEnabled = false
         }
+        
+        // reload pickerview
+        housePicker.reloadAllComponents()
     }
     
     /// save user in new house
@@ -66,7 +79,7 @@ class PickHouseViewController: UIViewController, UITextFieldDelegate, UIPickerVi
             CurrentUser.ref.child("drinksToBuy").setValue(0)
             
             getAllData {
-                self.createAlert(title: "Password Correct!", message: "You just joined \(self.pickerData[self.selectedRow])", pop: true)
+                self.createAlert(title: "Password Correct!", message: "You just joined \(house)", pop: true)
             }
             
         } else {

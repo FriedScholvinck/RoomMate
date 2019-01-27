@@ -1108,62 +1108,98 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xc9-q6-k9W">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xc9-q6-k9W">
                                 <rect key="frame" x="16" y="79" width="288" height="120"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGs-64-IbJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="40"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TmG-ft-CBu">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="36.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQ2-Rw-uBK">
-                                                <rect key="frame" x="0.0" y="0.0" width="204" height="40"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cx-2R-8JL">
-                                                <rect key="frame" x="204" y="0.0" width="84" height="40"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGs-64-IbJ">
+                                                <rect key="frame" x="10" y="0.0" width="268" height="36.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQ2-Rw-uBK">
+                                                        <rect key="frame" x="0.0" y="0.0" width="184" height="36.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cx-2R-8JL">
+                                                        <rect key="frame" x="184" y="0.0" width="84" height="36.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HsE-cG-nae">
-                                        <rect key="frame" x="0.0" y="40" width="288" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="rGs-64-IbJ" secondAttribute="trailing" constant="10" id="kbi-zy-BhZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="rGs-64-IbJ" secondAttribute="bottom" id="oew-NH-niH"/>
+                                            <constraint firstItem="rGs-64-IbJ" firstAttribute="leading" secondItem="TmG-ft-CBu" secondAttribute="leading" constant="10" id="tVy-ah-fKi"/>
+                                            <constraint firstItem="rGs-64-IbJ" firstAttribute="top" secondItem="TmG-ft-CBu" secondAttribute="top" id="x7o-xs-YfV"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xV9-Qd-bsk">
+                                        <rect key="frame" x="0.0" y="41.5" width="288" height="37"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2c-Qi-Bm7">
-                                                <rect key="frame" x="0.0" y="0.0" width="41" height="40"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Email" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3u-gp-9Li">
-                                                <rect key="frame" x="41" y="0.0" width="247" height="40"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HsE-cG-nae">
+                                                <rect key="frame" x="10" y="0.0" width="268" height="37"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2c-Qi-Bm7">
+                                                        <rect key="frame" x="0.0" y="0.0" width="44.5" height="37"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Email" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3u-gp-9Li">
+                                                        <rect key="frame" x="44.5" y="0.0" width="223.5" height="37"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9tf-KD-7rB">
-                                        <rect key="frame" x="0.0" y="80" width="288" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="HsE-cG-nae" secondAttribute="bottom" id="Hvb-TJ-Bgd"/>
+                                            <constraint firstItem="HsE-cG-nae" firstAttribute="leading" secondItem="xV9-Qd-bsk" secondAttribute="leading" constant="10" id="Wmv-KI-WiD"/>
+                                            <constraint firstAttribute="trailing" secondItem="HsE-cG-nae" secondAttribute="trailing" constant="10" id="jYn-zi-kPf"/>
+                                            <constraint firstItem="HsE-cG-nae" firstAttribute="top" secondItem="xV9-Qd-bsk" secondAttribute="top" id="m3c-6l-91k"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFl-9R-R9Y">
+                                        <rect key="frame" x="0.0" y="83.5" width="288" height="36.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="House" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zge-bm-Pde">
-                                                <rect key="frame" x="0.0" y="0.0" width="49.5" height="40"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPo-ga-HN9">
-                                                <rect key="frame" x="49.5" y="0.0" width="238.5" height="40"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="Your House"/>
-                                                <connections>
-                                                    <segue destination="dPw-0q-j16" kind="show" id="C5R-7Q-f6T"/>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9tf-KD-7rB">
+                                                <rect key="frame" x="10" y="0.0" width="268" height="36.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="House" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zge-bm-Pde">
+                                                        <rect key="frame" x="0.0" y="0.0" width="52.5" height="36.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPo-ga-HN9">
+                                                        <rect key="frame" x="52.5" y="0.0" width="215.5" height="36.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <state key="normal" title="Your House"/>
+                                                        <connections>
+                                                            <segue destination="dPw-0q-j16" kind="show" id="C5R-7Q-f6T"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
-                                    </stackView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="9tf-KD-7rB" firstAttribute="leading" secondItem="bFl-9R-R9Y" secondAttribute="leading" constant="10" id="4qs-mT-7gn"/>
+                                            <constraint firstAttribute="trailing" secondItem="9tf-KD-7rB" secondAttribute="trailing" constant="10" id="dDl-hJ-udA"/>
+                                            <constraint firstAttribute="bottom" secondItem="9tf-KD-7rB" secondAttribute="bottom" id="h8D-3I-A1C"/>
+                                            <constraint firstItem="9tf-KD-7rB" firstAttribute="top" secondItem="bFl-9R-R9Y" secondAttribute="top" id="sQH-V0-5qG"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="pvH-G9-ecw">
@@ -1232,9 +1268,12 @@
                     <connections>
                         <outlet property="createHouseButton" destination="t3z-gI-S0X" id="HvG-lz-yba"/>
                         <outlet property="emailLabel" destination="j3u-gp-9Li" id="bGy-mT-Oo2"/>
+                        <outlet property="emailView" destination="xV9-Qd-bsk" id="xKl-oh-Xs0"/>
                         <outlet property="houseButton" destination="tPo-ga-HN9" id="rGl-48-pZT"/>
+                        <outlet property="houseView" destination="bFl-9R-R9Y" id="43x-bM-ooN"/>
                         <outlet property="joinHouseButton" destination="fqd-OQ-4la" id="vEe-SH-qFU"/>
                         <outlet property="nameLabel" destination="4cx-2R-8JL" id="BPR-9L-hMY"/>
+                        <outlet property="nameView" destination="TmG-ft-CBu" id="un7-S4-bj1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awQ-Of-C7l" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -15,8 +15,10 @@ class DataController {
     static let shared = DataController()
     let ref = Database.database().reference()
     
-    /// call functions to get data correctly
+    /// call functions to get user and house data correctly into structs
     func getUserAndHouseData(completion: @escaping () -> Void) {
+        
+        // because the completion is not able to know whether getUsers() or getHouses() will be finished first, it waits for finished to become 2
         var finished = 0
         deleteExistingData()
         getUsers { ()
@@ -31,10 +33,9 @@ class DataController {
                 completion()
             }
         }
-        
     }
     
-    /// delete existing data in structs
+    /// empty existing dictionaries in structs
     func deleteExistingData() {
         CurrentUser.houses = [:]
         CurrentUser.users = [:]
@@ -46,11 +47,11 @@ class DataController {
             guard let data = snapshot.value as? [String: Any] else { return }
             for (key, value) in data {
                 
-                // id
+                // use key (Firebase uid) as user id in structs as well
                 var user = User()
                 user.id = key
                 
-                // name, email, drinks
+                // set other variables
                 let userData = value as! Dictionary <String, Any>
                 user.name = userData["name"]! as! String
                 user.email = userData["email"]! as! String
@@ -58,35 +59,41 @@ class DataController {
                 user.drinksToBuy = userData["drinksToBuy"] as! Int
                 user.dinner = userData["dinner"] as! Bool
                 
-                // house
+                // house is an optional
                 if let house = userData["house"] {
                     user.house = (house as! String)
                 }
                 
+                // put user into dicitonary with uid as key
                 CurrentUser.users[user.id] = user
             }
+            
+            // when data is loaded, set current user
             DispatchQueue.main.async {
                 
-                // set current user
+                // house is optional
                 if let houseName = CurrentUser.users[CurrentUser.user.id]!.house {
                     CurrentUser.user.house = houseName
                 }
                 
+                // set other variables + reference to user in Firebase Database
                 CurrentUser.user.drinks = CurrentUser.users[CurrentUser.user.id]!.drinks
                 CurrentUser.user.drinksToBuy = CurrentUser.users[CurrentUser.user.id]!.drinksToBuy
                 CurrentUser.user.dinner = CurrentUser.users[CurrentUser.user.id]!.dinner
                 CurrentUser.ref = self.ref.child("users/\(CurrentUser.user.id)")
             }
+            
             completion()
         })
     }
     
-    /// get houses from Firebase into structs
+    /// get houses from Firebase into structs, the same as the above function for users
     func getHouses(completion: @escaping () -> Void) {
         ref.child("houses").observeSingleEvent(of: .value, with: { (snapshot) in
             guard let data = snapshot.value as? [String: Any] else { return }
             for (key, value) in data {
-                // name
+                
+                // house name
                 var house = House()
                 house.name = key
                 
@@ -96,35 +103,30 @@ class DataController {
                 house.drinks = houseData["drinks"]! as! Int
                 house.firstWeek = houseData["firstWeek"] as! Int
                 
-                // residents
+                // residents, sort them alphabetically so the cleaning schedule will maintain its order
                 let residentData = houseData["residents"]! as! Dictionary <String, Any>
                 for resident in residentData.keys {
                     house.residents.append(resident)
                 }
                 house.residents = house.residents.sorted()
                 
-                // tasks
+                // tasks, also sort them to maintain cleaning schedule order
                 let tasksData = houseData["tasks"]! as! Dictionary <String, Any>
                 for task in tasksData.keys {
                     house.tasks.append(task)
                 }
                 house.tasks  = house.tasks.sorted()
                 
-                // remove default task
+                // remove default task (set whenever a house is created)
                 if house.tasks[0] == "default" {
                     house.tasks.remove(at: 0)
                 }
                 
+                // set house in dictionary with name as key
                 CurrentUser.houses[house.name] = house
-                
-                
             }
-            DispatchQueue.main.async {
-                
-                
-            }
+            
             completion()
         })
     }
 }
-

@@ -18,6 +18,12 @@ extension UIViewController {
     
     /// get data from firebase and store in global variables
     func getAllData(completion: @escaping () -> Void) {
+        
+        // show network indicator and make user unable to click on anything while getting data
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        UIApplication.shared.beginIgnoringInteractionEvents()
+
+        // call DataController.swift to get data from Firebase Database
         DataController.shared.getUserAndHouseData {
             
             // set house info if available
@@ -29,6 +35,10 @@ extension UIViewController {
                         self.setTasks()
                     }
                 }
+                
+                // stop indicator and complete data request
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                UIApplication.shared.endIgnoringInteractionEvents()
                 completion()
             }
         }
@@ -81,9 +91,8 @@ extension UIViewController {
 // green round label design
 extension UILabel {
     func applyDesign() {
-        self.backgroundColor = UIColor(red: 0.22, green: 0.57, blue: 0.47, alpha: 1.0)
         self.layer.cornerRadius = self.frame.height / 2
-        self.textColor = UIColor.white
+        self.layer.borderWidth = 1.0
     }
 }
 
@@ -97,4 +106,11 @@ extension UIButton {
     }
 }
 
+// view design
+extension UIView {
+    func addBorder() {
+        self.layer.cornerRadius = self.frame.height / 2
+        self.layer.borderWidth = 1.0
+    }
+}
 

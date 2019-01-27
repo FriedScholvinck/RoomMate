@@ -99,3 +99,6 @@
     * view will appear
     * remove task labels if no tasks set (or not yet in a house)
     * checking what happens when a new user registers, and chooses a house etc...
+* added app icon
+* added activity indicator and the inability to click anything when the data is loading
+* changed label design to differentiate between label and button

@@ -94,6 +94,9 @@ class HomeViewController: UIViewController {
             let residentIndex = house.residents.firstIndex(of: CurrentUser.user.id)
             let weekIndex = getCurrentWeek() - house.firstWeek
             currentTask = CurrentUser.tasks[weekIndex][residentIndex!]
+            if currentTask == "" {
+                currentTask = "No task this week!"
+            }
             taskLabel.text = currentTask
         }
     }

@@ -5,8 +5,8 @@
 //  Created by Fried on 09/01/2019.
 //  Copyright © 2019 Fried. All rights reserved.
 //
-//  this file contains all structures for RoomMate
-//  the struct CurrentUser is global and holds
+//  This file contains all structures for RoomMate
+//  The struct CurrentUser is global and holds
 //      - the current user information
 //      - a dictionary with all users
 //      - a dictionary with all houses
@@ -14,7 +14,7 @@
 import Foundation
 import Firebase
 
-/// global
+/// global struct that holds all users and houses in a dicitonary and the current logged in user
 struct CurrentUser {
     static var ref = Database.database().reference()
     static var user = User()
@@ -24,7 +24,7 @@ struct CurrentUser {
     static var residents: [String] = []
 }
 
-///
+/// user struct, house is only optional
 struct User {
     var id: String = ""
     var name: String = ""
@@ -35,7 +35,7 @@ struct User {
     var dinner: Bool = false
 }
 
-///
+/// houses struct, no optionals
 struct House {
     var name: String = ""
     var password: String = ""

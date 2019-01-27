@@ -12,6 +12,9 @@ import Firebase
 class ProfileViewController: UIViewController {
     let ref = Database.database().reference()
     
+    @IBOutlet weak var houseView: UIView!
+    @IBOutlet weak var emailView: UIView!
+    @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var houseButton: UIButton!
@@ -22,6 +25,9 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         joinHouseButton.applyDesign()
         createHouseButton.applyDesign()
+        nameView.addBorder()
+        emailView.addBorder()
+        houseView.addBorder()
         nameLabel.text = CurrentUser.user.name
         emailLabel.text = CurrentUser.user.email
     }
