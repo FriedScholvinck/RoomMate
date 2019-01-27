@@ -2,11 +2,11 @@
 
 ### UI sketches
 
-![sketch](/doc/sketch.png)
+![sketch](/docs/sketch.png)
 
 ### UML Diagram
 
-![diagram](/doc/diagram.png)
+![diagram](/docs/diagram.png)
 
 ### Data Source
 * Google Firebase Authentication

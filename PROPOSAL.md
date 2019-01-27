@@ -12,7 +12,7 @@ In addition, I'd like to add a simple 'dash' system for beer. (something like Wi
 
 ### Visual Sketch
 
-![visual_sketch](doc/visual_sketch.JPG)
+![visual_sketch](docs/visual_sketch.JPG)
 
 
 ### Main Features
