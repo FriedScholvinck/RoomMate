@@ -102,3 +102,5 @@
 * added app icon
 * added activity indicator and the inability to click anything when the data is loading
 * changed label design to differentiate between label and button
+
+

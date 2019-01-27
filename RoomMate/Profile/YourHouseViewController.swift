@@ -5,6 +5,7 @@
 //  Created by Fried on 09/01/2019.
 //  Copyright © 2019 Fried. All rights reserved.
 //
+//  This view controller contains a table view with all the residents of the house of the current user.
 
 import UIKit
 import Firebase
@@ -16,12 +17,10 @@ class YourHouseViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getResidentNames()
-        
-        
         navigationItem.title = CurrentUser.user.house
     }
     
-    
+    /// get names of room mates
     func getResidentNames() {
         residents = []
         for memberID in CurrentUser.residents {

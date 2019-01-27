@@ -11,7 +11,7 @@
 import UIKit
 
 // this extension hold functions that are usefull and used by multiple view controllers
-// getData() - calls setTasks(), divideTasks() - to get data from Firebase Database
+// getData() - calls setTasks(), divideTasks() - to get data from Firebase Database (and shows activity indicator)
 // getCurrentWeek() - get the current week in the year
 // createAlert() - create alert to notity user, pop-boolean: true = pop back to previous view controller
 extension UIViewController {
@@ -88,7 +88,7 @@ extension UIViewController {
     }
 }
 
-// green round label design
+// label design with black border
 extension UILabel {
     func applyDesign() {
         self.layer.cornerRadius = self.frame.height / 2
@@ -106,11 +106,10 @@ extension UIButton {
     }
 }
 
-// view design
+// view design with black border
 extension UIView {
     func addBorder() {
         self.layer.cornerRadius = self.frame.height / 2
         self.layer.borderWidth = 1.0
     }
 }
-

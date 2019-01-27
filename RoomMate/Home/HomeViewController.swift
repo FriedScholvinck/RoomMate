@@ -88,7 +88,7 @@ class HomeViewController: UIViewController {
         if house.tasks.count > 0 {
             yourTaskLabel.isHidden = false
             taskLabel.isHidden = false
-            yourTaskLabel.text = "Your Task for Week \(getCurrentWeek())"
+            yourTaskLabel.text = "Your task for week \(getCurrentWeek())"
             
             // get right index to get corresponding task
             let residentIndex = house.residents.firstIndex(of: CurrentUser.user.id)

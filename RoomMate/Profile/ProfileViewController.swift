@@ -5,6 +5,7 @@
 //  Created by Fried on 10/01/2019.
 //  Copyright © 2019 Fried. All rights reserved.
 //
+//  This view controller contains user information and buttons to choose or create a house a house.
 
 import UIKit
 import Firebase
@@ -21,6 +22,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var joinHouseButton: UIButton!
     @IBOutlet weak var createHouseButton: UIButton!
     
+    /// set design around labels with user info and fill name an email
     override func viewDidLoad() {
         super.viewDidLoad()
         joinHouseButton.applyDesign()
@@ -32,12 +34,14 @@ class ProfileViewController: UIViewController {
         emailLabel.text = CurrentUser.user.email
     }
     
+    /// update view with new data
     override func viewWillAppear(_ animated: Bool) {
         getAllData {
             self.updateUI()
         }
     }
     
+    /// set house button if user has house
     func updateUI() {
         if CurrentUser.user.house != nil {
             houseButton.isEnabled = true
@@ -48,6 +52,7 @@ class ProfileViewController: UIViewController {
         houseButton.setTitle(CurrentUser.user.house, for: .normal)
     }
     
+    /// logout user, present login view controller
     @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
         CurrentUser.user = User()
         AppManager.shared.logout()

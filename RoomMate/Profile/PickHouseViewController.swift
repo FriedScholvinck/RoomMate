@@ -6,7 +6,7 @@
 //  Created by Fried on 10/01/2019.
 //  Copyright © 2019 Fried. All rights reserved.
 //
-//  COMMENTS
+//  This view controller lets the user pick a house and fill in its password to join.
 
 import UIKit
 import Firebase
