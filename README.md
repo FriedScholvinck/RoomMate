@@ -7,4 +7,13 @@ RoomMate is an iPhone application for students. It contains an easy-to-use weekl
 ![flow](/docs/flow.png)
 
 
+### Students
+* Fried Schölvinck (UvA student number: 10729267)
+
+
+### Sources
+The images in the app are not created by myself, but pulled from https://icons8.com/icons/ios. The image on the 'Log In' and 'Home' page comes from https://nl.pinterest.com/pin/520728775644173254. 
+
+
+
 
