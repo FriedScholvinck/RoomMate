@@ -6,7 +6,7 @@ RoomMate is an iPhone application for students. It contains an easy-to-use weekl
 ### Screenshots
 ![home](/docs/screenshots/home.PNG)
 ![dinner](/docs/screenshots/dinner.PNG)
-![clean](/docs/screenshots/clean.png)
+![clean](/docs/screenshots/clean.PNG)
 ![newschedule](/docs/screenshots/newschedule.PNG)
 ![drinks](/docs/screenshots/drinks.PNG)
 ![buycrate](/docs/screenshots/buycrate.PNG)

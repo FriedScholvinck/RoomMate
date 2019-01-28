@@ -753,7 +753,7 @@
             </objects>
             <point key="canvasLocation" x="4758.75" y="1334.1549295774648"/>
         </scene>
-        <!--Add Drinks View Controller-->
+        <!--Change Drinks-->
         <scene sceneID="ICE-he-8H0">
             <objects>
                 <viewController id="jwy-Wd-8iJ" customClass="AddDrinksViewController" customModule="RoomMate" customModuleProvider="target" sceneMemberID="viewController">
@@ -910,7 +910,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="l5E-54-tDN"/>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="gzn-D1-fiZ">
+                    <navigationItem key="navigationItem" title="Change Drinks" largeTitleDisplayMode="never" id="gzn-D1-fiZ">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Bhj-WK-J6d">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="jwy-Wd-8iJ" id="Ake-ya-Xmk"/>

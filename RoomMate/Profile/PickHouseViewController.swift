@@ -35,9 +35,7 @@ class PickHouseViewController: UIViewController, UITextFieldDelegate, UIPickerVi
         
         // don't show own house
         if let home = CurrentUser.user.house {
-            print(home)
             pickerData = Array(CurrentUser.houses.keys).filter(){$0 != home}
-            print("1", pickerData)
         } else {
             pickerData = Array(CurrentUser.houses.keys)
             print(pickerData)
