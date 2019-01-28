@@ -4,7 +4,7 @@ RoomMate is an iPhone application for students. It contains an easy-to-use weekl
 
 
 ### App Flow
-![flow](/docs/flow.PNG)
+![flow](/docs/flow.pdf)
 
 
 
