@@ -66,10 +66,10 @@ The drinking system could be used in multiple ways now:
 
 ### Creating a cleaning schedule
 At first, I haven't really had a plan for the cleaning schedule. I wanted it to be the exact same as a simple grid on paper, but then online. I based it on the system which many big student houses use: a weekly shifting schedule with big tasks as cleaning the bathroom, kitchen, living room or laundry room. A resident would pass in some tasks, and the app would create the schedule.
-    * How to show the schedule?
-    * What to do with less tasks than residents?
-    * What to do when the schedule is over
-    * How to calculate which task is due this week for the current user?
+* How to show the schedule?
+* What to do with less tasks than residents?
+* What to do when the schedule is over
+* How to calculate which task is due this week for the current user?
 
 Answers to these questions came as I was building the app. I soon decided to not save the actual schedule online, but just the tasks, and let the app figure out which resident had to do which task which week. The most convenient way, I learned from implementing the drinking system first, was to show a table view with right detail and change the detail by segment control. The segment control would be the weeks in the schedule, the right detail would be the tasks to be done.
     * If the user passes in less tasks than residents, the app has to account for these empty spots and also pass them into the schedule. If the user passes in more tasks, some tasks would not be done every week.
