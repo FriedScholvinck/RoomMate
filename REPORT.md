@@ -1,7 +1,5 @@
 # Final Report
 
-links to files!!!
-
 ## Short description
 RoomMate is an iPhone application for students. It contains a simple, weekly shifting cleaning schedule and the functionality to keep a beer drinking system up to date.
 
@@ -11,43 +9,43 @@ RoomMate is an iPhone application for students. It contains a simple, weekly shi
 ![flow](/docs/flow.png)
 
 ### Structure
-The initial view controller (AppContainerViewController.swift) is one which the user never sees and passes the user through to the login/register page (LogInViewController.swift) or, when the user is already logged in, to the home page (HomeViewController.swift). The login page is helped by standard Google Firebase Authentication, which can not be seen in the main.storyboard. From there, the app is build up of a tab bar controller with 4 tabs: 'Home', 'Clean', 'Drinks' and 'Profile'. Each tab is embedded in a navigation controller for easy navigation between view controllers.
+The initial view controller [AppContainerViewController](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/AppContainerViewController.swift) is one which the user never sees and passes the user through to the login/register page [LogInViewController](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/LogInViewController.swift) or, when the user is already logged in, to the home page [HomeViewController](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/Home/HomeViewController.swift). The login page is helped by standard Google Firebase Authentication, which can not be seen in the main.storyboard. From there, the app is build up of a tab bar controller with 4 tabs: 'Home', 'Clean', 'Drinks' and 'Profile'. Each tab is embedded in a navigation controller for easy navigation between view controllers.
 
 ### Components
 
 ##### General files
-* AppContainerViewController
-* AppManager
-* LoginViewController
-* Extensions
-* DataController
-* Structures
+* [AppContainerViewController](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/AppContainerViewController.swift)
+* [AppManager](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/AppManager.swift)
+* [LoginViewController](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/LogInViewController.swift)
+* [Extensions](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/Extenstions.swift)
+* [DataController](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/DataController.swift)
+* [Structures](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/Structures.swift)
 
-##### Home
-* Dinner
+##### [Home](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/Home/HomeViewController.swift)
+* [Dinner](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/Home/DinnerTableViewController.swift)
 
-##### Clean
-* Create New Schedule
+##### [Clean](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/Clean/CleanViewController.swift)
+* [Create New Schedule](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/Clean/NewScheduleViewController.swift)
 
-##### Drinks
-* Change Total Drinks
-* Overview
+##### [Drinks](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/Drinks/DrinkViewController.swift)
+* [Change Total Drinks](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/Drinks/AddDrinksViewController.swift)
+* [Overview](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/Drinks/OverviewDrinksViewController.swift)
     * Drinks to buy
     * Total drinks per resident
 
-##### Profile
-* Your House
-* Pick House
-* Create New House
-* About this app
+##### [Profile](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/Profile/ProfileViewController.swift)
+* [Your House](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/Profile/YourHouseViewController.swift)
+* [Pick House](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/Profile/PickHouseViewController.swift)
+* [Create New House](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/Profile/NewHouseViewController.swift)
+* [About this app](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/Profile/AboutViewController.swift)
 
 
 ### Data
-DataController.swift holds functions to get all data from the Google Firebase Realtime Database linked to the app. The functions ensure that data is saved locally into a global struct inside Structures.swift.  
+[DataController](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/DataController.swift) holds functions to get all data from the Google Firebase Realtime Database linked to the app. The functions ensure that data is saved locally into a global struct inside Structures.swift.  
 
 
 ### Extensions
-Extensions can be found in Extensions.swift. An important function in there is called getAllData() and calls the DataController to fetch all users and houses. Other extensions are there to reduce the amount of code.
+Extensions can be found in [Extensions](https://github.com/FriedScholvinck/RoomMate/blob/master/RoomMate/Extenstions.swift). An important function in there is called getAllData() and calls the DataController to fetch all users and houses. Other extensions are there to reduce the amount of code.
 
 
 ## Challenges
