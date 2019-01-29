@@ -1,6 +1,6 @@
-# Styleguide
+# Style Guide
 
-### Basic rules
+## Basic rules
 
 #### Indent rules:
 * 4 spaces for tabs
@@ -21,5 +21,5 @@
 * omit "get {}" when making a read-only computed property
 
 
-### Sources:
+## Sources
 * https://github.com/linkedin/swift-style-guide
