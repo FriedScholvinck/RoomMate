@@ -11,6 +11,7 @@ import UIKit
 import FirebaseUI
 import FirebaseDatabase
 
+
 class LogInViewController: UIViewController, FUIAuthDelegate {
     let ref = Database.database().reference()
     

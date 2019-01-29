@@ -5,9 +5,11 @@
 //  Created by Fried on 14/01/2019.
 //  Copyright © 2019 Fried. All rights reserved.
 //
+//  This view controller shows an overview of the drinking data in the house in a table view with two segments: 'Drinks to Buy' and 'Total Drinks'.
 
 import UIKit
 import Firebase
+
 
 class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let ref = Database.database().reference()
@@ -21,6 +23,7 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var drinksLabel: UILabel!
     @IBOutlet weak var trashButton: UIBarButtonItem!
     
+    /// get drinking data and load table view
     override func viewDidLoad() {
         super.viewDidLoad()
         drinkTableView.delegate = self
@@ -31,7 +34,7 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
-    /// get table view date (names and drinks)
+    /// get table view data (names and drinks)
     func getResidentNames() {
         for memberID in CurrentUser.residents {
             residents.append((CurrentUser.users[memberID]?.name)!)
@@ -65,7 +68,6 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
             self.getAllData {
                 _ = self.navigationController?.popViewController(animated: true)
             }
-            
         }))
         
         // cancel removal
@@ -88,6 +90,8 @@ class OverviewDrinksViewController: UIViewController, UITableViewDelegate, UITab
     /// helper function for setting table view
     func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         cell.textLabel?.text = residents[indexPath.row]
+        
+        // check which segment is tapped
         if segmentControl.selectedSegmentIndex == 1 {
             cell.detailTextLabel?.text = String(drinks[indexPath.row])
         } else {

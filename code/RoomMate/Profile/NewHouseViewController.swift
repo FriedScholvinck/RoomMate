@@ -10,6 +10,7 @@
 import UIKit
 import Firebase
 
+
 class NewHouseViewController: UIViewController, UITextFieldDelegate {
     let ref = Database.database().reference()
     

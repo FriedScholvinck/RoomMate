@@ -5,7 +5,7 @@
 //  Created by Fried on 09/01/2019.
 //  Copyright © 2019 Fried. All rights reserved.
 //
-//  Class for creating a new cleaning schedule
+//  This view contoller holds the functionality for creating a new cleaning schedule. The user adds house tasks by typing the task in the textfield and pressing the plus button. The tasks will be shown in a table view and only be saved when the save button is tapped. The user will be redirected to the CleanViewController and presented with the updated schedule.
 
 import UIKit
 import Firebase

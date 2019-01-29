@@ -5,9 +5,11 @@
 //  Created by Fried on 07/01/2019.
 //  Copyright © 2019 Fried. All rights reserved.
 //
+//  This view controller contains the functionality behind the drinking system in the app. The interface loads again when the view appears, so the most recent data is shown. When the user taps the 'Drink One' button, the database will be updated and the user will be notified if he/she needs to buy some beers.
 
 import UIKit
 import Firebase
+
 
 class DrinkViewController: UIViewController {
     let ref = Database.database().reference()
@@ -22,20 +24,24 @@ class DrinkViewController: UIViewController {
     @IBOutlet weak var drinksInStoreLabel: UILabel!
     @IBOutlet weak var drinkOneButton: UIButton!
     
-    /// check if user is in house
     override func viewDidLoad() {
         super.viewDidLoad()
         changeDrinksButton.applyDesign()
         drinkOneButton.applyDesign()
     }
     
+    /// get all data to update interface with most recent data
     override func viewWillAppear(_ animated: Bool) {
         getAllData {
+            
+            // if user is not in a house, notify
             if CurrentUser.user.house == nil {
                 self.changeDrinksButton.isEnabled = false
                 self.changeDrinksButton.backgroundColor = UIColor(red: 0.22, green: 0.57, blue: 0.47, alpha: 0.5)
                 self.getOverviewButton.isEnabled = false
                 self.createAlert(title: "You're not yet in a house.", message: "Join or create one at 'Profile'", pop: false)
+            
+            // else update user interface with corresponding values
             } else {
                 self.changeDrinksButton.isEnabled = true
                 self.changeDrinksButton.backgroundColor = UIColor(red: 0.22, green: 0.57, blue: 0.47, alpha: 1.0)
@@ -84,6 +90,7 @@ class DrinkViewController: UIViewController {
             CurrentUser.ref.child("drinks").setValue(self.yourDrinks)
             CurrentUser.ref.child("drinksToBuy").setValue(self.drinksToBuy)
             
+            // if user drank 24 beers, notify to buy crate
             if self.yourDrinks % 24 == 0 {
                 self.createAlert(title: "Buy Crate!", message: "You drank 24 beers", pop: false)
             }

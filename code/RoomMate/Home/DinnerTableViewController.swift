@@ -5,10 +5,11 @@
 //  Created by Fried on 19/01/2019.
 //  Copyright © 2019 Fried. All rights reserved.
 //
-//  Overview of all Room Mates and if they eat at home tonight
+//  Overview of all Room Mates and if they eat at home tonight, shown by a checkmark at the right detail of the table view.
 
 import UIKit
 import Firebase
+
 
 class DinnerTableViewController: UITableViewController {
     let ref = Database.database().reference()

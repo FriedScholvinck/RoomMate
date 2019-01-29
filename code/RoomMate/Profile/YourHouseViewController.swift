@@ -10,6 +10,7 @@
 import UIKit
 import Firebase
 
+
 class YourHouseViewController: UITableViewController {
     let ref = Database.database().reference()
     var residents: [String] = []

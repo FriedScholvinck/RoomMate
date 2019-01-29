@@ -7,8 +7,8 @@
 //
 //  This file contains extensions for ViewControllers, buttons and labels
 
-
 import UIKit
+
 
 // this extension hold functions that are usefull and used by multiple view controllers
 // getData() - calls setTasks(), divideTasks() - to get data from Firebase Database (and shows activity indicator)
@@ -88,6 +88,7 @@ extension UIViewController {
     }
 }
 
+
 // label design with black border
 extension UILabel {
     func applyDesign() {
@@ -95,6 +96,7 @@ extension UILabel {
         self.layer.borderWidth = 1.0
     }
 }
+
 
 // green round button design
 extension UIButton {
@@ -105,6 +107,7 @@ extension UIButton {
         self.setTitleColor(UIColor.white, for: .normal)
     }
 }
+
 
 // view design with black border
 extension UIView {

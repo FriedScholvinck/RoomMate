@@ -10,6 +10,7 @@
 import UIKit
 import Firebase
 
+
 class AppManager {
     let ref = Database.database().reference()
     static let shared = AppManager()

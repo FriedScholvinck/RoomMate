@@ -5,10 +5,11 @@
 //  Created by Fried on 07/01/2019.
 //  Copyright © 2019 Fried. All rights reserved.
 //
-//  This view controller holds the cleaning schedule and a button to 
+//  This view controller holds the cleaning schedule and a button to create a new schedule. The weekly shifting schedule is as long as the amount of residents in the house. It is controlled by a segment control, which if of the same length.
 
 import UIKit
 import Firebase
+
 
 class CleanViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let ref = Database.database().reference()
@@ -61,7 +62,7 @@ class CleanViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func setSegmentControl() {
         segmentControl.removeAllSegments()
         
-        // insert as many segments as residents + right title
+        // insert as many segments as residents
         for week in 0...residents.count - 1 {
             
             // if cleaning schedule exceeds last week in year, stop adding segments
@@ -69,6 +70,7 @@ class CleanViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 break
             }
             
+            // make segment with corresponding title
             segmentControl.insertSegment(withTitle: String(CurrentUser.houses[CurrentUser.user.house!]!.firstWeek + week), at: week, animated: true)
         }
         
@@ -94,6 +96,8 @@ class CleanViewController: UIViewController, UITableViewDelegate, UITableViewDat
     /// helper function for setting table view
     func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         cell.textLabel?.text = residents[indexPath.row]
+        
+        // don't show detail if there are no tasks
         if CurrentUser.tasks.count > 0 {
             cell.detailTextLabel?.text = String(CurrentUser.tasks[segmentControl.selectedSegmentIndex][indexPath.row])
         }
