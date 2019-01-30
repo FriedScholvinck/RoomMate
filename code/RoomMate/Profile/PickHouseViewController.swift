@@ -39,7 +39,6 @@ class PickHouseViewController: UIViewController, UITextFieldDelegate, UIPickerVi
             pickerData = Array(CurrentUser.houses.keys).filter(){$0 != home}
         } else {
             pickerData = Array(CurrentUser.houses.keys)
-            print(pickerData)
         }
         
         // if no other houses
@@ -47,6 +46,8 @@ class PickHouseViewController: UIViewController, UITextFieldDelegate, UIPickerVi
             pickerData = ["no houses available"]
             saveButton.isEnabled = false
         }
+        
+        pickerData = pickerData.sorted()
         
         // reload pickerview
         housePicker.reloadAllComponents()
