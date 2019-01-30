@@ -10,6 +10,9 @@ RoomMate is an iPhone application for students. It contains an easy-to-use weekl
 ### Product Demo
 [Demo Video](https://youtu.be/ytKThSPDdXA)
 
+### Files
+This repository is made up of a [code](https://github.com/FriedScholvinck/RoomMate/tree/master/code) folder with all [.swift](https://github.com/FriedScholvinck/RoomMate/tree/master/code/RoomMate) files, a [docs](https://github.com/FriedScholvinck/RoomMate/tree/master/docs) folder with images used on this repository and multiple text files. 
+
 ### Students
 * Fried Schölvinck (UvA student number: 10729267)
 
