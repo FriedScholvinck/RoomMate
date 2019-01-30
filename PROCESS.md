@@ -103,4 +103,16 @@
 * added activity indicator and the inability to click anything when the data is loading
 * changed label design to differentiate between label and button
 
+## day 16
+* writing report and readme
+    * choose to paste all the screenshots in an app flow image with arrows for navigation -> better structural overview of the app as well as a cleaner repository
+
+## day 17
+* cleaning up github repository (code folder etc..)
+* link to files in report
+* cleaning up comments
+* made product demo video
+
+## day 18
+* last group meeting -> discussed final check and video
 
