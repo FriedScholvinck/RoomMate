@@ -25,9 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // ask for permission to show notifications
         center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
             if granted {
-                print("testing")
                 self.createNotificationSchedule()
-                
             }
         }
         
