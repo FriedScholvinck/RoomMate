@@ -5,9 +5,11 @@
 //  Created by Fried on 07/01/2019.
 //  Copyright © 2019 Fried. All rights reserved.
 //
+//  The AppDelegate class is extended with Google Firebase and a request for permission to send notifications.
 
 import UIKit
 import Firebase
+import UserNotifications
 
 
 @UIApplicationMain
@@ -17,7 +19,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// link Google Firebase to application
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        
+        let center = UNUserNotificationCenter.current()
+        
+        // ask for permission to show notifications
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            if granted {
+                print("testing")
+                self.createNotificationSchedule()
+                
+            }
+        }
+        
+        let notificationCenter = UNUserNotificationCenter.current()
+        
+        // don't create notifications if disabled
+        notificationCenter.getNotificationSettings { (settings) in
+            guard settings.authorizationStatus == .authorized else {
+                return
+            }
+        }
+        
+        
         return true
+    }
+    
+    /// create schedule for repeating notification
+    func createNotificationSchedule() {
+        let content = UNMutableNotificationContent()
+        content.title = "Do you eat at home tonight?"
+        content.body = "Set availability in app"
+        
+        // configure the recurring time
+        var dateComponents = DateComponents()
+        dateComponents.calendar = Calendar.current
+
+        // schedule at 17:00
+        dateComponents.hour = 17
+        
+        // create the trigger as a repeating event
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+
+        // create the request
+        let uuidString = UUID().uuidString
+        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+        
+        // schedule the request with the system
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.add(request) { (error) in
+        }
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

@@ -5,7 +5,7 @@
 //  Created by Fried on 09/01/2019.
 //  Copyright © 2019 Fried. All rights reserved.
 //
-//  This shared class holds function to collect all data from Firebase Realtime Database
+//  This shared class holds function to collect all data from Firebase Realtime Database. Below is also a function that checks if the device is connected to the internet. All these functions are called from getAllData() in Extensions.swift.
 
 import Foundation
 import UIKit
@@ -134,7 +134,7 @@ class DataController {
     }
     
     /// checks for internet connection, code from youtube video (https://www.youtube.com/watch?v=WYPrSBI243A)
-    func checkInternetConnection() -> Bool{
+    func checkInternetConnection() -> Bool {
         
         var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
         zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
