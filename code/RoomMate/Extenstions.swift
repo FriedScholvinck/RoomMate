@@ -18,29 +18,33 @@ extension UIViewController {
     
     /// get data from firebase and store in global variables
     func getAllData(completion: @escaping () -> Void) {
-        
-        // show network indicator and make user unable to click on anything while getting data
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        UIApplication.shared.beginIgnoringInteractionEvents()
-
-        // call DataController.swift to get data from Firebase Database
-        DataController.shared.getUserAndHouseData {
+        if DataController.shared.checkInternetConnection() {
+            // show network indicator and make user unable to click on anything while getting data
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            UIApplication.shared.beginIgnoringInteractionEvents()
             
-            // set house info if available
-            DispatchQueue.main.async {
-                if let houseName = CurrentUser.user.house {
-                    if let house = CurrentUser.houses[houseName] {
-                        
-                        CurrentUser.residents = house.residents
-                        self.setTasks()
-                    }
-                }
+            // call DataController.swift to get data from Firebase Database
+            DataController.shared.getUserAndHouseData {
                 
-                // stop indicator and complete data request
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                UIApplication.shared.endIgnoringInteractionEvents()
-                completion()
+                // set house info if available
+                DispatchQueue.main.async {
+                    if let houseName = CurrentUser.user.house {
+                        if let house = CurrentUser.houses[houseName] {
+                            
+                            CurrentUser.residents = house.residents
+                            self.setTasks()
+                        }
+                    }
+                    
+                    // stop indicator and complete data request
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                    completion()
+                }
             }
+        } else {
+            createAlert(title: "No Internet Connection Found", message: "Unable to load data", pop: false)
+            return
         }
     }
     

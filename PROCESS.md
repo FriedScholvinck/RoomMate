@@ -115,4 +115,5 @@
 
 ## day 18
 * last group meeting -> discussed final check and video
+* network check -> alert user when no internet connection
 

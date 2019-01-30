@@ -18,4 +18,6 @@ This repository is made up of a [code](https://github.com/FriedScholvinck/RoomMa
 
 
 ### Sources
-The images in the app are not created by myself, but pulled from https://icons8.com/icons/ios. The image on the 'Log In' and 'Home' page comes from https://nl.pinterest.com/pin/520728775644173254. 
+* The images in the app are not created by myself, but pulled from https://icons8.com/icons/ios.
+* The image on the 'Log In' and 'Home' page comes from https://nl.pinterest.com/pin/520728775644173254.
+* The code for checking internet connection was pulled from https://www.youtube.com/watch?v=WYPrSBI243A

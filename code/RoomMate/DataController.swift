@@ -10,6 +10,7 @@
 import Foundation
 import UIKit
 import Firebase
+import SystemConfiguration
 
 class DataController {
     static let shared = DataController()
@@ -21,12 +22,14 @@ class DataController {
         // because the completion is not able to know whether getUsers() or getHouses() will be finished first, it waits for finished to become 2
         var finished = 0
         deleteExistingData()
+        
         getUsers { ()
             finished += 1
             if finished == 2 {
                 completion()
             }
         }
+        
         getHouses { ()
             finished += 1
             if finished == 2 {
@@ -128,5 +131,31 @@ class DataController {
             
             completion()
         })
+    }
+    
+    /// checks for internet connection, code from youtube video (https://www.youtube.com/watch?v=WYPrSBI243A)
+    func checkInternetConnection() -> Bool{
+        
+        var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+        
+        var flags: SCNetworkReachabilityFlags = SCNetworkReachabilityFlags(rawValue: 0)
+        if SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) == false {
+            return false
+        }
+        
+        // working for cellular and wifi
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        let ret = (isReachable && !needsConnection)
+        
+        return ret
     }
 }
